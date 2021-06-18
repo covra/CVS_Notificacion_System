@@ -1,3 +1,5 @@
+--require
+local CVS_NOTIFY_API = require( script.parent:GetCustomProperty("CVS_NOTIFY_API") ) 
 --custom
 local CLIENT_ROOT = script.parent
 local CURVA = script:GetCustomProperty("curveAnim")
@@ -168,6 +170,7 @@ end
 --SEND STACK NOTIFICATION TO ITS AREA
 function sendNotification(typeCode, data_1)
 	if debugPrint then print(script.name.." Sending stack notification >>"..typeCode.." // ", data_1) end 
+	 CVS_NOTIFY_API.sendNotification (typeCode, data_1)
 end 
 -------------------------------- VALIDATION -----------------------------------
 

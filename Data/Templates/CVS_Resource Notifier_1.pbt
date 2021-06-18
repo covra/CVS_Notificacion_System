@@ -107,6 +107,12 @@ Assets {
             Int: 50
           }
           Overrides {
+            Name: "cs:CVS_NOTIFY_API"
+            AssetReference {
+              Id: 9724488856710647903
+            }
+          }
+          Overrides {
             Name: "cs:scale_Multiplier:tooltip"
             String: "Multiplier of the final size of the scale. Higher values make icon larger in animation. Default = 10"
           }

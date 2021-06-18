@@ -1,6 +1,6 @@
 Assets {
-  Id: 9724488856710647903
-  Name: "API_ANIM_CURVE"
+  Id: 7059359564255596754
+  Name: "CVS_common"
   PlatformAssetType: 3
   TextAsset {
   }
