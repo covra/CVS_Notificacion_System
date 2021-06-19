@@ -142,26 +142,26 @@ function addToBar ()
 		P_BAR.progress = barValue / MAX_RES_BAR
 	end 
 	if STACK_GROW then 
-		sendNotification("RESOURCE","grow")
+		sendNotification("RESOURCES","grow")
 	end
 	if STACK_ISCUSTOM_QTY then
 		if barValue >= STACK_CUSTOM_QTY_1 and not isSent_1 then 
 			isSent_1 = true 
-			sendNotification("RESOURCE","custom", STACK_CUSTOM_QTY_1)
+			sendNotification("RESOURCES","custom", STACK_CUSTOM_QTY_1)
 		end 
 		if barValue >= STACK_CUSTOM_QTY_2 and not isSent_2 then 
 			isSent_2 = true 
-			sendNotification("RESOURCE","custom", STACK_CUSTOM_QTY_2)
+			sendNotification("RESOURCES","custom", STACK_CUSTOM_QTY_2)
 		end 
 		if barValue >= STACK_CUSTOM_QTY_3 and not isSent_3 then 
 			isSent_3 = true 
-			sendNotification("RESOURCE","custom", STACK_CUSTOM_QTY_3)
+			sendNotification("RESOURCES","custom", STACK_CUSTOM_QTY_3)
 		end 
 	end 
 	if barValue >= MAX_RES_BAR then 
 		settingBar(false, barValue)
 		if STACK_FULL then 
-			sendNotification("RESOURCE", "max")
+			sendNotification("RESOURCES", "max")
 		end 
 	end 	
 end 

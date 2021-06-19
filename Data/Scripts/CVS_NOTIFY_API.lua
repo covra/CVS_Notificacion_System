@@ -44,14 +44,16 @@ function CVS_NOTIFY_API.sendNotification (typeCode, data_1, data_2)
 	local typeCode = string.upper(typeCode)
 	print(script.name.." Sending stack notification type: ["..typeCode.."]  /DATA >>/ ", data_1," // ", data_2)
 	SIDE_PANEL.opacity = 1
-	local currentContent = getContent(typeCode, data_1, data_2)
-	local stackWindow = World.SpawnAsset(REF_STACK,{parent = SIDE_PANEL}) 
-	writeContent(stackWindow, currentContent)
-	setStackColor(stackWindow, typeCode)
 	_G.numStacks  = _G.numStacks  + 1
-	animStack(stackWindow)
-	fadeOut()
-	if _G.SELFDESTROY_TIME ~= nil then destroyStack(stackWindow) end
+	Task.Spawn(function()
+		local currentContent = getContent(typeCode, data_1, data_2)
+		local stackWindow = World.SpawnAsset(REF_STACK,{parent = SIDE_PANEL}) 
+		writeContent(stackWindow, currentContent)
+		setStackColor(stackWindow, typeCode)		
+		animStack(stackWindow)
+		--fadeOut()
+		--if _G.SELFDESTROY_TIME ~= nil then destroyStack(stackWindow) end
+	end)
 end
 
 function setStackColor (window, typeCode)
@@ -85,9 +87,10 @@ end
 
 function animStack(window)
 	Task.Spawn(function()
-		local heightPanel = _G.dynamicHeight
+		--local heightPanel = _G.dynamicHeight
 		local heightWindows = window.height * _G.numStacks
 		local finalPos =  _G.dynamicHeight - heightWindows
+					print(" >>>> ",window," final pos: ", finalPos, " data:", _G.dynamicHeight, window.height, _G.numStacks)
 		local time = 0.7	
 		local p1 = CurveKey.New(0, 0,{interpolation = CurveInterpolation.CUBIC, tangent = 0.1})
 		local p2 =  CurveKey.New(time, finalPos, {interpolation = CurveInterpolation.CUBIC, tangent = 2.75})
@@ -159,7 +162,7 @@ function getContent (typeCode, data_1, data_2)
 		local content = table [data_1]
 		if typeCode == "TIMER" then 
 			local obj = data_2:GetObject()
-			content.abs = obj.name..content.abs
+			content.abs = obj.name.." "..content.abs
 		end
 		content.title = typeCode..":"..content.title	
 		print(script.name.." >> content stack: ",typeCode, content.title, content.abs)

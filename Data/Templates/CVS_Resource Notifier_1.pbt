@@ -64,7 +64,7 @@ Assets {
           }
           Overrides {
             Name: "cs:debugPrint"
-            Bool: true
+            Bool: false
           }
           Overrides {
             Name: "cs:stackBoxes_res1"

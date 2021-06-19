@@ -471,14 +471,6 @@ Objects {
           Rotator {
           }
         }
-        Overrides {
-          Name: "cs:resource_CoreResources"
-          Bool: true
-        }
-        Overrides {
-          Name: "cs:resource_CustomEvent"
-          Bool: false
-        }
       }
     }
     TemplateAsset {
