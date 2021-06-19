@@ -10,6 +10,23 @@ local tableColors = {
 				["WORLD"] ={ head = Color.PURPLE, body = Color.FromLinearHex("1A0026FF")},
 				["PLAYER"] = { head = Color.EMERALD, body = Color.FromLinearHex("00382AFF")},
 				}
+				
+local tableContent = {
+				["TIMER"] = {
+							["end"] = { title = "CHECK" ,abs = "end" , fullTxt = "Chrono arrived to "},
+							},
+				["RESOURCES"] = {
+							["grow"] = { title = "INCREASE" ,abs = "increased by one" , fullTxt = "was increased by one. You have: "},
+							["custom"] = { title = "STACK" ,abs = "stack: " , fullTxt = "You have a stack of %s &s"},
+							["max"] = { title = "MAX" ,abs = "maximun stack " , fullTxt = "You have reached the maximun stack established"},
+							},
+				["GAME"] = { head = Color.CYAN, body = Color.FromLinearHex("010618FF")},
+				["WORLD"] ={ head = Color.PURPLE, body = Color.FromLinearHex("1A0026FF")},
+				["PLAYER"] = {
+							["join"] = { title = "JOINED" ,abs = "%s" , fullTxt = "%s joined "},
+							["leaves"] = { title = "LEAVES" ,abs = "%s" , fullTxt = "%s leaves the game "},
+							}
+				}
 --custom
 local SIDE_PANEL = World.FindObjectByName("UI Side Panel")	
 local MAIN_FOLDER = World.FindObjectByName("CVS_common_Notifications")	
@@ -27,8 +44,9 @@ function CVS_NOTIFY_API.sendNotification (typeCode, data_1, data_2)
 	local typeCode = string.upper(typeCode)
 	print(script.name.." Sending stack notification type: ["..typeCode.."]  /DATA >>/ ", data_1," // ", data_2)
 	SIDE_PANEL.opacity = 1
-	print(SIDE_PANEL, STACK_ID)
+	local currentContent = getContent(typeCode, data_1, data_2)
 	local stackWindow = World.SpawnAsset(REF_STACK,{parent = SIDE_PANEL}) 
+	writeContent(stackWindow, currentContent)
 	setStackColor(stackWindow, typeCode)
 	_G.numStacks  = _G.numStacks  + 1
 	animStack(stackWindow)
@@ -124,5 +142,40 @@ function destroyStack (window)
 			
 			--reLocate ()    --debug!!!!!!!!!!!! , quitar luego
 end
+
+function getContent (typeCode, data_1, data_2)
+	local isCodeOk = false
+	for _,code in pairs (tableContent) do 
+		if tableContent[typeCode] == nil then 
+			warn(" typeCode ["..typeCode.."] for stack windows no valid: Set to default")	
+			local genContent = { title = "GENERAL EVENT" ,abs = "" , fullTxt = "No aditional data"}
+			return genContent
+		else 
+			isCodeOk = true
+		end
+	end
+	if isCodeOk then 	
+		local table = tableContent[typeCode]
+		local content = table [data_1]
+		if typeCode == "TIMER" then 
+			local obj = data_2:GetObject()
+			content.abs = obj.name..content.abs
+		end
+		content.title = typeCode..":"..content.title	
+		print(script.name.." >> content stack: ",typeCode, content.title, content.abs)
+		return content
+	end
+end 
+
+function writeContent (window, currentContent)
+	window.clientUserData.fullTxt = currentContent.fullTxt
+	local Title = window:FindDescendantByName("Title")
+	local Body = window:FindDescendantByName("bodyText")	
+	Title.text = currentContent.title
+	Body.text = currentContent.abs
+end
+
+
+
 
 return CVS_NOTIFY_API

@@ -161,7 +161,7 @@ function addToBar ()
 	if barValue >= MAX_RES_BAR then 
 		settingBar(false, barValue)
 		if STACK_FULL then 
-			sendNotification("RESOURCE", "MAX")
+			sendNotification("RESOURCE", "max")
 		end 
 	end 	
 end 

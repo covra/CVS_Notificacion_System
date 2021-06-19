@@ -147,7 +147,7 @@ end
 function sendNotification(typeCode, data_1)
 	if debugPrint then print(script.name.." Sending stack notification >> type["..typeCode.."] // ", data_1) end 
 	 local objID = CLIENT_ROOT:GetReference()
-	 CVS_NOTIFY_API.sendNotification (typeCode,objID, data_1)
+	 CVS_NOTIFY_API.sendNotification (typeCode,data_1, objID)
 end 
 
 
