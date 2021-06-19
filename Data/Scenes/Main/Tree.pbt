@@ -20,11 +20,10 @@ Objects {
   ChildIds: 10005074784157121906
   ChildIds: 14982843161775482339
   ChildIds: 7692573330601457615
-  ChildIds: 10721492232985082074
-  ChildIds: 15244968445022677563
-  ChildIds: 1681534997575711646
+  ChildIds: 2066971925543242940
   ChildIds: 135322574837865159
   ChildIds: 17800946474055268877
+  ChildIds: 6646895742120987852
   ChildIds: 9252152554801488365
   UnregisteredParameters {
   }
@@ -163,6 +162,44 @@ Objects {
   }
 }
 Objects {
+  Id: 6646895742120987852
+  Name: "CVS_Timer Notifier"
+  Transform {
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 4781671109827199097
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  TemplateInstance {
+    ParameterOverrideMap {
+      key: 10128567684910539411
+      value {
+        Overrides {
+          Name: "Name"
+          String: "CVS_Timer Notifier"
+        }
+        Overrides {
+          Name: "Position"
+          Vector {
+            Z: -50
+          }
+        }
+      }
+    }
+    TemplateAsset {
+      Id: 10952106473813097499
+    }
+  }
+}
+Objects {
   Id: 17800946474055268877
   Name: "CVS_Resource Notifier_2"
   Transform {
@@ -260,565 +297,14 @@ Objects {
   }
 }
 Objects {
-  Id: 1681534997575711646
-  Name: "CVS_Timer Notifier"
+  Id: 2066971925543242940
+  Name: "TEST NOTIFICATIONS"
   Transform {
     Location {
-      Z: -50
+      X: -63.0500183
+      Y: -331.537964
     }
     Rotation {
-    }
-    Scale {
-      X: 172.640945
-      Y: 146.711044
-      Z: 1
-    }
-  }
-  ParentId: 4781671109827199097
-  ChildIds: 9588737546349718349
-  ChildIds: 9456319149108869196
-  UnregisteredParameters {
-    Overrides {
-      Name: "cs:isEnabledTimer"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:timer_callEventName"
-      String: "timerSimple"
-    }
-    Overrides {
-      Name: "cs:timer_endEventName"
-      String: "endTimer"
-    }
-    Overrides {
-      Name: "cs:arrivalPercent"
-      Float: 20
-    }
-    Overrides {
-      Name: "cs:animationArrival"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:colorArrival"
-      Color {
-        R: 0.840000033
-        G: 4.00543229e-07
-        A: 1
-      }
-    }
-    Overrides {
-      Name: "cs:stackBoxes_end"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:stackBoxes_arrival"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:CVS_NOTIFY_API"
-      AssetReference {
-        Id: 9724488856710647903
-      }
-    }
-    Overrides {
-      Name: "cs:isEnabledTimer:tooltip"
-      String: "If enabled. Timer will be active"
-    }
-    Overrides {
-      Name: "cs:timer_callEventName:tooltip"
-      String: "Event name to start/stop/reset the timer ie:  \'Events.BroadcastToPlayer(player, \"timerSimple\", player, \"reset\", 120)\'   // \'Events.BroadcastToPlayer(player, \"timerSimple\", player, \"start\", 60)\'  // \'Events.BroadcastToPlayer(player, \"timerSimple\", player, \"stop\")\'"
-    }
-    Overrides {
-      Name: "cs:timer_endEventName:tooltip"
-      String: "Event Name to notity timer is ended ie: \'Events.BroadcastToServer(\"endTimer\")\'  // \'Events.Broadcast(\"endTimer\")"
-    }
-  }
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:forceoff"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  EditorIndicatorVisibility {
-    Value: "mc:eindicatorvisibility:visiblewhenselected"
-  }
-  NetworkContext {
-  }
-}
-Objects {
-  Id: 9456319149108869196
-  Name: "UI Container"
-  Transform {
-    Location {
-      Z: 50
-    }
-    Rotation {
-    }
-    Scale {
-      X: 0.00579236867
-      Y: 0.00681611942
-      Z: 1
-    }
-  }
-  ParentId: 1681534997575711646
-  ChildIds: 5128508771281691812
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  EditorIndicatorVisibility {
-    Value: "mc:eindicatorvisibility:visiblewhenselected"
-  }
-  Control {
-    RenderTransformPivot {
-      Anchor {
-        Value: "mc:euianchor:middlecenter"
-      }
-    }
-    Canvas {
-      ContentType {
-        Value: "mc:ecanvascontenttype:dynamic"
-      }
-      Opacity: 1
-    }
-    AnchorLayout {
-      SelfAnchor {
-        Anchor {
-          Value: "mc:euianchor:topleft"
-        }
-      }
-      TargetAnchor {
-        Anchor {
-          Value: "mc:euianchor:topleft"
-        }
-      }
-    }
-  }
-}
-Objects {
-  Id: 5128508771281691812
-  Name: "HUD Timer Variant 1"
-  Transform {
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 9456319149108869196
-  ChildIds: 17283842394930076202
-  ChildIds: 18347014818731399270
-  ChildIds: 6601497525516651158
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  EditorIndicatorVisibility {
-    Value: "mc:eindicatorvisibility:visiblewhenselected"
-  }
-  Control {
-    Width: 240
-    Height: 52
-    RenderTransformPivot {
-      Anchor {
-        Value: "mc:euianchor:middlecenter"
-      }
-    }
-    Panel {
-      Opacity: 1
-    }
-    AnchorLayout {
-      SelfAnchor {
-        Anchor {
-          Value: "mc:euianchor:middlecenter"
-        }
-      }
-      TargetAnchor {
-        Anchor {
-          Value: "mc:euianchor:middlecenter"
-        }
-      }
-    }
-  }
-}
-Objects {
-  Id: 6601497525516651158
-  Name: "Time"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 5128508771281691812
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  EditorIndicatorVisibility {
-    Value: "mc:eindicatorvisibility:visiblewhenselected"
-  }
-  Control {
-    Width: 167
-    Height: 45
-    UIX: 70
-    UIY: 5
-    RenderTransformPivot {
-      Anchor {
-        Value: "mc:euianchor:middlecenter"
-      }
-    }
-    Text {
-      Label: "00:02:12"
-      Color {
-        R: 1
-        G: 1
-        B: 1
-        A: 1
-      }
-      Size: 24
-      Justification {
-        Value: "mc:etextjustify:center"
-      }
-      AutoWrapText: true
-      Font {
-        Id: 15274808845524457639
-      }
-      VerticalJustification {
-        Value: "mc:everticaljustification:center"
-      }
-    }
-    AnchorLayout {
-      SelfAnchor {
-        Anchor {
-          Value: "mc:euianchor:middleleft"
-        }
-      }
-      TargetAnchor {
-        Anchor {
-          Value: "mc:euianchor:middleleft"
-        }
-      }
-    }
-  }
-}
-Objects {
-  Id: 18347014818731399270
-  Name: "Icon ( outline )"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 5128508771281691812
-  ChildIds: 2438732493497834017
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  EditorIndicatorVisibility {
-    Value: "mc:eindicatorvisibility:visiblewhenselected"
-  }
-  Control {
-    Width: 78
-    Height: 78
-    UIY: -5
-    RenderTransformPivot {
-      Anchor {
-        Value: "mc:euianchor:middlecenter"
-      }
-    }
-    Image {
-      Brush {
-        Id: 5606378370685382774
-      }
-      Color {
-        A: 1
-      }
-      TeamSettings {
-      }
-    }
-    AnchorLayout {
-      SelfAnchor {
-        Anchor {
-          Value: "mc:euianchor:middleleft"
-        }
-      }
-      TargetAnchor {
-        Anchor {
-          Value: "mc:euianchor:middleleft"
-        }
-      }
-    }
-  }
-}
-Objects {
-  Id: 2438732493497834017
-  Name: "Icon"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 18347014818731399270
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  EditorIndicatorVisibility {
-    Value: "mc:eindicatorvisibility:visiblewhenselected"
-  }
-  Control {
-    Width: -12
-    Height: -12
-    RenderTransformPivot {
-      Anchor {
-        Value: "mc:euianchor:middlecenter"
-      }
-    }
-    AddSizeToParentIfUsingParentSize: true
-    UseParentWidth: true
-    UseParentHeight: true
-    Image {
-      Brush {
-        Id: 5606378370685382774
-      }
-      Color {
-        R: 1
-        G: 1
-        B: 1
-        A: 1
-      }
-      TeamSettings {
-      }
-    }
-    AnchorLayout {
-      SelfAnchor {
-        Anchor {
-          Value: "mc:euianchor:middlecenter"
-        }
-      }
-      TargetAnchor {
-        Anchor {
-          Value: "mc:euianchor:middlecenter"
-        }
-      }
-    }
-  }
-}
-Objects {
-  Id: 17283842394930076202
-  Name: "Background"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 5128508771281691812
-  ChildIds: 10188590843596299982
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  EditorIndicatorVisibility {
-    Value: "mc:eindicatorvisibility:visiblewhenselected"
-  }
-  Control {
-    Width: -35
-    UIX: 40
-    RenderTransformPivot {
-      Anchor {
-        Value: "mc:euianchor:middlecenter"
-      }
-    }
-    AddSizeToParentIfUsingParentSize: true
-    UseParentWidth: true
-    UseParentHeight: true
-    Image {
-      Brush {
-        Id: 2063992707042945453
-      }
-      Color {
-        A: 1
-      }
-      TeamSettings {
-      }
-    }
-    AnchorLayout {
-      SelfAnchor {
-        Anchor {
-          Value: "mc:euianchor:middleleft"
-        }
-      }
-      TargetAnchor {
-        Anchor {
-          Value: "mc:euianchor:middleleft"
-        }
-      }
-    }
-  }
-}
-Objects {
-  Id: 10188590843596299982
-  Name: "Background"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 17283842394930076202
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  EditorIndicatorVisibility {
-    Value: "mc:eindicatorvisibility:visiblewhenselected"
-  }
-  Control {
-    Width: -4
-    Height: -4
-    UIX: 2
-    RenderTransformPivot {
-      Anchor {
-        Value: "mc:euianchor:middlecenter"
-      }
-    }
-    AddSizeToParentIfUsingParentSize: true
-    UseParentWidth: true
-    UseParentHeight: true
-    Image {
-      Brush {
-        Id: 2063992707042945453
-      }
-      Color {
-        R: 0.00604883675
-        G: 0.0262411535
-        B: 0.097587347
-        A: 0.8
-      }
-      TeamSettings {
-      }
-    }
-    AnchorLayout {
-      SelfAnchor {
-        Anchor {
-          Value: "mc:euianchor:middleleft"
-        }
-      }
-      TargetAnchor {
-        Anchor {
-          Value: "mc:euianchor:middleleft"
-        }
-      }
-    }
-  }
-}
-Objects {
-  Id: 9588737546349718349
-  Name: "CVS_simpleTimer"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 0.00579236867
-      Y: 0.00681611942
-      Z: 1
-    }
-  }
-  ParentId: 1681534997575711646
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  EditorIndicatorVisibility {
-    Value: "mc:eindicatorvisibility:visiblewhenselected"
-  }
-  Script {
-    ScriptAsset {
-      Id: 4524706159923998732
-    }
-  }
-}
-Objects {
-  Id: 15244968445022677563
-  Name: "CVS_TEST_giver"
-  Transform {
-    Location {
-      X: 759.554932
     }
     Scale {
       X: 1
@@ -827,24 +313,6 @@ Objects {
     }
   }
   ParentId: 4781671109827199097
-  UnregisteredParameters {
-    Overrides {
-      Name: "cs:vDador"
-      Float: 0.5
-    }
-    Overrides {
-      Name: "cs:tick_Enabled"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:resourceName"
-      String: "coins"
-    }
-    Overrides {
-      Name: "cs:eventName"
-      String: "giveMeCoins"
-    }
-  }
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
   }
@@ -859,67 +327,7 @@ Objects {
   }
   Folder {
     IsFilePartition: true
-    FilePartitionName: "CVS_TEST_giver"
-  }
-  InstanceHistory {
-    SelfId: 15244968445022677563
-    SubobjectId: 15115775802848148272
-    InstanceId: 623978393604916230
-    TemplateId: 1506096741987714207
-    WasRoot: true
-  }
-}
-Objects {
-  Id: 10721492232985082074
-  Name: "CVS_TEST_giver"
-  Transform {
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 4781671109827199097
-  UnregisteredParameters {
-    Overrides {
-      Name: "cs:vDador"
-      Float: 0.5
-    }
-    Overrides {
-      Name: "cs:tick_Enabled"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:resourceName"
-      String: "apples"
-    }
-    Overrides {
-      Name: "cs:eventName"
-      String: "goApples"
-    }
-  }
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  EditorIndicatorVisibility {
-    Value: "mc:eindicatorvisibility:visiblewhenselected"
-  }
-  Folder {
-    IsFilePartition: true
-    FilePartitionName: "CVS_TEST_giver_1"
-  }
-  InstanceHistory {
-    SelfId: 10721492232985082074
-    SubobjectId: 15115775802848148272
-    InstanceId: 583783406413570656
-    TemplateId: 1506096741987714207
-    WasRoot: true
+    FilePartitionName: "TEST NOTIFICATIONS"
   }
 }
 Objects {

@@ -8,15 +8,6 @@ Assets {
   }
 }
 Assets {
-  Id: 15274808845524457639
-  Name: "Luckiest Guy"
-  PlatformAssetType: 28
-  PrimaryAsset {
-    AssetType: "FontAssetRef"
-    AssetId: "LuckiestGuyRegular_ref"
-  }
-}
-Assets {
   Id: 12095835209017042614
   Name: "Cube"
   PlatformAssetType: 1
@@ -50,23 +41,5 @@ Assets {
   PrimaryAsset {
     AssetType: "MaterialAssetRef"
     AssetId: "mi_gen_asphault_001"
-  }
-}
-Assets {
-  Id: 5606378370685382774
-  Name: "Fantasy Timepiece 001"
-  PlatformAssetType: 9
-  PrimaryAsset {
-    AssetType: "PlatformBrushAssetRef"
-    AssetId: "UI_Fantasy_Equip_Timepiece_001"
-  }
-}
-Assets {
-  Id: 2063992707042945453
-  Name: "BG Flat 001"
-  PlatformAssetType: 9
-  PrimaryAsset {
-    AssetType: "PlatformBrushAssetRef"
-    AssetId: "BackgroundNoOutline_020"
   }
 }
