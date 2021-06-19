@@ -45,7 +45,8 @@ function settingBar (isStartingSetUp, currentValue)
 	if Object.IsValid (BAR_MAX_NUM) then 
 		if isStartingSetUp then 			
 		elseif not isStartingSetUp then
-			MAX_RES_BAR = currentValue + currentGrow
+			--MAX_RES_BAR = currentValue + currentGrow
+			MAX_RES_BAR = MAX_RES_BAR + currentGrow
 			if Object.IsValid (P_BAR) then 
 				P_BAR.progress =  barValue / MAX_RES_BAR
 			end
@@ -157,7 +158,7 @@ function addToBar ()
 			sendNotification("custom", STACK_CUSTOM_QTY_3)
 		end 
 	end 
-	if barValue == MAX_RES_BAR then 
+	if barValue >= MAX_RES_BAR then 
 		settingBar(false, barValue)
 		if STACK_FULL then 
 			sendNotification("max")
@@ -166,11 +167,12 @@ function addToBar ()
 end 
 
 --@params string 'code of the notification'
---@params integer 'aditional data to boxes'
+--@params 
 --SEND STACK NOTIFICATION TO ITS AREA
 function sendNotification(typeCode, data_1)
 	if debugPrint then print(script.name.." Sending stack notification >>"..typeCode.." // ", data_1) end 
-	 CVS_NOTIFY_API.sendNotification (typeCode, data_1)
+	local objID = CLIENT_ROOT:GetReference()
+	CVS_NOTIFY_API.sendNotification (typeCode, objID, data_1)
 end 
 -------------------------------- VALIDATION -----------------------------------
 

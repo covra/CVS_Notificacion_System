@@ -509,7 +509,7 @@ Objects {
     Overrides {
       Name: "cs:Cartel"
       ObjectReference {
-        SelfId: 15513921918266948877
+        SelfId: 10911285733606443925
       }
     }
   }

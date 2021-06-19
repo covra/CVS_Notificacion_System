@@ -2,6 +2,10 @@
 local CVS_NOTIFY_API = require( script:GetCustomProperty("CVS_NOTIFY_API") ) 
 --custom
 local CLIENT_ROOT = script.parent
+local REF_STACK = World.FindObjectByName("stackWindow_ref")
+_G.STACK_ID = REF_STACK.sourceTemplateId
+print(_G.STACK_ID)
+--user exposed
 local propPlayer_Join = CLIENT_ROOT:GetCustomProperty("player_Join")
 local propPlayer_hitPoints = CLIENT_ROOT:GetCustomProperty("player_hitPoints")
 local propPlayer_Leave = CLIENT_ROOT:GetCustomProperty("player_Leave")

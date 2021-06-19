@@ -18,7 +18,8 @@ function OnInteracted(trigg, other)
 	end
 end
 
-function onEndTimer ()
+function onEndTimer (player)
+	print(" timer end by "..player.name)
 	Cartel.visibility = Visibility.FORCE_ON
 end 
 
