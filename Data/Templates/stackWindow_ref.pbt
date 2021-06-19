@@ -1,13 +1,13 @@
 Assets {
   Id: 862480760006374578
-  Name: "stackWindow"
+  Name: "stackWindow_ref"
   PlatformAssetType: 5
   TemplateAsset {
     ObjectBlock {
       RootId: 15792527445594899278
       Objects {
         Id: 15792527445594899278
-        Name: "stackWindow"
+        Name: "stackWindow_ref"
         Transform {
           Scale {
             X: 1
@@ -15,9 +15,11 @@ Assets {
             Z: 1
           }
         }
-        ParentId: 16296005335125353369
+        ParentId: 5814485063127378047
         ChildIds: 3310530067436709551
+        ChildIds: 6973441850162710035
         ChildIds: 6744615361129203571
+        ChildIds: 5783721793260145568
         Collidable_v2 {
           Value: "mc:ecollisionsetting:inheritfromparent"
         }
@@ -32,7 +34,7 @@ Assets {
         }
         Control {
           Width: 435
-          Height: 130
+          Height: 100
           RenderTransformPivot {
             Anchor {
               Value: "mc:euianchor:middlecenter"
@@ -40,7 +42,6 @@ Assets {
           }
           UseParentWidth: true
           Panel {
-            Opacity: 1
           }
           AnchorLayout {
             SelfAnchor {
@@ -120,7 +121,7 @@ Assets {
       }
       Objects {
         Id: 165304766790331872
-        Name: "Backgorund"
+        Name: "Back_body"
         Transform {
           Location {
           }
@@ -1081,7 +1082,7 @@ Assets {
       }
       Objects {
         Id: 9027011923939637414
-        Name: "TitleBackgorund"
+        Name: "Back_head"
         Transform {
           Location {
           }
@@ -1138,6 +1139,83 @@ Assets {
             TargetAnchor {
               Anchor {
                 Value: "mc:euianchor:middlecenter"
+              }
+            }
+          }
+        }
+      }
+      Objects {
+        Id: 6973441850162710035
+        Name: "bodyText"
+        Transform {
+          Location {
+          }
+          Rotation {
+          }
+          Scale {
+            X: 1
+            Y: 1
+            Z: 1
+          }
+        }
+        ParentId: 15792527445594899278
+        Collidable_v2 {
+          Value: "mc:ecollisionsetting:inheritfromparent"
+        }
+        Visible_v2 {
+          Value: "mc:evisibilitysetting:inheritfromparent"
+        }
+        CameraCollidable {
+          Value: "mc:ecollisionsetting:inheritfromparent"
+        }
+        EditorIndicatorVisibility {
+          Value: "mc:eindicatorvisibility:visiblewhenselected"
+        }
+        Control {
+          Width: 402
+          Height: 50
+          RenderTransformPivot {
+            Anchor {
+              Value: "mc:euianchor:middlecenter"
+            }
+          }
+          Text {
+            Label: "covra "
+            Color {
+              R: 1
+              G: 1
+              B: 1
+              A: 1
+            }
+            Size: 23
+            Justification {
+              Value: "mc:etextjustify:center"
+            }
+            AutoWrapText: true
+            ClipTextToSize: true
+            Font {
+              Id: 3709011913146589826
+            }
+            VerticalJustification {
+              Value: "mc:everticaljustification:center"
+            }
+            ShadowColor {
+              A: 1
+            }
+            ShadowOffset {
+              X: 2
+              Y: 2
+            }
+          }
+          AnchorLayout {
+            SelfAnchor {
+              Anchor {
+                Value: "mc:euianchor:bottomcenter"
+              }
+            }
+            TargetAnchor {
+              Anchor {
+                Value: "mc:euianchor:bottomcenter"
               }
             }
           }
@@ -1218,6 +1296,39 @@ Assets {
                 Value: "mc:euianchor:topcenter"
               }
             }
+          }
+        }
+      }
+      Objects {
+        Id: 5783721793260145568
+        Name: "CVS_autoSize_stack"
+        Transform {
+          Location {
+          }
+          Rotation {
+          }
+          Scale {
+            X: 1
+            Y: 1
+            Z: 1
+          }
+        }
+        ParentId: 15792527445594899278
+        Collidable_v2 {
+          Value: "mc:ecollisionsetting:inheritfromparent"
+        }
+        Visible_v2 {
+          Value: "mc:evisibilitysetting:inheritfromparent"
+        }
+        CameraCollidable {
+          Value: "mc:ecollisionsetting:inheritfromparent"
+        }
+        EditorIndicatorVisibility {
+          Value: "mc:eindicatorvisibility:visiblewhenselected"
+        }
+        Script {
+          ScriptAsset {
+            Id: 18181797899679960664
           }
         }
       }

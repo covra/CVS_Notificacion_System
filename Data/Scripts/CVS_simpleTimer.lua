@@ -138,14 +138,14 @@ function endTimer()
 		OBJ_ANIM.height = H_ORIG 
 	end 
 	Events.BroadcastToServer(END_EVENT_NAME, localPlayer)
-	sendNotification("endTimer")
+	sendNotification("TIMER", "end")
 end 
 
 --@params string 'code of the notification'
 --@params 
 --SEND STACK NOTIFICATION TO ITS AREA
 function sendNotification(typeCode, data_1)
-	if debugPrint then print(script.name.." Sending stack notification >>"..typeCode.." // ", data_1) end 
+	if debugPrint then print(script.name.." Sending stack notification >> type["..typeCode.."] // ", data_1) end 
 	 local objID = CLIENT_ROOT:GetReference()
 	 CVS_NOTIFY_API.sendNotification (typeCode,objID, data_1)
 end 

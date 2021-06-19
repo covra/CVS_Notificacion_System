@@ -26,11 +26,11 @@ Assets {
           }
           Overrides {
             Name: "cs:resource_CoreResources"
-            Bool: true
+            Bool: false
           }
           Overrides {
             Name: "cs:resource_CustomEvent"
-            Bool: false
+            Bool: true
           }
           Overrides {
             Name: "cs:resource_CustomEventName"
@@ -435,6 +435,8 @@ Assets {
         Control {
           Width: 280
           Height: 52
+          UIX: 126.232422
+          UIY: 101.332947
           RenderTransformPivot {
             Anchor {
               Value: "mc:euianchor:middlecenter"

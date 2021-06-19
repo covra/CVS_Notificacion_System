@@ -142,26 +142,26 @@ function addToBar ()
 		P_BAR.progress = barValue / MAX_RES_BAR
 	end 
 	if STACK_GROW then 
-		sendNotification("grow")
+		sendNotification("RESOURCE","grow")
 	end
 	if STACK_ISCUSTOM_QTY then
 		if barValue >= STACK_CUSTOM_QTY_1 and not isSent_1 then 
 			isSent_1 = true 
-			sendNotification("custom", STACK_CUSTOM_QTY_1)
+			sendNotification("RESOURCE","custom", STACK_CUSTOM_QTY_1)
 		end 
 		if barValue >= STACK_CUSTOM_QTY_2 and not isSent_2 then 
 			isSent_2 = true 
-			sendNotification("custom", STACK_CUSTOM_QTY_2)
+			sendNotification("RESOURCE","custom", STACK_CUSTOM_QTY_2)
 		end 
 		if barValue >= STACK_CUSTOM_QTY_3 and not isSent_3 then 
 			isSent_3 = true 
-			sendNotification("custom", STACK_CUSTOM_QTY_3)
+			sendNotification("RESOURCE","custom", STACK_CUSTOM_QTY_3)
 		end 
 	end 
 	if barValue >= MAX_RES_BAR then 
 		settingBar(false, barValue)
 		if STACK_FULL then 
-			sendNotification("max")
+			sendNotification("RESOURCE", "MAX")
 		end 
 	end 	
 end 
@@ -169,10 +169,10 @@ end
 --@params string 'code of the notification'
 --@params 
 --SEND STACK NOTIFICATION TO ITS AREA
-function sendNotification(typeCode, data_1)
-	if debugPrint then print(script.name.." Sending stack notification >>"..typeCode.." // ", data_1) end 
+function sendNotification(typeCode, data_1, data_2)
+	if debugPrint then print(script.name.." Sending stack notification >> type:["..typeCode.."] // ", data_1, data_2, objID) end 
 	local objID = CLIENT_ROOT:GetReference()
-	CVS_NOTIFY_API.sendNotification (typeCode, objID, data_1)
+	CVS_NOTIFY_API.sendNotification (typeCode, data_1, data_2, objID)
 end 
 -------------------------------- VALIDATION -----------------------------------
 
