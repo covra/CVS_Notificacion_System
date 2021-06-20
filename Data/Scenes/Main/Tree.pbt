@@ -223,6 +223,10 @@ Objects {
       Bool: false
     }
     Overrides {
+      Name: "cs:player_friend"
+      Bool: false
+    }
+    Overrides {
       Name: "cs:game_Purchase"
       Bool: false
     }
@@ -462,6 +466,19 @@ Objects {
   }
   TemplateInstance {
     ParameterOverrideMap {
+      key: 4984900149003348314
+      value {
+        Overrides {
+          Name: "UIX"
+          Float: -214.074585
+        }
+        Overrides {
+          Name: "UIY"
+          Float: 119.338287
+        }
+      }
+    }
+    ParameterOverrideMap {
       key: 10128567684910539411
       value {
         Overrides {
@@ -515,6 +532,19 @@ Objects {
           Name: "Rotation"
           Rotator {
           }
+        }
+      }
+    }
+    ParameterOverrideMap {
+      key: 12889176958046357424
+      value {
+        Overrides {
+          Name: "UIX"
+          Float: -35.9383545
+        }
+        Overrides {
+          Name: "UIY"
+          Float: 207.143951
         }
       }
     }

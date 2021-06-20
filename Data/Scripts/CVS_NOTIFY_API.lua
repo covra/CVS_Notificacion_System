@@ -25,8 +25,8 @@ local tableContent = {
 				["GAME"] = { head = Color.CYAN, body = Color.FromLinearHex("010618FF")},
 				["WORLD"] ={ head = Color.PURPLE, body = Color.FromLinearHex("1A0026FF")},
 				["PLAYER"] = {
-							["join"] = { title = "JOINED" ,abs = "%s" , fullTxt = "%s joined "},
-							["leaves"] = { title = "LEAVES" ,abs = "%s" , fullTxt = "%s leaves the game "},
+							["join"] = { title = "JOINED" ,abs = "> " , fullTxt = "%s joined "},
+							["leaves"] = { title = "LEAVES" ,abs = "> " , fullTxt = "%s leaves the game "},
 							}
 				}
 --custom
@@ -65,15 +65,15 @@ function internalSend (typeCode, data_1, data_2)
 			sortPos = _G.numStacks - eventBusy			
 			_G.numStacks = sortPos
 			eventBusy = 0	
-			print(script.name.."event busy: cambiando stack number:"..tostring(_G.numStacks).." to "..tostring(sortPos))
+			if debugPrint then print(script.name.."event busy: cambiando stack number:"..tostring(_G.numStacks).." to "..tostring(sortPos)) end
 		end 	
 		local typeCode = string.upper(typeCode)
-		print(script.name.." Sending stack notification type: ["..typeCode.."]  /DATA >>/ ", data_1," // ", data_2)
+		print(script.name.." Receiving stack notification type: ["..typeCode.."]  DATA>> data_1[".. tostring(data_1).."] // data_2[".. tostring(data_2).."]")
 		callOffFade = true
-		SIDE_PANEL.opacity = 1
-		local currentContent = getContent(typeCode, data_1, data_2)
+		SIDE_PANEL.opacity = 1		
 		local stackWindow = World.SpawnAsset(REF_STACK,{parent = SIDE_PANEL}) 
-		--writeContent(stackWindow, currentContent)
+		local isDone = getContent(stackWindow, typeCode, data_1, data_2)
+		writeContent(stackWindow)
 		setStackColor(stackWindow, typeCode)
 		animStack(stackWindow, sortPos)
 		fadeOut()
@@ -204,28 +204,36 @@ function reLocate()
 	for _, pn in pairs (tableWindows) do 	
 		if pn:IsA("UIPanel") then 
 			newIndex = newIndex + 1
-			print(">>>>>>RELOCATE>>>>>>>>>>>",pn,_G.dynamicHeight," origPos: ",pn.clientUserData.pos, " newPos: ", newIndex)
+			if debugPrint then print(">>>>>>RELOCATE>>>>>>>>>>>",pn,_G.dynamicHeight," origPos: ",pn.clientUserData.pos, " newPos: ", newIndex) end
 			pn.clientUserData.pos = newIndex
 			local pos =  _G.dynamicHeight - (pn.clientUserData.pos * pn.height)
-			EaseUI.EaseY(pn, pos, 0.5, EaseUI.EasingEquation.ELASTIC)
+			EaseUI.EaseY(pn, pos, 0.5, EaseUI.EasingEquation.ELASTIC)			
 		end 
 	end
+	_G.numStacks = newIndex
 end
 
 
-function fadeOut ()
+function fadeOut ()  
 	local oldStacks = _G.numStacks
 	callOffFade = false
-	Task.Spawn(function()		
-		for i= 1, 0, -0.1 do 
-			if oldStacks == _G.numStacks then 
-				SIDE_PANEL.opacity = i
-			else 
-				SIDE_PANEL.opacity = 1
-				break
+	Task.Spawn(function()	
+		if isFading  then return
+			print("FADEOUT: already fading, return end")
+		else
+			isFading = true
+			for i= 1, 0, -0.1 do 
+				if oldStacks == _G.numStacks then 
+					SIDE_PANEL.opacity = i
+				else 
+					SIDE_PANEL.opacity = 1
+					isFading = false
+					break
+				end
+				isFading = false
+				if callOffFade then callOffFade = false  print(script.name.." >> fade break") break end
+				Task.Wait(0.1)
 			end
-			if callOffFade then callOffFade = false  print(script.name.." >> fade break") break end
-			Task.Wait(0.1)
 		end
 	end, _G.FADEOUT_TIME)
 end 
@@ -236,19 +244,17 @@ function destroyStack (window)
 		if Object.IsValid(window) then
 			callOffFade = true
 			SIDE_PANEL.opacity = 1
-			print(script.name.." >> Destroying old stack: ", window)
+			if debugPrint then  print(script.name.." >> Destroying old stack: ", window) end
 			local isDone = animDestroy(window)
 			Task.Spawn(function() if Object.IsValid (window) then window:Destroy() end end,INT_DESTROY_TIME)
 			fadeOut()
 		end
 		reLocate()
 	end, _G.SELFDESTROY_TIME)	
-			
-			--reLocate ()    --debug!!!!!!!!!!!! , quitar luego
 end
 
 
-function getContent (typeCode, data_1, data_2)
+function getContent (window, typeCode, data_1, data_2)
 	local isCodeOk = false
 	for _,code in pairs (tableContent) do 
 		if tableContent[typeCode] == nil then 
@@ -260,24 +266,32 @@ function getContent (typeCode, data_1, data_2)
 		end
 	end
 	if isCodeOk then 	
+		print(script.name.." >> Writting text to ", window)
 		local table = tableContent[typeCode]
 		local content = table [data_1]
+		window.clientUserData.fullTxt = content.fullTxt
+		window.clientUserData.abs = content.abs
 		if typeCode == "TIMER" then 
 			local obj = data_2:GetObject()
-			content.abs = obj.name.." "..content.abs
+			window.clientUserData.abs = obj.name.." : "..content.abs
+		elseif typeCode == "PLAYER" then 
+			window.clientUserData.abs = content.abs..data_2.." <"
+		elseif typeCode == "RESOURCES" then 
+			if data_2 ~= nil then 
+				window.clientUserData.abs = content.abs..data_2
+			end		
 		end
-		content.title = typeCode..":"..content.title	
-		print(script.name.." >> content stack: ",typeCode, content.title, content.abs)
-		return content
+		window.clientUserData.title = typeCode..":"..content.title	
+		print(script.name.." >> Get content stack: ["..typeCode.."]  Title: ["..window.clientUserData.title.."]  Abstract: [".. window.clientUserData.abs.."]")
+		return true
 	end
 end 
 
-function writeContent (window, currentContent)
-	window.clientUserData.fullTxt = currentContent.fullTxt
+function writeContent (window)
 	local Title = window:FindDescendantByName("Title")
 	local Body = window:FindDescendantByName("bodyText")	
-	Title.text = currentContent.title
-	Body.text = currentContent.abs
+	Title.text = window.clientUserData.title
+	Body.text = window.clientUserData.abs
 end
 
 

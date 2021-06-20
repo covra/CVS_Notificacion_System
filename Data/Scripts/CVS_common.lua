@@ -23,20 +23,19 @@ local debugPrint = CLIENT_ROOT:GetCustomProperty("debugPrint")
 ----------------------------------FUNCTIONS------------------------------
 
 function OnPlayerJoined (player)
-	sendNotification("player", "join")
+	sendNotification("player", "join", player.name)
 end 
 
 function OnPlayerLeft (player)
-	sendNotification("player", "leaves")
+	sendNotification("player", "leaves", player.name)
 end
 
 --@params string 'code of the notification'
 --@params integer 'aditional data to boxes'
 --SEND STACK NOTIFICATION TO ITS AREA
-function sendNotification(typeCode, data_1)
-	if debugPrint then print(script.name.." Sending stack notification >>"..typeCode.." // ", data_1) end 
-	CVS_NOTIFY_API.sendNotification (typeCode, data_1)
-	--Events.Broadcast("notify", typeCode, data_1)
+function sendNotification(typeCode, data_1, data_2)
+	if debugPrint then print(script.name.." Sending stack notification >>"..typeCode.." // ", data_1, data_2) end 
+	CVS_NOTIFY_API.sendNotification (typeCode, data_1, data_2)
 end 
 
 ----------------------------------------VALIDATION-------------------------------
