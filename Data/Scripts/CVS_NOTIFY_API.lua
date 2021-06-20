@@ -1,3 +1,5 @@
+--require
+local EaseUI = require(script:GetCustomProperty("EaseUI"))
 --content
 local tableCodeTitles = { 
 				["max"] = { preTitle = "RESOURCES", Title = "reached maximum"},
@@ -205,7 +207,7 @@ function reLocate()
 			print(">>>>>>RELOCATE>>>>>>>>>>>",pn,_G.dynamicHeight," origPos: ",pn.clientUserData.pos, " newPos: ", newIndex)
 			pn.clientUserData.pos = newIndex
 			local pos =  _G.dynamicHeight - (pn.clientUserData.pos * pn.height)
-			pn.y = pos
+			EaseUI.EaseY(pn, pos, 0.5, EaseUI.EasingEquation.ELASTIC)
 		end 
 	end
 end
