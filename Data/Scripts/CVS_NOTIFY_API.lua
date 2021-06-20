@@ -22,25 +22,32 @@ local tableContent = {
 							["custom"] = { title = "STACK" ,abs = "stack: " , fullTxt = "You have a stack of %s &s"},
 							["max"] = { title = "MAX" ,abs = "maximun stack " , fullTxt = "You have reached the maximun stack established"},
 							},
-				["GAME"] = { head = Color.CYAN, body = Color.FromLinearHex("010618FF")},
+				["GAME"] = { ["eq"] = { title = "EQUIP" ,abs = "get " , fullTxt = "get the special equipment: "},
+							},
 				["WORLD"] ={ head = Color.PURPLE, body = Color.FromLinearHex("1A0026FF")},
 				["PLAYER"] = {
 							["join"] = { title = "JOINED" ,abs = "> " , fullTxt = "%s joined "},
 							["leaves"] = { title = "LEAVES" ,abs = "> " , fullTxt = "%s leaves the game "},
+							["die"] = { title = "DIED" ,abs = "> " , fullTxt = "%s has died "},
 							}
 				}
+local tableGame = {
+				["GAME"] = { ["specialEq"] = { "Advanced Staff"}},
+					}
 --custom
 local SIDE_PANEL = World.FindObjectByName("UI Side Panel")	
-local MAIN_FOLDER = World.FindObjectByName("CVS_common_Notifications")	
+local MAIN_FOLDER = World.FindObjectByName("CVS_common_client")	
 local ANIMDESTROY = MAIN_FOLDER:GetCustomProperty("animDestroyC")
 local REF_STACK = MAIN_FOLDER:GetCustomProperty("stackTemplate")
 --custom notifications
 		--PONER AQUI LAS ESPECIALES, COMO LA DEL PLAYER GRANDE Y TAL (DESDE MAIN FOLDER)
 --local
-local localPlayer = Game.GetLocalPlayer()
-_G.numStacks = 0
-_G.totalElementos = 0
-script.clientUserData.isBusy = false
+if not Environment.IsServer() then 
+	local localPlayer = Game.GetLocalPlayer()
+	_G.numStacks = 0
+	_G.totalElementos = 0
+	script.clientUserData.isBusy = false
+end
 local indexTask = 0
 local pendingTask = {}
 local eventBusy = 0
@@ -52,40 +59,56 @@ local INT_DESTROY_TIME = 1
 
 local CVS_NOTIFY_API = {}
 
+function CVS_NOTIFY_API.fadeOut ()
+	fadeOut()
+end
+
+function CVS_NOTIFY_API.showStack()
+	callOffFade = true
+	SIDE_PANEL.opacity = 1	
+end 
+
 function CVS_NOTIFY_API.sendNotification (typeCode, data_1, data_2)
 	_G.numStacks  = _G.numStacks  + 1
 	internalSend(typeCode, data_1, data_2)
 	_G.totalElementos = _G.totalElementos + 1
 end
 
+function CVS_NOTIFY_API.getSpecialEquips()
+	return (tableGame["GAME"])["specialEq"]
+end
+
+
 function internalSend (typeCode, data_1, data_2)
-	if not script.clientUserData.isBusy then 
-		script.clientUserData.isBusy = true
-		if eventBusy then 								
-			sortPos = _G.numStacks - eventBusy			
-			_G.numStacks = sortPos
-			eventBusy = 0	
-			if debugPrint then print(script.name.."event busy: cambiando stack number:"..tostring(_G.numStacks).." to "..tostring(sortPos)) end
-		end 	
-		local typeCode = string.upper(typeCode)
-		print(script.name.." Receiving stack notification type: ["..typeCode.."]  DATA>> data_1[".. tostring(data_1).."] // data_2[".. tostring(data_2).."]")
-		callOffFade = true
-		SIDE_PANEL.opacity = 1		
-		local stackWindow = World.SpawnAsset(REF_STACK,{parent = SIDE_PANEL}) 
-		local isDone = getContent(stackWindow, typeCode, data_1, data_2)
-		writeContent(stackWindow)
-		setStackColor(stackWindow, typeCode)
-		animStack(stackWindow, sortPos)
-		fadeOut()
-		if _G.SELFDESTROY_TIME ~= nil then destroyStack(stackWindow) end
-		script.clientUserData.isBusy = false
-		return true
-	elseif script.clientUserData.isBusy then						
-		eventBusy = eventBusy + 1
-		indexTask = indexTask + 1
-		pendingTask [indexTask] = {t = typeCode, d1 = data_1, d2 = data_2}
-		print(script.name.." busy, Generando tarea")
-		return false
+	if not Environment.IsServer() then 
+		if not script.clientUserData.isBusy then 
+			script.clientUserData.isBusy = true
+			if eventBusy then 								
+				sortPos = _G.numStacks - eventBusy			
+				_G.numStacks = sortPos
+				eventBusy = 0	
+				if debugPrint then print(script.name.."event busy: cambiando stack number:"..tostring(_G.numStacks).." to "..tostring(sortPos)) end
+			end 	
+			local typeCode = string.upper(typeCode)
+			print(script.name.." Receiving stack notification type: ["..typeCode.."]  DATA>> data_1[".. tostring(data_1).."] // data_2[".. tostring(data_2).."]   ON LOCAL: "..Game.GetLocalPlayer().name)
+			callOffFade = true
+			SIDE_PANEL.opacity = 1		
+			local stackWindow = World.SpawnAsset(REF_STACK,{parent = SIDE_PANEL}) 
+			local isDone = getContent(stackWindow, typeCode, data_1, data_2)
+			writeContent(stackWindow)
+			setStackColor(stackWindow, typeCode)
+			animStack(stackWindow, sortPos)
+			fadeOut()
+			if _G.SELFDESTROY_TIME ~= nil then destroyStack(stackWindow) end
+			script.clientUserData.isBusy = false
+			return true
+		elseif script.clientUserData.isBusy then						
+			eventBusy = eventBusy + 1
+			indexTask = indexTask + 1
+			pendingTask [indexTask] = {t = typeCode, d1 = data_1, d2 = data_2}
+			print(script.name.." busy, Generando tarea")
+			return false
+		end
 	end
 end
 
@@ -158,8 +181,10 @@ function animStack(window, numStak)
 			window.y = value
 			Task.Wait()
 		until timeA >= time
-		window.clientUserData.isSet = true
-		window.clientUserData.pos = numStak
+		if not Environment.IsServer() then 
+			window.clientUserData.isSet = true
+			window.clientUserData.pos = numStak
+		end
 	end,0.5)
 end
 
@@ -175,22 +200,21 @@ function animDestroy (window)
 			window.height = value
 			Task.Wait()
 			if timeA >= (time * 3)/4 then 
-				Task.Spawn(function() 
+				Task.Spawn(function()
+					--if Object.IsValid(window) then 
 					local oX = window.x 
-					for xp = oX, oX -50, -1 do 
-						if Object.IsValid(window) then 
+					for xp = oX, oX -50, -1 do 						
 							window.x = xp 
 						end
 						Task.Wait()
-					end
-					
+				---	end
+				--	if Object.IsValid(window) then 
 					local oX = window.x 
-					for xp = oX , oX + 800,30 do 
-						if Object.IsValid(window) then 
+					for xp = oX , oX + 800,30 do 						
 							window.x = xp
 						end
 						Task.Wait()
-					end 
+				--	end 
 				end)
 			end
 		until timeA >= time
@@ -198,19 +222,21 @@ function animDestroy (window)
 end 
 
 function reLocate()
-	Task.Wait(INT_DESTROY_TIME + 0.5)
-	local newIndex = 0
-	local tableWindows = SIDE_PANEL:GetChildren()
-	for _, pn in pairs (tableWindows) do 	
-		if pn:IsA("UIPanel") then 
-			newIndex = newIndex + 1
-			if debugPrint then print(">>>>>>RELOCATE>>>>>>>>>>>",pn,_G.dynamicHeight," origPos: ",pn.clientUserData.pos, " newPos: ", newIndex) end
-			pn.clientUserData.pos = newIndex
-			local pos =  _G.dynamicHeight - (pn.clientUserData.pos * pn.height)
-			EaseUI.EaseY(pn, pos, 0.5, EaseUI.EasingEquation.ELASTIC)			
-		end 
+	if not Environment.IsServer() then 
+		Task.Wait(INT_DESTROY_TIME + 0.5)
+		local newIndex = 0
+		local tableWindows = SIDE_PANEL:GetChildren()
+		for _, pn in pairs (tableWindows) do 	
+			if pn:IsA("UIPanel") then 
+				newIndex = newIndex + 1
+				if debugPrint then print(">>>>>>RELOCATE>>>>>>>>>>>",pn,_G.dynamicHeight," origPos: ",pn.clientUserData.pos, " newPos: ", newIndex) end
+				pn.clientUserData.pos = newIndex
+				local pos =  _G.dynamicHeight - (pn.clientUserData.pos * pn.height)
+				EaseUI.EaseY(pn, pos, 0.5, EaseUI.EasingEquation.ELASTIC)			
+			end 
+		end
+		_G.numStacks = newIndex
 	end
-	_G.numStacks = newIndex
 end
 
 
@@ -255,43 +281,47 @@ end
 
 
 function getContent (window, typeCode, data_1, data_2)
-	local isCodeOk = false
-	for _,code in pairs (tableContent) do 
-		if tableContent[typeCode] == nil then 
-			warn(" typeCode ["..typeCode.."] for stack windows no valid: Set to default")	
-			local genContent = { title = "GENERAL EVENT" ,abs = "" , fullTxt = "No aditional data"}
-			return genContent
-		else 
-			isCodeOk = true
+	if not Environment.IsServer() then 
+		local isCodeOk = false
+		for _,code in pairs (tableContent) do 
+			if tableContent[typeCode] == nil then 
+				warn(" typeCode ["..typeCode.."] for stack windows no valid: Set to default")	
+				local genContent = { title = "GENERAL EVENT" ,abs = "" , fullTxt = "No aditional data"}
+				return genContent
+			else 
+				isCodeOk = true
+			end
 		end
-	end
-	if isCodeOk then 	
-		print(script.name.." >> Writting text to ", window)
-		local table = tableContent[typeCode]
-		local content = table [data_1]
-		window.clientUserData.fullTxt = content.fullTxt
-		window.clientUserData.abs = content.abs
-		if typeCode == "TIMER" then 
-			local obj = data_2:GetObject()
-			window.clientUserData.abs = obj.name.." : "..content.abs
-		elseif typeCode == "PLAYER" then 
-			window.clientUserData.abs = content.abs..data_2.." <"
-		elseif typeCode == "RESOURCES" then 
-			if data_2 ~= nil then 
-				window.clientUserData.abs = content.abs..data_2
-			end		
+		if isCodeOk then 	
+			print(script.name.." >> Writting text to ", window)
+			local table = tableContent[typeCode]
+			local content = table [data_1]
+			window.clientUserData.fullTxt = content.fullTxt
+			window.clientUserData.abs = content.abs
+			if typeCode == "TIMER" then 
+				local obj = data_2:GetObject()
+				window.clientUserData.abs = obj.name.." : "..content.abs
+			elseif typeCode == "PLAYER" then 
+				window.clientUserData.abs = content.abs..data_2.." <"
+			elseif typeCode == "RESOURCES" then 
+				if data_2 ~= nil then 
+					window.clientUserData.abs = content.abs..data_2
+				end		
+			end
+			window.clientUserData.title = typeCode..":"..content.title	
+			print(script.name.." >> Get content stack: ["..typeCode.."]  Title: ["..window.clientUserData.title.."]  Abstract: [".. window.clientUserData.abs.."]")
+			return true
 		end
-		window.clientUserData.title = typeCode..":"..content.title	
-		print(script.name.." >> Get content stack: ["..typeCode.."]  Title: ["..window.clientUserData.title.."]  Abstract: [".. window.clientUserData.abs.."]")
-		return true
 	end
 end 
 
 function writeContent (window)
-	local Title = window:FindDescendantByName("Title")
-	local Body = window:FindDescendantByName("bodyText")	
-	Title.text = window.clientUserData.title
-	Body.text = window.clientUserData.abs
+	if not Environment.IsServer() then 
+		local Title = window:FindDescendantByName("Title")
+		local Body = window:FindDescendantByName("bodyText")	
+		Title.text = window.clientUserData.title
+		Body.text = window.clientUserData.abs
+	end
 end
 
 

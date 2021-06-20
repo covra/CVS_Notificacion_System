@@ -15,18 +15,19 @@ Objects {
     }
   }
   ChildIds: 7367735074338159388
+  ChildIds: 10021543463274389984
   ChildIds: 16813558807825262224
+  ChildIds: 14982843161775482339
   ChildIds: 14713340454944924967
-  ChildIds: 15504382397306224404
+  ChildIds: 4625255646412944076
   ChildIds: 10005074784157121906
   ChildIds: 7692573330601457615
-  ChildIds: 14982843161775482339
   ChildIds: 2066971925543242940
+  ChildIds: 15504382397306224404
   ChildIds: 135322574837865159
   ChildIds: 17800946474055268877
   ChildIds: 6646895742120987852
-  ChildIds: 9252152554801488365
-  ChildIds: 18345247503990147141
+  ChildIds: 6123358238075253963
   UnregisteredParameters {
   }
   Collidable_v2 {
@@ -42,8 +43,8 @@ Objects {
   }
 }
 Objects {
-  Id: 18345247503990147141
-  Name: "CVS UI Notify Container"
+  Id: 6123358238075253963
+  Name: "CVS_MAIN_NOTIFY"
   Transform {
     Location {
     }
@@ -56,337 +57,23 @@ Objects {
     }
   }
   ParentId: 4781671109827199097
-  ChildIds: 13023236116120575272
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  EditorIndicatorVisibility {
-    Value: "mc:eindicatorvisibility:visiblewhenselected"
-  }
-  Control {
-    RenderTransformPivot {
-      Anchor {
-        Value: "mc:euianchor:middlecenter"
-      }
-    }
-    Canvas {
-      ContentType {
-        Value: "mc:ecanvascontenttype:dynamic"
-      }
-      Opacity: 1
-    }
-    AnchorLayout {
-      SelfAnchor {
-        Anchor {
-          Value: "mc:euianchor:topleft"
-        }
-      }
-      TargetAnchor {
-        Anchor {
-          Value: "mc:euianchor:topleft"
-        }
-      }
-    }
-  }
-}
-Objects {
-  Id: 13023236116120575272
-  Name: "UI localPlayer"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 18345247503990147141
-  ChildIds: 3522004003215888449
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  EditorIndicatorVisibility {
-    Value: "mc:eindicatorvisibility:visiblewhenselected"
-  }
-  NetworkContext {
-  }
-}
-Objects {
-  Id: 3522004003215888449
-  Name: "UI Side Panel"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 13023236116120575272
   UnregisteredParameters {
-  }
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  EditorIndicatorVisibility {
-    Value: "mc:eindicatorvisibility:visiblewhenselected"
-  }
-  Control {
-    Width: 400
-    Height: 100
-    RenderTransformPivot {
-      Anchor {
-        Value: "mc:euianchor:middlecenter"
-      }
-    }
-    Panel {
-      Opacity: 1
-    }
-    AnchorLayout {
-      SelfAnchor {
-        Anchor {
-          Value: "mc:euianchor:topright"
-        }
-      }
-      TargetAnchor {
-        Anchor {
-          Value: "mc:euianchor:topright"
-        }
-      }
-    }
-  }
-}
-Objects {
-  Id: 9252152554801488365
-  Name: "CVS_common_Notifications"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 4781671109827199097
-  ChildIds: 179921866786970504
-  ChildIds: 5460872397360442958
-  UnregisteredParameters {
-    Overrides {
-      Name: "cs:stack_SideRight"
-      Bool: true
-    }
     Overrides {
       Name: "cs:player_Join"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:player_hitPoints"
-      Bool: false
+      Bool: true
     }
     Overrides {
       Name: "cs:player_Leave"
-      Bool: false
+      Bool: true
     }
     Overrides {
       Name: "cs:player_Died"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:player_Damage"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:player_friend"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:game_Purchase"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:game_specialAbility"
-      Bool: false
+      Bool: true
     }
     Overrides {
       Name: "cs:game_specialEquipment"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:game_Rounds"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:world_Trigger"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:world_Custom"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:debugPrint"
       Bool: true
     }
-    Overrides {
-      Name: "cs:stack_Width"
-      Int: 20
-    }
-    Overrides {
-      Name: "cs:stack_Height"
-      Int: 90
-    }
-    Overrides {
-      Name: "cs:fadeOut_isEnabled"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:fadeOut_Time"
-      Float: 5
-    }
-    Overrides {
-      Name: "cs:selfDestroy_time"
-      Float: 25
-    }
-    Overrides {
-      Name: "cs:stackTemplate"
-      AssetReference {
-        Id: 862480760006374578
-      }
-    }
-    Overrides {
-      Name: "cs:animDestroyC"
-      SimpleCurve {
-        Keys {
-          Interpolation {
-            Value: "mc:erichcurveinterpmode:rcim_cubic"
-          }
-          TangentMode {
-            Value: "mc:erichcurvetangentmode:rctm_user"
-          }
-          Value: 100
-          ArriveTangent: -256.236694
-          LeaveTangent: -256.236694
-        }
-        Keys {
-          Interpolation {
-            Value: "mc:erichcurveinterpmode:rcim_cubic"
-          }
-          TangentMode {
-            Value: "mc:erichcurvetangentmode:rctm_user"
-          }
-          Time: 0.5
-          Value: 70
-          ArriveTangent: 2.15541625
-          LeaveTangent: 2.15541625
-        }
-        Keys {
-          Interpolation {
-            Value: "mc:erichcurveinterpmode:rcim_linear"
-          }
-          TangentMode {
-            Value: "mc:erichcurvetangentmode:rctm_auto"
-          }
-          Time: 1
-          Value: 120
-        }
-        PreExtrapolation {
-          Value: "mc:erichcurveextrapolation:rcce_constant"
-        }
-        PostExtrapolation {
-          Value: "mc:erichcurveextrapolation:rcce_constant"
-        }
-        DefaultValue: 3.40282347e+38
-      }
-    }
-    Overrides {
-      Name: "cs:stack_SideRight:tooltip"
-      String: "The place where stack side notifications will appear. If enabled: right, disabled: left "
-    }
-    Overrides {
-      Name: "cs:stack_Width:tooltip"
-      String: "Width of the notification area in percentage. Default:15%"
-    }
-    Overrides {
-      Name: "cs:stack_Height:tooltip"
-      String: "Height  of the notification area in percentage. Default:80%"
-    }
-    Overrides {
-      Name: "cs:fadeOut_isEnabled:tooltip"
-      String: "If enabled, the stack side panel will be fade out after \'fadeOut_time\' seconds"
-    }
-    Overrides {
-      Name: "cs:fadeOut_Time:tooltip"
-      String: "Time en seconds to fadeOut if enabled. Default = 5"
-    }
-    Overrides {
-      Name: "cs:selfDestroy_time:tooltip"
-      String: "Time in seconds to auto-destroy the stack notifications. If BLANK = NO destroyed"
-    }
-  }
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:forceoff"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  EditorIndicatorVisibility {
-    Value: "mc:eindicatorvisibility:visiblewhenselected"
-  }
-  NetworkContext {
-  }
-}
-Objects {
-  Id: 5460872397360442958
-  Name: "CVS_autoSize"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 9252152554801488365
-  UnregisteredParameters {
-    Overrides {
-      Name: "cs:UINotifyContainer"
-      ObjectReference {
-        SelfId: 18345247503990147141
-      }
-    }
   }
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
@@ -400,51 +87,9 @@ Objects {
   EditorIndicatorVisibility {
     Value: "mc:eindicatorvisibility:visiblewhenselected"
   }
-  Script {
-    ScriptAsset {
-      Id: 4237125095293494043
-    }
-  }
-}
-Objects {
-  Id: 179921866786970504
-  Name: "CVS_common"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 9252152554801488365
-  UnregisteredParameters {
-    Overrides {
-      Name: "cs:CVS_NOTIFY_API"
-      AssetReference {
-        Id: 9724488856710647903
-      }
-    }
-  }
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  EditorIndicatorVisibility {
-    Value: "mc:eindicatorvisibility:visiblewhenselected"
-  }
-  Script {
-    ScriptAsset {
-      Id: 7059359564255596754
-    }
+  Folder {
+    IsFilePartition: true
+    FilePartitionName: "CVS_MAIN_NOTIFY"
   }
 }
 Objects {
@@ -470,11 +115,11 @@ Objects {
       value {
         Overrides {
           Name: "UIX"
-          Float: -214.074585
+          Float: -324.434937
         }
         Overrides {
           Name: "UIY"
-          Float: 119.338287
+          Float: 346.76181
         }
       }
     }
@@ -533,6 +178,10 @@ Objects {
           Rotator {
           }
         }
+        Overrides {
+          Name: "cs:stackBoxes_Qty_1"
+          Int: 10
+        }
       }
     }
     ParameterOverrideMap {
@@ -544,7 +193,7 @@ Objects {
         }
         Overrides {
           Name: "UIY"
-          Float: 207.143951
+          Float: 339.995209
         }
       }
     }
@@ -572,6 +221,19 @@ Objects {
   }
   TemplateInstance {
     ParameterOverrideMap {
+      key: 9817942701836203108
+      value {
+        Overrides {
+          Name: "UIX"
+          Float: 272.628906
+        }
+        Overrides {
+          Name: "UIY"
+          Float: 333.259766
+        }
+      }
+    }
+    ParameterOverrideMap {
       key: 10628867355028092052
       value {
         Overrides {
@@ -590,8 +252,63 @@ Objects {
         }
       }
     }
+    ParameterOverrideMap {
+      key: 13681329661956558650
+      value {
+        Overrides {
+          Name: "UIX"
+          Float: 0
+        }
+        Overrides {
+          Name: "UIY"
+          Float: 0
+        }
+      }
+    }
     TemplateAsset {
       Id: 14953656989554526189
+    }
+  }
+}
+Objects {
+  Id: 15504382397306224404
+  Name: "CVS_LockUnlock_Cursor"
+  Transform {
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 4781671109827199097
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  TemplateInstance {
+    ParameterOverrideMap {
+      key: 16398603414045827718
+      value {
+        Overrides {
+          Name: "Name"
+          String: "CVS_LockUnlock_Cursor"
+        }
+        Overrides {
+          Name: "Position"
+          Vector {
+          }
+        }
+        Overrides {
+          Name: "Rotation"
+          Rotator {
+          }
+        }
+      }
+    }
+    TemplateAsset {
+      Id: 5499862207320953173
     }
   }
 }
@@ -627,55 +344,6 @@ Objects {
   Folder {
     IsFilePartition: true
     FilePartitionName: "TEST NOTIFICATIONS"
-  }
-}
-Objects {
-  Id: 14982843161775482339
-  Name: "Default Floor"
-  Transform {
-    Location {
-      Z: -50
-    }
-    Rotation {
-    }
-    Scale {
-      X: 172.640945
-      Y: 146.711044
-      Z: 1
-    }
-  }
-  ParentId: 4781671109827199097
-  UnregisteredParameters {
-    Overrides {
-      Name: "ma:Shared_BaseMaterial:id"
-      AssetReference {
-        Id: 6730526870644506117
-      }
-    }
-  }
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:forceon"
-  }
-  CoreMesh {
-    MeshAsset {
-      Id: 12095835209017042614
-    }
-    Teams {
-      IsTeamCollisionEnabled: true
-      IsEnemyCollisionEnabled: true
-    }
-    InteractWithTriggers: true
-    StaticMesh {
-      Physics {
-      }
-      BoundsScale: 1
-    }
   }
 }
 Objects {
@@ -1157,8 +825,8 @@ Objects {
   }
 }
 Objects {
-  Id: 15504382397306224404
-  Name: "CVS_LockUnlock_Cursor"
+  Id: 4625255646412944076
+  Name: "Kill Zone"
   Transform {
     Scale {
       X: 1
@@ -1175,16 +843,35 @@ Objects {
   }
   TemplateInstance {
     ParameterOverrideMap {
-      key: 16398603414045827718
+      key: 13591331349196528036
+      value {
+        Overrides {
+          Name: "Scale"
+          Vector {
+            X: 199.325745
+            Y: 360.324707
+            Z: 1
+          }
+        }
+      }
+    }
+    ParameterOverrideMap {
+      key: 13648825478633622894
       value {
         Overrides {
           Name: "Name"
-          String: "CVS_LockUnlock_Cursor"
+          String: "Kill Zone"
+        }
+        Overrides {
+          Name: "Position"
+          Vector {
+            Z: -4747.35449
+          }
         }
       }
     }
     TemplateAsset {
-      Id: 5499862207320953173
+      Id: 7597921621818469797
     }
   }
 }
@@ -1375,6 +1062,56 @@ Objects {
   }
 }
 Objects {
+  Id: 14982843161775482339
+  Name: "Default Floor"
+  Transform {
+    Location {
+      X: -2736.86108
+      Z: -50
+    }
+    Rotation {
+    }
+    Scale {
+      X: 95.1164
+      Y: 105.814133
+      Z: 1
+    }
+  }
+  ParentId: 4781671109827199097
+  UnregisteredParameters {
+    Overrides {
+      Name: "ma:Shared_BaseMaterial:id"
+      AssetReference {
+        Id: 6730526870644506117
+      }
+    }
+  }
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  CameraCollidable {
+    Value: "mc:ecollisionsetting:forceon"
+  }
+  CoreMesh {
+    MeshAsset {
+      Id: 12095835209017042614
+    }
+    Teams {
+      IsTeamCollisionEnabled: true
+      IsEnemyCollisionEnabled: true
+    }
+    InteractWithTriggers: true
+    StaticMesh {
+      Physics {
+      }
+      BoundsScale: 1
+    }
+  }
+}
+Objects {
   Id: 16813558807825262224
   Name: "Spawn Point"
   Transform {
@@ -1404,6 +1141,47 @@ Objects {
   PlayerSpawnPoint {
     TeamInt: 1
     PlayerScaleMultiplier: 1
+  }
+}
+Objects {
+  Id: 10021543463274389984
+  Name: "Spawn Settings"
+  Transform {
+    Location {
+    }
+    Rotation {
+    }
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 4781671109827199097
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  CameraCollidable {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  EditorIndicatorVisibility {
+    Value: "mc:eindicatorvisibility:visiblewhenselected"
+  }
+  Settings {
+    IsDefault: true
+    RespawnSettings {
+      RespawnDelay: 3
+      RespawnMode_v2 {
+        Value: "mc:erespawnmode:atclosestspawnpoint"
+      }
+      StartSpawned: true
+      SpawnMode {
+        Value: "mc:erespawnmode:roundrobin"
+      }
+    }
   }
 }
 Objects {
