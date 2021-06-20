@@ -252,11 +252,11 @@ Objects {
     }
     Overrides {
       Name: "cs:stack_Width"
-      Int: 15
+      Int: 20
     }
     Overrides {
       Name: "cs:stack_Height"
-      Int: 80
+      Int: 90
     }
     Overrides {
       Name: "cs:fadeOut_isEnabled"
@@ -268,12 +268,57 @@ Objects {
     }
     Overrides {
       Name: "cs:selfDestroy_time"
-      Float: 10
+      Float: 25
     }
     Overrides {
       Name: "cs:stackTemplate"
       AssetReference {
         Id: 862480760006374578
+      }
+    }
+    Overrides {
+      Name: "cs:animDestroyC"
+      SimpleCurve {
+        Keys {
+          Interpolation {
+            Value: "mc:erichcurveinterpmode:rcim_cubic"
+          }
+          TangentMode {
+            Value: "mc:erichcurvetangentmode:rctm_user"
+          }
+          Value: 100
+          ArriveTangent: -256.236694
+          LeaveTangent: -256.236694
+        }
+        Keys {
+          Interpolation {
+            Value: "mc:erichcurveinterpmode:rcim_cubic"
+          }
+          TangentMode {
+            Value: "mc:erichcurvetangentmode:rctm_user"
+          }
+          Time: 0.5
+          Value: 70
+          ArriveTangent: 2.15541625
+          LeaveTangent: 2.15541625
+        }
+        Keys {
+          Interpolation {
+            Value: "mc:erichcurveinterpmode:rcim_linear"
+          }
+          TangentMode {
+            Value: "mc:erichcurvetangentmode:rctm_auto"
+          }
+          Time: 1
+          Value: 120
+        }
+        PreExtrapolation {
+          Value: "mc:erichcurveextrapolation:rcce_constant"
+        }
+        PostExtrapolation {
+          Value: "mc:erichcurveextrapolation:rcce_constant"
+        }
+        DefaultValue: 3.40282347e+38
       }
     }
     Overrides {

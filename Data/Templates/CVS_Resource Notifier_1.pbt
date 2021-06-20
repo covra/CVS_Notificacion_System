@@ -26,11 +26,11 @@ Assets {
           }
           Overrides {
             Name: "cs:resource_CoreResources"
-            Bool: false
+            Bool: true
           }
           Overrides {
             Name: "cs:resource_CustomEvent"
-            Bool: true
+            Bool: false
           }
           Overrides {
             Name: "cs:resource_CustomEventName"
@@ -68,7 +68,7 @@ Assets {
           }
           Overrides {
             Name: "cs:stackBoxes_res1"
-            Bool: false
+            Bool: true
           }
           Overrides {
             Name: "cs:stackBoxes_fullBar"
@@ -80,7 +80,7 @@ Assets {
           }
           Overrides {
             Name: "cs:stackBoxes_Qty_1"
-            Int: 10
+            Int: 5
           }
           Overrides {
             Name: "cs:stackBoxes_Qty_2"

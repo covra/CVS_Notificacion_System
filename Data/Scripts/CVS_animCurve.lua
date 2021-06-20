@@ -173,6 +173,7 @@ function sendNotification(typeCode, data_1, data_2)
 	if debugPrint then print(script.name.." Sending stack notification >> type:["..typeCode.."] // ", data_1, data_2, objID) end 
 	local objID = CLIENT_ROOT:GetReference()
 	CVS_NOTIFY_API.sendNotification (typeCode, data_1, data_2, objID)
+	--Events.Broadcast("notify",typeCode, data_1, data_2, objID)
 end 
 -------------------------------- VALIDATION -----------------------------------
 

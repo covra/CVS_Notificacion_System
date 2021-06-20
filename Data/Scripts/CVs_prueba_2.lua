@@ -30,84 +30,29 @@ local tableContent = {
 --custom
 local SIDE_PANEL = World.FindObjectByName("UI Side Panel")	
 local MAIN_FOLDER = World.FindObjectByName("CVS_common_Notifications")	
-local ANIMDESTROY = MAIN_FOLDER:GetCustomProperty("animDestroyC")
 local REF_STACK = MAIN_FOLDER:GetCustomProperty("stackTemplate")
 --custom notifications
 		--PONER AQUI LAS ESPECIALES, COMO LA DEL PLAYER GRANDE Y TAL (DESDE MAIN FOLDER)
 --local
 local localPlayer = Game.GetLocalPlayer()
 _G.numStacks = 0
-_G.totalElementos = 0
-script.clientUserData.isBusy = false
-local indexTask = 0
-local pendingTask = {}
-local eventBusy = 0
-local sortPos = 0
-local callOffFade = false
-local isFading = false
-local INT_DESTROY_TIME = 1
 --------------------------------------------------API--------------------------------------
 
-local CVS_NOTIFY_API = {}
-
-function CVS_NOTIFY_API.sendNotification (typeCode, data_1, data_2)
+function sendNotification (typeCode, data_1, data_2)
+	local typeCode = string.upper(typeCode)
+	print(script.name.." Sending stack notification type: ["..typeCode.."]  /DATA >>/ ", data_1," // ", data_2)
+	SIDE_PANEL.opacity = 1
 	_G.numStacks  = _G.numStacks  + 1
-	internalSend(typeCode, data_1, data_2)
-	_G.totalElementos = _G.totalElementos + 1
-end
-
-function internalSend (typeCode, data_1, data_2)
-	if not script.clientUserData.isBusy then 
-		script.clientUserData.isBusy = true
-		if eventBusy then 								
-			sortPos = _G.numStacks - eventBusy			
-			_G.numStacks = sortPos
-			eventBusy = 0	
-			print(script.name.."event busy: cambiando stack number:"..tostring(_G.numStacks).." to "..tostring(sortPos))
-		end 	
-		local typeCode = string.upper(typeCode)
-		print(script.name.." Sending stack notification type: ["..typeCode.."]  /DATA >>/ ", data_1," // ", data_2)
-		callOffFade = true
-		SIDE_PANEL.opacity = 1
+	Task.Spawn(function()
 		local currentContent = getContent(typeCode, data_1, data_2)
 		local stackWindow = World.SpawnAsset(REF_STACK,{parent = SIDE_PANEL}) 
-		--writeContent(stackWindow, currentContent)
-		setStackColor(stackWindow, typeCode)
-		animStack(stackWindow, sortPos)
-		fadeOut()
-		if _G.SELFDESTROY_TIME ~= nil then destroyStack(stackWindow) end
-		script.clientUserData.isBusy = false
-		return true
-	elseif script.clientUserData.isBusy then						
-		eventBusy = eventBusy + 1
-		indexTask = indexTask + 1
-		pendingTask [indexTask] = {t = typeCode, d1 = data_1, d2 = data_2}
-		print(script.name.." busy, Generando tarea")
-		return false
-	end
+		writeContent(stackWindow, currentContent)
+		setStackColor(stackWindow, typeCode)		
+		animStack(stackWindow)
+		--fadeOut()
+		--if _G.SELFDESTROY_TIME ~= nil then destroyStack(stackWindow) end
+	end)
 end
-
---[[
-function Tick () --externalizar si hace falta
-	if not script.clientUserData.isBusy then 
-		for i = 1, #pendingTask do 
-			if pendingTask[i] ~= nil then  
-				local d0 = pendingTask[i].t
-				local d1 = pendingTask[i].d1 
-				local d2 = pendingTask[i].d2
-				local result = internalSend (d0, d1, d2)
-				if result then 
-					pendingTask[i] = nil 
-					print(script.name.." busy > Not busy, tarea entregada, borrando...", i)
-				elseif not result then 
-					print(script.name.." busy, guardando tarea otra vez..", i)
-				end
-			end 
-		end
-	end
-	fadeOut()
-end 
-]]--
 
 function setStackColor (window, typeCode)
 	local isCodeOk = false
@@ -138,10 +83,12 @@ function setStackColor (window, typeCode)
 	end 
 end
 
-function animStack(window, numStak)
+function animStack(window)
 	Task.Spawn(function()
-		local heightWindows = window.height * numStak
+		--local heightPanel = _G.dynamicHeight
+		local heightWindows = window.height * _G.numStacks
 		local finalPos =  _G.dynamicHeight - heightWindows
+					print(" >>>> ",window," final pos: ", finalPos, " data:", _G.dynamicHeight, window.height, _G.numStacks)
 		local time = 0.7	
 		local p1 = CurveKey.New(0, 0,{interpolation = CurveInterpolation.CUBIC, tangent = 0.1})
 		local p2 =  CurveKey.New(time, finalPos, {interpolation = CurveInterpolation.CUBIC, tangent = 2.75})
@@ -157,53 +104,15 @@ function animStack(window, numStak)
 			Task.Wait()
 		until timeA >= time
 		window.clientUserData.isSet = true
-		window.clientUserData.pos = numStak
+		window.clientUserData.pos = _G.numStacks
 	end,0.5)
 end
 
-function animDestroy (window)
-		Task.Wait(0.5)
-		local time = 0.8	
-		local timeZero = os.clock()
-		repeat 
-			local timeA = os.clock() - timeZero
-			local value = ANIMDESTROY:GetValue(timeA)
-			value = math.tointeger(CoreMath.Round(value , 0))
-			window.width= value
-			window.height = value
-			Task.Wait()
-			if timeA >= (time * 3)/4 then 
-				Task.Spawn(function() 
-					local oX = window.x 
-					for xp = oX, oX -50, -1 do 
-						if Object.IsValid(window) then 
-							window.x = xp 
-						end
-						Task.Wait()
-					end
-					
-					local oX = window.x 
-					for xp = oX , oX + 800,30 do 
-						if Object.IsValid(window) then 
-							window.x = xp
-						end
-						Task.Wait()
-					end 
-				end)
-			end
-		until timeA >= time
-	return true
-end 
-
 function reLocate()
-	Task.Wait(INT_DESTROY_TIME + 0.5)
-	local newIndex = 0
 	local tableWindows = SIDE_PANEL:GetChildren()
-	for _, pn in pairs (tableWindows) do 	
+	for _, pn in pairs (tableWindows) do 
 		if pn:IsA("UIPanel") then 
-			newIndex = newIndex + 1
-			print(">>>>>>RELOCATE>>>>>>>>>>>",pn,_G.dynamicHeight," origPos: ",pn.clientUserData.pos, " newPos: ", newIndex)
-			pn.clientUserData.pos = newIndex
+			print(">>>>>>>>>>>>>>>>>",pn,_G.dynamicHeight,pn.clientUserData.pos)
 			local pos =  _G.dynamicHeight - (pn.clientUserData.pos * pn.height)
 			pn.y = pos
 		end 
@@ -213,7 +122,6 @@ end
 
 function fadeOut ()
 	local oldStacks = _G.numStacks
-	callOffFade = false
 	Task.Spawn(function()		
 		for i= 1, 0, -0.1 do 
 			if oldStacks == _G.numStacks then 
@@ -222,29 +130,19 @@ function fadeOut ()
 				SIDE_PANEL.opacity = 1
 				break
 			end
-			if callOffFade then callOffFade = false  print(script.name.." >> fade break") break end
 			Task.Wait(0.1)
 		end
 	end, _G.FADEOUT_TIME)
 end 
 
-
 function destroyStack (window)
 	Task.Spawn(function()
-		if Object.IsValid(window) then
-			callOffFade = true
-			SIDE_PANEL.opacity = 1
-			print(script.name.." >> Destroying old stack: ", window)
-			local isDone = animDestroy(window)
-			Task.Spawn(function() if Object.IsValid (window) then window:Destroy() end end,INT_DESTROY_TIME)
-			fadeOut()
-		end
+		if Object.IsValid(window) then window:Destroy() end
 		reLocate()
 	end, _G.SELFDESTROY_TIME)	
 			
 			--reLocate ()    --debug!!!!!!!!!!!! , quitar luego
 end
-
 
 function getContent (typeCode, data_1, data_2)
 	local isCodeOk = false
@@ -278,6 +176,4 @@ function writeContent (window, currentContent)
 	Body.text = currentContent.abs
 end
 
-
-return CVS_NOTIFY_API
-
+Events.Connect("notify", sendNotification)

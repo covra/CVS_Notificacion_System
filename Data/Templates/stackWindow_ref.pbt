@@ -1180,7 +1180,7 @@ Assets {
             }
           }
           Text {
-            Label: "covra "
+            Label: "no data"
             Color {
               R: 1
               G: 1
@@ -1258,7 +1258,7 @@ Assets {
             }
           }
           Text {
-            Label: "GAME : PLAYER JOIN"
+            Label: "GAME : GENERIC"
             Color {
               R: 1
               G: 1
