@@ -74,7 +74,113 @@ Objects {
       Name: "cs:game_specialEquipment"
       Bool: true
     }
+    Overrides {
+      Name: "cs:stack_SideRight"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:debugPrint"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:stack_Width"
+      Int: 20
+    }
+    Overrides {
+      Name: "cs:stack_Height"
+      Int: 90
+    }
+    Overrides {
+      Name: "cs:fadeOut_isEnabled"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:selfDestroy_time"
+      Float: 10
+    }
+    Overrides {
+      Name: "cs:CVS_NOTIFY_API"
+      AssetReference {
+        Id: 9724488856710647903
+      }
+    }
+    Overrides {
+      Name: "cs:stackTemplate"
+      AssetReference {
+        Id: 862480760006374578
+      }
+    }
+    Overrides {
+      Name: "cs:animDestroyC"
+      SimpleCurve {
+        Keys {
+          Interpolation {
+            Value: "mc:erichcurveinterpmode:rcim_cubic"
+          }
+          TangentMode {
+            Value: "mc:erichcurvetangentmode:rctm_user"
+          }
+          Value: 100
+          ArriveTangent: -256.236694
+          LeaveTangent: -256.236694
+        }
+        Keys {
+          Interpolation {
+            Value: "mc:erichcurveinterpmode:rcim_cubic"
+          }
+          TangentMode {
+            Value: "mc:erichcurvetangentmode:rctm_user"
+          }
+          Time: 0.5
+          Value: 70
+          ArriveTangent: 2.15541625
+          LeaveTangent: 2.15541625
+        }
+        Keys {
+          Interpolation {
+            Value: "mc:erichcurveinterpmode:rcim_linear"
+          }
+          TangentMode {
+            Value: "mc:erichcurvetangentmode:rctm_auto"
+          }
+          Time: 1
+          Value: 120
+        }
+        PreExtrapolation {
+          Value: "mc:erichcurveextrapolation:rcce_constant"
+        }
+        PostExtrapolation {
+          Value: "mc:erichcurveextrapolation:rcce_constant"
+        }
+        DefaultValue: 3.40282347e+38
+      }
+    }
+    Overrides {
+      Name: "cs:world_NameCustom"
+      String: "poolParty"
+    }
+    Overrides {
+      Name: "cs:world_Custom"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:stack_Width:tooltip"
+      String: "Width of the notification area in percentage. Default:15%"
+    }
+    Overrides {
+      Name: "cs:stack_Height:tooltip"
+      String: "Height  of the notification area in percentage. Default:80%"
+    }
+    Overrides {
+      Name: "cs:fadeOut_isEnabled:tooltip"
+      String: "If enabled, the stack side panel will be fade out after \'fadeOut_time\' seconds"
+    }
+    Overrides {
+      Name: "cs:selfDestroy_time:tooltip"
+      String: "Time in seconds to auto-destroy the stack notifications. If BLANK = NO destroyed"
+    }
   }
+  WantsNetworking: true
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
   }
@@ -115,11 +221,11 @@ Objects {
       value {
         Overrides {
           Name: "UIX"
-          Float: -324.434937
+          Float: -322.182831
         }
         Overrides {
           Name: "UIY"
-          Float: 346.76181
+          Float: 191.169342
         }
       }
     }
@@ -189,11 +295,11 @@ Objects {
       value {
         Overrides {
           Name: "UIX"
-          Float: -35.9383545
+          Float: -17.9216919
         }
         Overrides {
           Name: "UIY"
-          Float: 339.995209
+          Float: 200.187347
         }
       }
     }
@@ -225,11 +331,11 @@ Objects {
       value {
         Overrides {
           Name: "UIX"
-          Float: 272.628906
+          Float: 292.897522
         }
         Overrides {
           Name: "UIY"
-          Float: 333.259766
+          Float: 200.216858
         }
       }
     }

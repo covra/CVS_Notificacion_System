@@ -197,6 +197,15 @@ Assets {
   }
 }
 Assets {
+  Id: 5109129970559468393
+  Name: "Cube"
+  PlatformAssetType: 1
+  PrimaryAsset {
+    AssetType: "StaticMeshAssetRef"
+    AssetId: "sm_cube_002"
+  }
+}
+Assets {
   Id: 4647033500953364697
   Name: "Stone Basic"
   PlatformAssetType: 2
@@ -242,6 +251,15 @@ Assets {
   }
 }
 Assets {
+  Id: 4286823887220239396
+  Name: "Fantasy Castle Stairs Spiral Trim 01 - 4m"
+  PlatformAssetType: 1
+  PrimaryAsset {
+    AssetType: "StaticMeshAssetRef"
+    AssetId: "sm_ts_fan_cas_stairs_spiral_trim_001_4m"
+  }
+}
+Assets {
   Id: 3929808165339934488
   Name: "Object Fantasy Treasure Chest Open 03 SFX"
   PlatformAssetType: 7
@@ -257,6 +275,15 @@ Assets {
   PrimaryAsset {
     AssetType: "StaticMeshAssetRef"
     AssetId: "sm_pipe_4_sided_thin_001"
+  }
+}
+Assets {
+  Id: 3605030238014728915
+  Name: "Wood Planks"
+  PlatformAssetType: 2
+  PrimaryAsset {
+    AssetType: "MaterialAssetRef"
+    AssetId: "mi_wood_planks_001_uv"
   }
 }
 Assets {

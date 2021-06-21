@@ -7,6 +7,8 @@ local PLAYER_JOIN = ROOT:GetCustomProperty("player_Join")
 local PLAYER_LEAVE = ROOT:GetCustomProperty("player_Leave")
 local PLAYER_DIED = ROOT:GetCustomProperty("player_Died")
 local GAME_SP_EQ = ROOT:GetCustomProperty("game_specialEquipment")
+local WORLD_CUSTOM = script:GetCustomProperty("world_Custom")
+local WORLD_NAME_CUSTOM = script:GetCustomProperty("world_NameCustom")
 
 
 local debugPrint = true
@@ -27,8 +29,19 @@ function onEquip (eq, player)
 	sendNotification("game", "eq", player.name)
 end
 
+
 --@params string 'code of the notification'
---@params integer 'aditional data to boxes'
+--@params string 'aditional data to boxes'
+--@params string 'aditional data to boxes'
+--CUSTOM EVENT
+function onCustomEvent (typeCode, data_1, data_2)
+	if type(typeCode) == "String" then 
+		sendNotification(typeCode, data_1, data_2)
+	end
+end
+
+--@params string 'code of the notification'
+--@params string 'aditional data to boxes'
 --SEND STACK NOTIFICATION TO ITS AREA
 function sendNotification(typeCode, data_1, data_2)
 	if debugPrint then print(script.name.." Sending stack notification >>"..typeCode.." // ", data_1, data_2) end 
@@ -57,4 +70,12 @@ if GAME_SP_EQ then
 			end
 		end
 	end 
+end
+
+if WORLD_CUSTOM then 
+	if WORLD_NAME_CUSTOM == nil or WORLD_NAME_CUSTOM == "" then
+		warn(" If 'world_Custom' event is enabled, you should have to set a name for that event. If empty, won't work") 
+	else 
+		Events.Connect(WORLD_NAME_CUSTOM,onCustomEvent)
+	end
 end

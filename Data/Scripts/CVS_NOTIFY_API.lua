@@ -36,7 +36,7 @@ local tableGame = {
 					}
 --custom
 local SIDE_PANEL = World.FindObjectByName("UI Side Panel")	
-local MAIN_FOLDER = World.FindObjectByName("CVS_common_client")	
+local MAIN_FOLDER = World.FindObjectByName("CVS_MAIN_NOTIFY")	
 local ANIMDESTROY = MAIN_FOLDER:GetCustomProperty("animDestroyC")
 local REF_STACK = MAIN_FOLDER:GetCustomProperty("stackTemplate")
 --custom notifications
@@ -165,9 +165,9 @@ end
 
 function animStack(window, numStak)
 	Task.Spawn(function()
-		local heightWindows = window.height * numStak
+		local heightWindows = window.height * (numStak -1)
 		local finalPos =  _G.dynamicHeight - heightWindows
-		local time = 0.7	
+		local time = 0.7		
 		local p1 = CurveKey.New(0, 0,{interpolation = CurveInterpolation.CUBIC, tangent = 0.1})
 		local p2 =  CurveKey.New(time, finalPos, {interpolation = CurveInterpolation.CUBIC, tangent = 2.75})
 		local tableKeys = {[1] = p1, [2] = p2}
@@ -189,6 +189,7 @@ function animStack(window, numStak)
 end
 
 function animDestroy (window)
+	if not Environment.IsServer() then 
 		Task.Wait(0.5)
 		local time = 0.8	
 		local timeZero = os.clock()
@@ -201,23 +202,16 @@ function animDestroy (window)
 			Task.Wait()
 			if timeA >= (time * 3)/4 then 
 				Task.Spawn(function()
-					--if Object.IsValid(window) then 
-					local oX = window.x 
-					for xp = oX, oX -50, -1 do 						
-							window.x = xp 
-						end
-						Task.Wait()
-				---	end
-				--	if Object.IsValid(window) then 
-					local oX = window.x 
-					for xp = oX , oX + 800,30 do 						
-							window.x = xp
-						end
-						Task.Wait()
-				--	end 
+					if Object.IsValid(window) then
+						EaseUI.EaseX(window, -50, 0.5, EaseUI.EasingEquation.ELASTIC)
+					end
+					if Object.IsValid(window) then
+						EaseUI.EaseX(window, 800, 0.7, EaseUI.EasingEquation.ELASTIC)
+					end
 				end)
 			end
 		until timeA >= time
+	end
 	return true
 end 
 
@@ -232,7 +226,7 @@ function reLocate()
 				if debugPrint then print(">>>>>>RELOCATE>>>>>>>>>>>",pn,_G.dynamicHeight," origPos: ",pn.clientUserData.pos, " newPos: ", newIndex) end
 				pn.clientUserData.pos = newIndex
 				local pos =  _G.dynamicHeight - (pn.clientUserData.pos * pn.height)
-				EaseUI.EaseY(pn, pos, 0.5, EaseUI.EasingEquation.ELASTIC)			
+				EaseUI.EaseY(pn, pos+pn.height, 0.5, EaseUI.EasingEquation.ELASTIC)			
 			end 
 		end
 		_G.numStacks = newIndex
@@ -272,7 +266,7 @@ function destroyStack (window)
 			SIDE_PANEL.opacity = 1
 			if debugPrint then  print(script.name.." >> Destroying old stack: ", window) end
 			local isDone = animDestroy(window)
-			Task.Spawn(function() if Object.IsValid (window) then window:Destroy() end end,INT_DESTROY_TIME)
+			Task.Spawn(function() if Object.IsValid (window) then window:Destroy() end end,INT_DESTROY_TIME + 1)
 			fadeOut()
 		end
 		reLocate()

@@ -1,6 +1,41 @@
 Name: "CVS_The Cave"
 RootId: 1609855549327462053
 Objects {
+  Id: 12618178547471106719
+  Name: "Custom Event"
+  Transform {
+    Location {
+      X: 3863.15161
+      Y: 1719.0271
+      Z: 100.141785
+    }
+    Rotation {
+    }
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 1609855549327462053
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  CameraCollidable {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  EditorIndicatorVisibility {
+    Value: "mc:eindicatorvisibility:visiblewhenselected"
+  }
+  Folder {
+    IsFilePartition: true
+    FilePartitionName: "Custom Event"
+  }
+}
+Objects {
   Id: 6562509665455985228
   Name: "Resources"
   Transform {
