@@ -13,8 +13,8 @@ local propGame_Purchase = CLIENT_ROOT:GetCustomProperty("game_Purchase")
 local propGame_specialAbility = CLIENT_ROOT:GetCustomProperty("game_specialAbility")
 --local GAME_SP_EQ = CLIENT_ROOT:GetCustomProperty("game_specialEquipment")
 local propGame_Rounds = CLIENT_ROOT:GetCustomProperty("game_Rounds")
-local propWorld_Trigger = CLIENT_ROOT:GetCustomProperty("world_Trigger")
-local propWorld_Custom = CLIENT_ROOT:GetCustomProperty("world_Custom")
+
+--local propWorld_Custom = CLIENT_ROOT:GetCustomProperty("world_Custom")
 _G.FADEOUT_TIME = CLIENT_ROOT:GetCustomProperty("fadeOut_Time")
 local FADEOUT_ISENABLED = CLIENT_ROOT:GetCustomProperty("fadeOut_isEnabled")
 _G.SELFDESTROY_TIME = CLIENT_ROOT:GetCustomProperty("selfDestroy_time")
@@ -29,8 +29,8 @@ local localPlayer = Game.GetLocalPlayer()
 --@params integer 'aditional data to boxes'
 --SEND STACK NOTIFICATION TO ITS AREA
 function sendNotification(typeCode, data_1, data_2)
-	print("recibiendo datos de server: ",typeCode, data_1, data_2)
-	if debugPrint then print(script.name.." Sending stack notification >>"..typeCode.." // ", data_1, data_2) end 
+	if debugPrint then print(script.name .."recibiendo datos de server: ",typeCode, data_1, data_2) end
+	if debugPrint then print(script.name.." Sending to API>>"..typeCode.." // ", data_1, data_2) end 
 	CVS_NOTIFY_API.sendNotification (typeCode, data_1, data_2)
 end 
 

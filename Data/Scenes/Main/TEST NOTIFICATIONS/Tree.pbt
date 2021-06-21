@@ -1,6 +1,72 @@
 Name: "TEST NOTIFICATIONS"
 RootId: 2066971925543242940
 Objects {
+  Id: 16983003463189611632
+  Name: "CVS Trigger Damage"
+  Transform {
+    Location {
+      X: -282.520874
+      Y: 691.278564
+    }
+    Rotation {
+    }
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 2066971925543242940
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  CameraCollidable {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  EditorIndicatorVisibility {
+    Value: "mc:eindicatorvisibility:visiblewhenselected"
+  }
+  Folder {
+    IsFilePartition: true
+    FilePartitionName: "CVS Trigger Damage"
+  }
+}
+Objects {
+  Id: 1609855549327462053
+  Name: "CVS_The Cave"
+  Transform {
+    Location {
+    }
+    Rotation {
+    }
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 2066971925543242940
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  CameraCollidable {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  EditorIndicatorVisibility {
+    Value: "mc:eindicatorvisibility:visiblewhenselected"
+  }
+  Folder {
+    IsFilePartition: true
+    FilePartitionName: "CVS_The Cave"
+  }
+}
+Objects {
   Id: 106814241381884066
   Name: "CVS Die trigger"
   Transform {
@@ -40,8 +106,8 @@ Objects {
   Name: "CVS powerStaff equipment"
   Transform {
     Location {
-      X: 63.0500183
-      Y: 331.537964
+      X: -831.552246
+      Y: -44.928833
     }
     Rotation {
     }
@@ -246,10 +312,13 @@ Objects {
   }
 }
 Objects {
-  Id: 1609855549327462053
-  Name: "CVS_The Cave"
+  Id: 12618178547471106719
+  Name: "CVS Custom Events"
   Transform {
     Location {
+      X: 3863.15161
+      Y: 1719.0271
+      Z: 100.141785
     }
     Rotation {
     }
@@ -274,7 +343,7 @@ Objects {
   }
   Folder {
     IsFilePartition: true
-    FilePartitionName: "CVS_The Cave"
+    FilePartitionName: "CVS Custom Events"
   }
 }
 Objects {
@@ -282,8 +351,8 @@ Objects {
   Name: "CVS_chrono_set"
   Transform {
     Location {
-      X: -680.64
-      Y: 147.25708
+      X: -2706.80151
+      Y: -582.748779
     }
     Rotation {
     }
@@ -316,8 +385,8 @@ Objects {
   Name: "CVS_Resource_Giver"
   Transform {
     Location {
-      X: 680.64
-      Y: -147.25708
+      X: -1345.52173
+      Y: -877.262939
     }
     Rotation {
     }

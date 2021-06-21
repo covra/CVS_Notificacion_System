@@ -7,18 +7,30 @@ local PLAYER_JOIN = ROOT:GetCustomProperty("player_Join")
 local PLAYER_LEAVE = ROOT:GetCustomProperty("player_Leave")
 local PLAYER_DIED = ROOT:GetCustomProperty("player_Died")
 local GAME_SP_EQ = ROOT:GetCustomProperty("game_specialEquipment")
-local WORLD_CUSTOM = script:GetCustomProperty("world_Custom")
-local WORLD_NAME_CUSTOM = script:GetCustomProperty("world_NameCustom")
+local WORLD_CUSTOM = ROOT:GetCustomProperty("world_Custom")
+local WORLD_NAME_CUSTOM = ROOT:GetCustomProperty("world_NameCustom")
+local PLAYER_HP = ROOT:GetCustomProperty("player_HP")
+local PLAYER_CUSTOM_HP = ROOT:GetCustomProperty("player_customHP")
 
 
 local debugPrint = true
 ----------------------------------FUNCTIONS------------------------------
 
 function OnPlayerJoined (player)
+	player.serverUserData.isSentD = false
 	sendNotification("player", "join", player.name)
-	player.diedEvent:Connect( function()
+	player.diedEvent:Connect( function(player)
 			sendNotification("player", "die", player.name)
 		end )
+	player.damagedEvent:Connect( function(player, damage )
+			if player.hitPoints <= PLAYER_CUSTOM_HP and not player.serverUserData.isSent then 
+				player.serverUserData.isSentD = true
+				sendNotification("player", "hpLow", player.name)
+			else 
+				player.serverUserData.isSentD = false
+			end
+		end )
+
 end
 
 function OnPlayerLeft (player)
@@ -26,7 +38,7 @@ function OnPlayerLeft (player)
 end
 
 function onEquip (eq, player)
-	sendNotification("game", "eq", player.name)
+	sendNotification("game", "customEq", player.name)
 end
 
 
@@ -35,7 +47,8 @@ end
 --@params string 'aditional data to boxes'
 --CUSTOM EVENT
 function onCustomEvent (typeCode, data_1, data_2)
-	if type(typeCode) == "String" then 
+	print(script.name.." >> Received broadcasted data: ", typeCode, data_1, data_2)
+	if type(typeCode) == "string" then 
 		sendNotification(typeCode, data_1, data_2)
 	end
 end
@@ -44,7 +57,7 @@ end
 --@params string 'aditional data to boxes'
 --SEND STACK NOTIFICATION TO ITS AREA
 function sendNotification(typeCode, data_1, data_2)
-	if debugPrint then print(script.name.." Sending stack notification >>"..typeCode.." // ", data_1, data_2) end 
+	if debugPrint then print(script.name.." Sending to  API >>"..typeCode.." // ", data_1, data_2) end 
 	Events.BroadcastToAllPlayers("notifY",typeCode, data_1, data_2)
 end 
 
@@ -56,6 +69,13 @@ end
 
 if PLAYER_LEAVE then 
 	Game.playerLeftEvent:Connect(OnPlayerLeft)
+end
+
+if PLAYER_HP then
+	if PLAYER_CUSTOM_HP == nil or PLAYER_CUSTOM_HP <= 0 then 
+		warn(" If player_HP is enabled, custom player Hit Points must be > 0. Set to 20")
+		PLAYER_CUSTOM_HP = 20
+	end
 end
 
 if GAME_SP_EQ then 
@@ -73,9 +93,12 @@ if GAME_SP_EQ then
 end
 
 if WORLD_CUSTOM then 
-	if WORLD_NAME_CUSTOM == nil or WORLD_NAME_CUSTOM == "" then
-		warn(" If 'world_Custom' event is enabled, you should have to set a name for that event. If empty, won't work") 
-	else 
-		Events.Connect(WORLD_NAME_CUSTOM,onCustomEvent)
+	local tableEvents = CVS_NOTIFY_API.getCustomEvents()
+	for _, eventName in pairs (tableEvents) do 
+		if eventName == nil or eventName == "" then
+			warn(" If 'world_Custom' event is enabled, you should have to set a name for that event. If empty, won't work") 
+		else 
+			Events.Connect(eventName,onCustomEvent)
+		end
 	end
 end

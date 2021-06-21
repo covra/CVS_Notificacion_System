@@ -23,11 +23,12 @@ Objects {
   ChildIds: 10005074784157121906
   ChildIds: 7692573330601457615
   ChildIds: 2066971925543242940
+  ChildIds: 3589931671560262444
   ChildIds: 15504382397306224404
   ChildIds: 135322574837865159
   ChildIds: 17800946474055268877
   ChildIds: 6646895742120987852
-  ChildIds: 6123358238075253963
+  ChildIds: 8928294864641724833
   UnregisteredParameters {
   }
   Collidable_v2 {
@@ -43,13 +44,9 @@ Objects {
   }
 }
 Objects {
-  Id: 6123358238075253963
+  Id: 8928294864641724833
   Name: "CVS_MAIN_NOTIFY"
   Transform {
-    Location {
-    }
-    Rotation {
-    }
     Scale {
       X: 1
       Y: 1
@@ -57,129 +54,6 @@ Objects {
     }
   }
   ParentId: 4781671109827199097
-  UnregisteredParameters {
-    Overrides {
-      Name: "cs:player_Join"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:player_Leave"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:player_Died"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:game_specialEquipment"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:stack_SideRight"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:debugPrint"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:stack_Width"
-      Int: 20
-    }
-    Overrides {
-      Name: "cs:stack_Height"
-      Int: 90
-    }
-    Overrides {
-      Name: "cs:fadeOut_isEnabled"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:selfDestroy_time"
-      Float: 10
-    }
-    Overrides {
-      Name: "cs:CVS_NOTIFY_API"
-      AssetReference {
-        Id: 9724488856710647903
-      }
-    }
-    Overrides {
-      Name: "cs:stackTemplate"
-      AssetReference {
-        Id: 862480760006374578
-      }
-    }
-    Overrides {
-      Name: "cs:animDestroyC"
-      SimpleCurve {
-        Keys {
-          Interpolation {
-            Value: "mc:erichcurveinterpmode:rcim_cubic"
-          }
-          TangentMode {
-            Value: "mc:erichcurvetangentmode:rctm_user"
-          }
-          Value: 100
-          ArriveTangent: -256.236694
-          LeaveTangent: -256.236694
-        }
-        Keys {
-          Interpolation {
-            Value: "mc:erichcurveinterpmode:rcim_cubic"
-          }
-          TangentMode {
-            Value: "mc:erichcurvetangentmode:rctm_user"
-          }
-          Time: 0.5
-          Value: 70
-          ArriveTangent: 2.15541625
-          LeaveTangent: 2.15541625
-        }
-        Keys {
-          Interpolation {
-            Value: "mc:erichcurveinterpmode:rcim_linear"
-          }
-          TangentMode {
-            Value: "mc:erichcurvetangentmode:rctm_auto"
-          }
-          Time: 1
-          Value: 120
-        }
-        PreExtrapolation {
-          Value: "mc:erichcurveextrapolation:rcce_constant"
-        }
-        PostExtrapolation {
-          Value: "mc:erichcurveextrapolation:rcce_constant"
-        }
-        DefaultValue: 3.40282347e+38
-      }
-    }
-    Overrides {
-      Name: "cs:world_NameCustom"
-      String: "poolParty"
-    }
-    Overrides {
-      Name: "cs:world_Custom"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:stack_Width:tooltip"
-      String: "Width of the notification area in percentage. Default:15%"
-    }
-    Overrides {
-      Name: "cs:stack_Height:tooltip"
-      String: "Height  of the notification area in percentage. Default:80%"
-    }
-    Overrides {
-      Name: "cs:fadeOut_isEnabled:tooltip"
-      String: "If enabled, the stack side panel will be fade out after \'fadeOut_time\' seconds"
-    }
-    Overrides {
-      Name: "cs:selfDestroy_time:tooltip"
-      String: "Time in seconds to auto-destroy the stack notifications. If BLANK = NO destroyed"
-    }
-  }
   WantsNetworking: true
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
@@ -187,15 +61,19 @@ Objects {
   Visible_v2 {
     Value: "mc:evisibilitysetting:inheritfromparent"
   }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  EditorIndicatorVisibility {
-    Value: "mc:eindicatorvisibility:visiblewhenselected"
-  }
-  Folder {
-    IsFilePartition: true
-    FilePartitionName: "CVS_MAIN_NOTIFY"
+  TemplateInstance {
+    ParameterOverrideMap {
+      key: 11474132654469940491
+      value {
+        Overrides {
+          Name: "Name"
+          String: "CVS_MAIN_NOTIFY"
+        }
+      }
+    }
+    TemplateAsset {
+      Id: 6625448334782390838
+    }
   }
 }
 Objects {
@@ -415,6 +293,48 @@ Objects {
     }
     TemplateAsset {
       Id: 5499862207320953173
+    }
+  }
+}
+Objects {
+  Id: 3589931671560262444
+  Name: "CVS Simple Player HUD"
+  Transform {
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 4781671109827199097
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:forceoff"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  TemplateInstance {
+    ParameterOverrideMap {
+      key: 374356892140795403
+      value {
+        Overrides {
+          Name: "Name"
+          String: "CVS Simple Player HUD"
+        }
+        Overrides {
+          Name: "Position"
+          Vector {
+          }
+        }
+        Overrides {
+          Name: "Rotation"
+          Rotator {
+          }
+        }
+      }
+    }
+    TemplateAsset {
+      Id: 14246678912454063032
     }
   }
 }
@@ -1222,6 +1142,8 @@ Objects {
   Name: "Spawn Point"
   Transform {
     Location {
+      X: -3480.1687
+      Y: -326.768677
       Z: 115
     }
     Rotation {

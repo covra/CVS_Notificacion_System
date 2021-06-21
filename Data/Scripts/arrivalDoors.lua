@@ -1,9 +1,10 @@
 local trigger = script.parent
+local EventName = trigger:GetCustomProperty("eventName")
 
 function OnBeginOverlap(whichTrigger, other)
 	if other:IsA("Player") then
-		print( other.name.." arrived to the Big Doors, notifying custom event...")
-		Events.Broadcast("poolParty","
+		print( other.name.." found the party!, notifying custom event...")
+		Events.Broadcast(EventName,"WORLD",EventName,other)
 	end
 end
 

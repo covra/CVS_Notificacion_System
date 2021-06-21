@@ -17,23 +17,39 @@ local tableContent = {
 				["TIMER"] = {
 							["end"] = { title = "CHECK" ,abs = "end" , fullTxt = "Chrono arrived to "},
 							},
+							
 				["RESOURCES"] = {
 							["grow"] = { title = "INCREASE" ,abs = "increased by one" , fullTxt = "was increased by one. You have: "},
 							["custom"] = { title = "STACK" ,abs = "stack: " , fullTxt = "You have a stack of %s &s"},
 							["max"] = { title = "MAX" ,abs = "maximun stack " , fullTxt = "You have reached the maximun stack established"},
 							},
-				["GAME"] = { ["eq"] = { title = "EQUIP" ,abs = "get " , fullTxt = "get the special equipment: "},
+							
+				["GAME"] = { ["customEq"] = { title = "EQUIP" ,abs = "get " , fullTxt = "get the special equipment: "},
+							 
 							},
-				["WORLD"] ={ head = Color.PURPLE, body = Color.FromLinearHex("1A0026FF")},
+							
+				["WORLD"] = {
+							["poolParty"] = { title = "FOUND" ,abs = " found pool" , fullTxt = " found the pool party cave"},
+							["doorTrigg"] = { title = "ACHIEVED" ,abs = " oppened doors" , fullTxt = " achieved unlock and open the Dwarf Doors"},
+							["bridge"] = { title = "ARRIVED" ,abs = " to bridge" , fullTxt = " arrived to the Rock Bridge"},
+							},
+							
 				["PLAYER"] = {
 							["join"] = { title = "JOINED" ,abs = "> " , fullTxt = "%s joined "},
 							["leaves"] = { title = "LEAVES" ,abs = "> " , fullTxt = "%s leaves the game "},
 							["die"] = { title = "DIED" ,abs = "> " , fullTxt = "%s has died "},
+							["hpLow"] = { title = "HITPOINTS" ,abs = "Critical low  " , fullTxt = " is almost died. Check!"},
 							}
 				}
 local tableGame = {
-				["GAME"] = { ["specialEq"] = { "Advanced Staff"}},
-					}
+				["GAME"] = { ["equips"] = { "Advanced Staff"}},
+				["WORLD"] = {["custom"] = {
+									[1] = "poolParty",
+									[2] = "doorTrigg",
+									[3] = "bridge",
+									}
+							}
+				}
 --custom
 local SIDE_PANEL = World.FindObjectByName("UI Side Panel")	
 local MAIN_FOLDER = World.FindObjectByName("CVS_MAIN_NOTIFY")	
@@ -75,9 +91,12 @@ function CVS_NOTIFY_API.sendNotification (typeCode, data_1, data_2)
 end
 
 function CVS_NOTIFY_API.getSpecialEquips()
-	return (tableGame["GAME"])["specialEq"]
+	return (tableGame["GAME"])["equips"]
 end
 
+function CVS_NOTIFY_API.getCustomEvents()
+	return (tableGame["WORLD"])["custom"]
+end
 
 function internalSend (typeCode, data_1, data_2)
 	if not Environment.IsServer() then 
@@ -94,7 +113,7 @@ function internalSend (typeCode, data_1, data_2)
 			callOffFade = true
 			SIDE_PANEL.opacity = 1		
 			local stackWindow = World.SpawnAsset(REF_STACK,{parent = SIDE_PANEL}) 
-			local isDone = getContent(stackWindow, typeCode, data_1, data_2)
+			local isOk = getContent(stackWindow, typeCode, data_1, data_2)
 			writeContent(stackWindow)
 			setStackColor(stackWindow, typeCode)
 			animStack(stackWindow, sortPos)
@@ -290,6 +309,10 @@ function getContent (window, typeCode, data_1, data_2)
 			print(script.name.." >> Writting text to ", window)
 			local table = tableContent[typeCode]
 			local content = table [data_1]
+			if content == nil  then 
+				warn(" No content found for typeCode: ", typeCode, " or data_1:", data_1)
+				content = { title = "GENERAL EVENT" ,abs = "" , fullTxt = "No aditional data"}
+			end
 			window.clientUserData.fullTxt = content.fullTxt
 			window.clientUserData.abs = content.abs
 			if typeCode == "TIMER" then 
@@ -300,11 +323,17 @@ function getContent (window, typeCode, data_1, data_2)
 			elseif typeCode == "RESOURCES" then 
 				if data_2 ~= nil then 
 					window.clientUserData.abs = content.abs..data_2
-				end		
+				end	
+			elseif typeCode == "WORLD" then 
+				if data_1 ~= nil then 
+					if data_2 ~= nil then 
+						window.clientUserData.abs =data_2.name..content.abs
+					end 
+				end 
 			end
 			window.clientUserData.title = typeCode..":"..content.title	
 			print(script.name.." >> Get content stack: ["..typeCode.."]  Title: ["..window.clientUserData.title.."]  Abstract: [".. window.clientUserData.abs.."]")
-			return true
+			return true			
 		end
 	end
 end 

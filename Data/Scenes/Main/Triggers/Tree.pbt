@@ -471,7 +471,7 @@ Objects {
     }
     Overrides {
       Name: "cs:time"
-      Float: 30
+      Float: 120
     }
     Overrides {
       Name: "cs:reverse"
@@ -683,7 +683,7 @@ Objects {
     }
     Overrides {
       Name: "cs:time"
-      Float: 10
+      Float: 50
     }
     Overrides {
       Name: "cs:reverse"
