@@ -36,6 +36,10 @@ Objects {
       Name: "bp:Grain Intensity"
       Float: 1
     }
+    Overrides {
+      Name: "bp:Visible In Preview"
+      Bool: false
+    }
   }
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
@@ -85,6 +89,10 @@ Objects {
       Name: "bp:Intensity"
       Float: 2
     }
+    Overrides {
+      Name: "bp:Visible In Preview"
+      Bool: false
+    }
   }
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
@@ -132,7 +140,7 @@ Objects {
     }
     Overrides {
       Name: "bp:Visible In Preview"
-      Bool: true
+      Bool: false
     }
     Overrides {
       Name: "bp:Intensity"
@@ -189,7 +197,7 @@ Objects {
     }
     Overrides {
       Name: "bp:Visible In Preview"
-      Bool: true
+      Bool: false
     }
     Overrides {
       Name: "bp:Intensity"
@@ -286,7 +294,7 @@ Objects {
     }
     Overrides {
       Name: "bp:Visible In Preview"
-      Bool: true
+      Bool: false
     }
   }
   Collidable_v2 {
