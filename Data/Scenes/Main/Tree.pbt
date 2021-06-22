@@ -69,6 +69,10 @@ Objects {
           Name: "Name"
           String: "CVS_MAIN_NOTIFY"
         }
+        Overrides {
+          Name: "cs:selfDestroy_time"
+          Float: 60
+        }
       }
     }
     TemplateAsset {
@@ -331,6 +335,12 @@ Objects {
           Rotator {
           }
         }
+        Overrides {
+          Name: "Visible"
+          Enum {
+            Value: "mc:evisibilitysetting:forceoff"
+          }
+        }
       }
     }
     TemplateAsset {
@@ -392,7 +402,7 @@ Objects {
     Value: "mc:ecollisionsetting:inheritfromparent"
   }
   Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
+    Value: "mc:evisibilitysetting:forceoff"
   }
   CameraCollidable {
     Value: "mc:ecollisionsetting:inheritfromparent"
@@ -442,6 +452,7 @@ Objects {
   }
   ParentId: 7692573330601457615
   ChildIds: 9476745262364266093
+  ChildIds: 1638256832902541135
   Collidable_v2 {
     Value: "mc:ecollisionsetting:forceoff"
   }
@@ -455,6 +466,48 @@ Objects {
     Value: "mc:eindicatorvisibility:visiblewhenselected"
   }
   NetworkContext {
+  }
+}
+Objects {
+  Id: 1638256832902541135
+  Name: "stackWindow_ref"
+  Transform {
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 5814485063127378047
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  TemplateInstance {
+    ParameterOverrideMap {
+      key: 15792527445594899278
+      value {
+        Overrides {
+          Name: "Name"
+          String: "stackWindow_ref"
+        }
+        Overrides {
+          Name: "Position"
+          Vector {
+          }
+        }
+        Overrides {
+          Name: "Rotation"
+          Rotator {
+          }
+        }
+      }
+    }
+    TemplateAsset {
+      Id: 862480760006374578
+    }
   }
 }
 Objects {
@@ -491,6 +544,10 @@ Objects {
           Name: "Rotation"
           Rotator {
           }
+        }
+        Overrides {
+          Name: "Opacity"
+          Float: 1
         }
       }
     }

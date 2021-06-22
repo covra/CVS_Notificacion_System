@@ -55,6 +55,7 @@ local SIDE_PANEL = World.FindObjectByName("UI Side Panel")
 local MAIN_FOLDER = World.FindObjectByName("CVS_MAIN_NOTIFY")	
 local ANIMDESTROY = MAIN_FOLDER:GetCustomProperty("animDestroyC")
 local REF_STACK = MAIN_FOLDER:GetCustomProperty("stackTemplate")
+local SELFDESTROY_TIME = MAIN_FOLDER:GetCustomProperty("selfDestroy_time")
 --custom notifications
 		--PONER AQUI LAS ESPECIALES, COMO LA DEL PLAYER GRANDE Y TAL (DESDE MAIN FOLDER)
 --local
@@ -70,6 +71,7 @@ local eventBusy = 0
 local sortPos = 0
 local callOffFade = false
 local isFading = false
+_G.fadeTask = nil
 local INT_DESTROY_TIME = 1
 --------------------------------------------------API--------------------------------------
 
@@ -84,11 +86,66 @@ function CVS_NOTIFY_API.showStack()
 	SIDE_PANEL.opacity = 1	
 end 
 
+function CVS_NOTIFY_API.closeWindow(window)
+	local isDone = animDestroy (window)
+	reLocate()
+end 
+
 function CVS_NOTIFY_API.sendNotification (typeCode, data_1, data_2)
 	_G.numStacks  = _G.numStacks  + 1
 	internalSend(typeCode, data_1, data_2)
 	_G.totalElementos = _G.totalElementos + 1
 end
+
+function CVS_NOTIFY_API.animWindow (objID, open)
+	local window = objID:GetObject()
+	if window.clientUserData.origW == nil then
+		window.clientUserData.origW = window.width
+		window.clientUserData.origH = window.height
+		window.clientUserData.xPos = window.x
+		window.clientUserData.yPos = window.height
+		window.clientUserData.origAnch = window.anchor
+		window.clientUserData.origDk = window.dock
+	end 
+	if open then 
+		local newW = math.tointeger( CoreMath.Round(    (window.clientUserData.origW  * 4)/3    ,0))
+		local newH = math.tointeger( CoreMath.Round(    (window.clientUserData.origH  * 7)/3    ,0))
+		EaseUI.EaseWidth(window, newW, 0.5, EaseUI.EasingEquation.ELASTIC)
+		EaseUI.EaseHeight(window,newH,0.5, EaseUI.EasingEquation.ELASTIC)
+		window.anchor = UIPivot.MIDDLE_CENTER
+		window.dock = UIPivot.MIDDLE_CENTER
+		window.x = 0
+		window.y = 0
+		local tableWindows = SIDE_PANEL:GetChildren()
+		for _, pn in pairs (tableWindows) do 	
+			if pn:IsA("UIPanel") then 
+				if pn ~= window then 
+					pn.opacity = 0
+				end
+			end 
+		end
+	elseif not open then 
+		EaseUI.EaseWidth(window, window.clientUserData.origW,0.5, EaseUI.EasingEquation.ELASTIC)
+		EaseUI.EaseHeight(window, window.clientUserData.origH,0.5,EaseUI.EasingEquation.ELASTIC)
+		window.anchor = window.clientUserData.origAnch
+		window.dock  =window.clientUserData.origDk
+		reLocate()
+		--window.x = window.clientUserData.xPos
+		--window.y = window.clientUserData.yPos
+			local tableWindows = SIDE_PANEL:GetChildren()
+			for _, pn in pairs (tableWindows) do 	
+			if pn:IsA("UIPanel") then 
+				if pn ~= window then 
+					pn.opacity = 1
+				end
+			end 
+		end
+	end 
+end
+
+function CVS_NOTIFY_API.showContent (window)
+
+end 
 
 function CVS_NOTIFY_API.getSpecialEquips()
 	return (tableGame["GAME"])["equips"]
@@ -256,12 +313,15 @@ end
 function fadeOut ()  
 	local oldStacks = _G.numStacks
 	callOffFade = false
-	Task.Spawn(function()	
+	if fadeTask ~= nil then 
+		_G.fadeTask:Cancel()
+	end 
+	_G.fadeTask = Task.Spawn(function()	
 		if isFading  then return
 			print("FADEOUT: already fading, return end")
 		else
 			isFading = true
-			for i= 1, 0, -0.1 do 
+			for i= SIDE_PANEL.opacity, 0, -0.1 do 
 				if oldStacks == _G.numStacks then 
 					SIDE_PANEL.opacity = i
 				else 
@@ -289,7 +349,7 @@ function destroyStack (window)
 			fadeOut()
 		end
 		reLocate()
-	end, _G.SELFDESTROY_TIME)	
+	end, SELFDESTROY_TIME)	
 end
 
 

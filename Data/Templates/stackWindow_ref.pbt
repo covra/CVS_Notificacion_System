@@ -16,10 +16,10 @@ Assets {
           }
         }
         ParentId: 5814485063127378047
+        ChildIds: 9710373789258817191
         ChildIds: 3310530067436709551
         ChildIds: 6973441850162710035
         ChildIds: 6744615361129203571
-        ChildIds: 5783721793260145568
         ChildIds: 8374331947781694476
         ChildIds: 5462287659806267338
         Collidable_v2 {
@@ -37,6 +37,8 @@ Assets {
         Control {
           Width: 435
           Height: 100
+          UIX: 6.75286865
+          UIY: 178.137711
           RenderTransformPivot {
             Anchor {
               Value: "mc:euianchor:middlecenter"
@@ -44,6 +46,7 @@ Assets {
           }
           UseParentWidth: true
           Panel {
+            Opacity: 1
           }
           AnchorLayout {
             SelfAnchor {
@@ -56,6 +59,59 @@ Assets {
                 Value: "mc:euianchor:topright"
               }
             }
+          }
+        }
+      }
+      Objects {
+        Id: 9710373789258817191
+        Name: "CVS_stackControl"
+        Transform {
+          Location {
+          }
+          Rotation {
+          }
+          Scale {
+            X: 1
+            Y: 1
+            Z: 1
+          }
+        }
+        ParentId: 15792527445594899278
+        UnregisteredParameters {
+          Overrides {
+            Name: "cs:bodyTextBt"
+            ObjectReference {
+              SubObjectId: 8374331947781694476
+            }
+          }
+          Overrides {
+            Name: "cs:closeBt"
+            ObjectReference {
+              SubObjectId: 5462287659806267338
+            }
+          }
+          Overrides {
+            Name: "cs:CVS_NOTIFY_API"
+            AssetReference {
+              Id: 9724488856710647903
+            }
+          }
+        }
+        Collidable_v2 {
+          Value: "mc:ecollisionsetting:inheritfromparent"
+        }
+        Visible_v2 {
+          Value: "mc:evisibilitysetting:inheritfromparent"
+        }
+        CameraCollidable {
+          Value: "mc:ecollisionsetting:inheritfromparent"
+        }
+        EditorIndicatorVisibility {
+          Value: "mc:eindicatorvisibility:visiblewhenselected"
+        }
+        Script {
+          ScriptAsset {
+            Id: 679506053627088948
           }
         }
       }
@@ -1298,39 +1354,6 @@ Assets {
                 Value: "mc:euianchor:topcenter"
               }
             }
-          }
-        }
-      }
-      Objects {
-        Id: 5783721793260145568
-        Name: "CVS_autoSize_stack"
-        Transform {
-          Location {
-          }
-          Rotation {
-          }
-          Scale {
-            X: 1
-            Y: 1
-            Z: 1
-          }
-        }
-        ParentId: 15792527445594899278
-        Collidable_v2 {
-          Value: "mc:ecollisionsetting:inheritfromparent"
-        }
-        Visible_v2 {
-          Value: "mc:evisibilitysetting:inheritfromparent"
-        }
-        CameraCollidable {
-          Value: "mc:ecollisionsetting:inheritfromparent"
-        }
-        EditorIndicatorVisibility {
-          Value: "mc:eindicatorvisibility:visiblewhenselected"
-        }
-        Script {
-          ScriptAsset {
-            Id: 18181797899679960664
           }
         }
       }
