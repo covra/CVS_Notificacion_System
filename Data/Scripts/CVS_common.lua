@@ -28,10 +28,10 @@ local localPlayer = Game.GetLocalPlayer()
 --@params string 'code of the notification'
 --@params integer 'aditional data to boxes'
 --SEND STACK NOTIFICATION TO ITS AREA
-function sendNotification(typeCode, data_1, data_2)
-	if debugPrint then print(script.name .."recibiendo datos de server: ",typeCode, data_1, data_2) end
-	if debugPrint then print(script.name.." Sending to API>>"..typeCode.." // ", data_1, data_2) end 
-	CVS_NOTIFY_API.sendNotification (typeCode, data_1, data_2)
+function sendNotification(typeCode, data_1, data_2, data_3)
+	if debugPrint then print(script.name .."recibiendo datos de server: ",typeCode, data_1, data_2, data_3) end
+	if debugPrint then print(script.name.." Sending to API>>"..typeCode.." // ", data_1, data_2, data_3) end 
+	CVS_NOTIFY_API.sendNotification (typeCode, data_1, data_2, data_3)
 end 
 
 ----------------------------------------VALIDATION-------------------------------

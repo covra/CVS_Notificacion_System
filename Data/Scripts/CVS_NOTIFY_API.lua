@@ -11,6 +11,7 @@ local tableColors = {
 				["GAME"] = { head = Color.CYAN, body = Color.FromLinearHex("010618FF")},
 				["WORLD"] ={ head = Color.PURPLE, body = Color.FromLinearHex("1A0026FF")},
 				["PLAYER"] = { head = Color.EMERALD, body = Color.FromLinearHex("00382AFF")},
+				["READ"] = { head = Color.GRAY, body = Color.FromLinearHex("101010FF")},
 				}
 				
 local tableContent = {
@@ -20,11 +21,11 @@ local tableContent = {
 							
 				["RESOURCES"] = {
 							["grow"] = { title = "INCREASE" ,abs = "increased by one" , fullTxt = "was increased by one. You have: "},
-							["custom"] = { title = "STACK" ,abs = "stack: " , fullTxt = "You have a stack of %s &s"},
-							["max"] = { title = "MAX" ,abs = "maximun stack " , fullTxt = "You have reached the maximun stack established"},
+							["custom"] = { title = "STACK" ,abs = "stack: " , fullTxt = "You have a stack of: "},
+							["max"] = { title = "MAX" ,abs = "maximun stack " , fullTxt = "You have reached the maximun stack established: "},
 							},
 							
-				["GAME"] = { ["customEq"] = { title = "EQUIP" ,abs = "get " , fullTxt = "get the special equipment: "},
+				["GAME"] = { ["customEq"] = { title = "EQUIP" ,abs = "> " , fullTxt = " get the special equipment: "},
 							 
 							},
 							
@@ -35,9 +36,9 @@ local tableContent = {
 							},
 							
 				["PLAYER"] = {
-							["join"] = { title = "JOINED" ,abs = "> " , fullTxt = "%s joined "},
-							["leaves"] = { title = "LEAVES" ,abs = "> " , fullTxt = "%s leaves the game "},
-							["die"] = { title = "DIED" ,abs = "> " , fullTxt = "%s has died "},
+							["join"] = { title = "JOINED" ,abs = "> " , fullTxt = " joined "},
+							["leaves"] = { title = "LEAVES" ,abs = "> " , fullTxt = "  leaves the game "},
+							["die"] = { title = "DIED" ,abs = "> " , fullTxt = "  has died "},
 							["hpLow"] = { title = "HITPOINTS" ,abs = "Critical low  " , fullTxt = " is almost died. Check!"},
 							}
 				}
@@ -91,9 +92,9 @@ function CVS_NOTIFY_API.closeWindow(window)
 	reLocate()
 end 
 
-function CVS_NOTIFY_API.sendNotification (typeCode, data_1, data_2)
+function CVS_NOTIFY_API.sendNotification (typeCode, data_1, data_2, data_3)
 	_G.numStacks  = _G.numStacks  + 1
-	internalSend(typeCode, data_1, data_2)
+	internalSend(typeCode, data_1, data_2, data_3)
 	_G.totalElementos = _G.totalElementos + 1
 end
 
@@ -124,14 +125,15 @@ function CVS_NOTIFY_API.animWindow (objID, open)
 				end
 			end 
 		end
+		Task.Wait(0.5)
+		showBigContent(window, true)
 	elseif not open then 
+		showBigContent(window, false)
 		EaseUI.EaseWidth(window, window.clientUserData.origW,0.5, EaseUI.EasingEquation.ELASTIC)
 		EaseUI.EaseHeight(window, window.clientUserData.origH,0.5,EaseUI.EasingEquation.ELASTIC)
 		window.anchor = window.clientUserData.origAnch
 		window.dock  =window.clientUserData.origDk
 		reLocate()
-		--window.x = window.clientUserData.xPos
-		--window.y = window.clientUserData.yPos
 			local tableWindows = SIDE_PANEL:GetChildren()
 			for _, pn in pairs (tableWindows) do 	
 			if pn:IsA("UIPanel") then 
@@ -143,9 +145,6 @@ function CVS_NOTIFY_API.animWindow (objID, open)
 	end 
 end
 
-function CVS_NOTIFY_API.showContent (window)
-
-end 
 
 function CVS_NOTIFY_API.getSpecialEquips()
 	return (tableGame["GAME"])["equips"]
@@ -155,7 +154,7 @@ function CVS_NOTIFY_API.getCustomEvents()
 	return (tableGame["WORLD"])["custom"]
 end
 
-function internalSend (typeCode, data_1, data_2)
+function internalSend (typeCode, data_1, data_2, data_3)
 	if not Environment.IsServer() then 
 		if not script.clientUserData.isBusy then 
 			script.clientUserData.isBusy = true
@@ -166,11 +165,11 @@ function internalSend (typeCode, data_1, data_2)
 				if debugPrint then print(script.name.."event busy: cambiando stack number:"..tostring(_G.numStacks).." to "..tostring(sortPos)) end
 			end 	
 			local typeCode = string.upper(typeCode)
-			print(script.name.." Receiving stack notification type: ["..typeCode.."]  DATA>> data_1[".. tostring(data_1).."] // data_2[".. tostring(data_2).."]   ON LOCAL: "..Game.GetLocalPlayer().name)
+			print(script.name.." Receiving stack notification type: ["..typeCode.."]  DATA>> data_1[".. tostring(data_1).."] // data_2[".. tostring(data_2).."]  // data_3["..tostring(data_3).."]  ON LOCAL: "..Game.GetLocalPlayer().name)
 			callOffFade = true
 			SIDE_PANEL.opacity = 1		
 			local stackWindow = World.SpawnAsset(REF_STACK,{parent = SIDE_PANEL}) 
-			local isOk = getContent(stackWindow, typeCode, data_1, data_2)
+			local isOk = getContent(stackWindow, typeCode, data_1, data_2, data_3)
 			writeContent(stackWindow)
 			setStackColor(stackWindow, typeCode)
 			animStack(stackWindow, sortPos)
@@ -181,7 +180,7 @@ function internalSend (typeCode, data_1, data_2)
 		elseif script.clientUserData.isBusy then						
 			eventBusy = eventBusy + 1
 			indexTask = indexTask + 1
-			pendingTask [indexTask] = {t = typeCode, d1 = data_1, d2 = data_2}
+			pendingTask [indexTask] = {t = typeCode, d1 = data_1, d2 = data_2, d3 = data_3}
 			print(script.name.." busy, Generando tarea")
 			return false
 		end
@@ -353,7 +352,7 @@ function destroyStack (window)
 end
 
 
-function getContent (window, typeCode, data_1, data_2)
+function getContent (window, typeCode, data_1, data_2, data_3)
 	if not Environment.IsServer() then 
 		local isCodeOk = false
 		for _,code in pairs (tableContent) do 
@@ -380,16 +379,26 @@ function getContent (window, typeCode, data_1, data_2)
 				window.clientUserData.abs = obj.name.." : "..content.abs
 			elseif typeCode == "PLAYER" then 
 				window.clientUserData.abs = content.abs..data_2.." <"
+				window.clientUserData.fullTxt =data_2.. window.clientUserData.fullTxt
 			elseif typeCode == "RESOURCES" then 
 				if data_2 ~= nil then 
-					window.clientUserData.abs = content.abs..data_2
+					window.clientUserData.abs = content.abs
+					window.clientUserData.fullTxt = window.clientUserData.fullTxt..tostring(data_2)
 				end	
 			elseif typeCode == "WORLD" then 
 				if data_1 ~= nil then 
 					if data_2 ~= nil then 
-						window.clientUserData.abs =data_2.name..content.abs
+						window.clientUserData.abs =data_2.name..content.abs						
 					end 
 				end 
+			elseif typeCode == "GAME" then 
+				if data_2 ~= nil then 
+					window.clientUserData.abs =content.abs..data_2.." <"
+					if data_1 == "customEq" then 
+						local equip = (data_3:GetObject()).name
+						window.clientUserData.fullTxt =data_2.. window.clientUserData.fullTxt..equip
+					end
+				end
 			end
 			window.clientUserData.title = typeCode..":"..content.title	
 			print(script.name.." >> Get content stack: ["..typeCode.."]  Title: ["..window.clientUserData.title.."]  Abstract: [".. window.clientUserData.abs.."]")
@@ -407,6 +416,21 @@ function writeContent (window)
 	end
 end
 
+function showBigContent (window, show)
+	local Body = window:FindDescendantByName("bodyText")	
+	if show then 
+		Body.y = 60
+		Body.text = window.clientUserData.fullTxt
+		Body.anchor = UIPivot.TOP_CENTER
+		Body.dock = UIPivot.TOP_CENTER		
+	else 
+		Body.y = 0
+		Body.text = window.clientUserData.abs
+		Body.anchor = UIPivot.BOTTOM_CENTER
+		Body.dock = UIPivot.BOTTOM_CENTER
+		setStackColor (window, "READ")
+	end
+end
 
 return CVS_NOTIFY_API
 

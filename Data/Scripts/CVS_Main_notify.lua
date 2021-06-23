@@ -38,7 +38,7 @@ function OnPlayerLeft (player)
 end
 
 function onEquip (eq, player)
-	sendNotification("game", "customEq", player.name)
+	sendNotification("game", "customEq", player.name,eq:GetReference())
 end
 
 
@@ -46,19 +46,19 @@ end
 --@params string 'aditional data to boxes'
 --@params string 'aditional data to boxes'
 --CUSTOM EVENT
-function onCustomEvent (typeCode, data_1, data_2)
-	print(script.name.." >> Received broadcasted data: ", typeCode, data_1, data_2)
+function onCustomEvent (typeCode, data_1, data_2, data_3)
+	print(script.name.." >> Received broadcasted data: ", typeCode, data_1, data_2, data_3)
 	if type(typeCode) == "string" then 
-		sendNotification(typeCode, data_1, data_2)
+		sendNotification(typeCode, data_1, data_2, data_3)
 	end
 end
 
 --@params string 'code of the notification'
 --@params string 'aditional data to boxes'
 --SEND STACK NOTIFICATION TO ITS AREA
-function sendNotification(typeCode, data_1, data_2)
-	if debugPrint then print(script.name.." Sending to  API >>"..typeCode.." // ", data_1, data_2) end 
-	Events.BroadcastToAllPlayers("notifY",typeCode, data_1, data_2)
+function sendNotification(typeCode, data_1, data_2, data_3)
+	if debugPrint then print(script.name.." Sending to  API >>"..typeCode.." // ", data_1, data_2, data_3) end 
+	Events.BroadcastToAllPlayers("notifY",typeCode, data_1, data_2, data_3)
 end 
 
 

@@ -114,7 +114,7 @@ function onResChange (player, resName, resQty)
 				UI_NUM_RES.text = tostring(resQty)
 				barValue = resQty
 				doAnim()
-				addToBar()
+				addToBar(resQty)
 			end 
 		end 
 	end 
@@ -131,18 +131,18 @@ function onCallEvent (player, newValue)
 			doAnim()
 			barValue = player.clientUserData.qtyResource
 			UI_NUM_RES.text = tostring(player.clientUserData.qtyResource)
-			addToBar()
+			addToBar(player.clientUserData.qtyResource)
 		end 
 	end 
 end
 
 --PROGRESS BAR LOGICS
-function addToBar ()
+function addToBar (data_2)
 	if Object.IsValid (P_BAR) then 
 		P_BAR.progress = barValue / MAX_RES_BAR
 	end 
 	if STACK_GROW then 
-		sendNotification("RESOURCES","grow")
+		sendNotification("RESOURCES","grow",data_2)
 	end
 	if STACK_ISCUSTOM_QTY then
 		if barValue >= STACK_CUSTOM_QTY_1 and not isSent_1 then 
@@ -161,7 +161,7 @@ function addToBar ()
 	if barValue >= MAX_RES_BAR then 
 		settingBar(false, barValue)
 		if STACK_FULL then 
-			sendNotification("RESOURCES", "max")
+			sendNotification("RESOURCES", "max",data_2)
 		end 
 	end 	
 end 
@@ -169,9 +169,10 @@ end
 --@params string 'code of the notification'
 --@params 
 --SEND STACK NOTIFICATION TO ITS AREA
-function sendNotification(typeCode, data_1, data_2)
-	if debugPrint then print(script.name.." Sending stack notification >> type:["..typeCode.."] // ", data_1, data_2, objID) end 
+function sendNotification(typeCode, data_1, data_2,data_3)
 	local objID = CLIENT_ROOT:GetReference()
+	data_3 = objID
+	if debugPrint then print(script.name.." Sending stack notification >> type:["..typeCode.."] // ", data_1, data_2, data_3) end 
 	CVS_NOTIFY_API.sendNotification (typeCode, data_1, data_2, objID)
 	--Events.Broadcast("notify",typeCode, data_1, data_2, objID)
 end 

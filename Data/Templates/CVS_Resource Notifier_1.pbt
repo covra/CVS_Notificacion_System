@@ -64,7 +64,7 @@ Assets {
           }
           Overrides {
             Name: "cs:debugPrint"
-            Bool: false
+            Bool: true
           }
           Overrides {
             Name: "cs:stackBoxes_res1"
@@ -435,8 +435,8 @@ Assets {
         Control {
           Width: 280
           Height: 52
-          UIX: 126.232422
-          UIY: 101.332947
+          UIX: 292.897522
+          UIY: 200.216858
           RenderTransformPivot {
             Anchor {
               Value: "mc:euianchor:middlecenter"

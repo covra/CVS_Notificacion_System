@@ -17,19 +17,19 @@ Objects {
   ChildIds: 7367735074338159388
   ChildIds: 10021543463274389984
   ChildIds: 16813558807825262224
-  ChildIds: 14982843161775482339
   ChildIds: 14713340454944924967
+  ChildIds: 13508047187928589339
   ChildIds: 4625255646412944076
   ChildIds: 10005074784157121906
   ChildIds: 7692573330601457615
-  ChildIds: 2066971925543242940
+  ChildIds: 878803523428003265
+  ChildIds: 13378184350049172181
   ChildIds: 3589931671560262444
   ChildIds: 15504382397306224404
   ChildIds: 135322574837865159
   ChildIds: 17800946474055268877
   ChildIds: 6646895742120987852
   ChildIds: 8928294864641724833
-  ChildIds: 878803523428003265
   UnregisteredParameters {
   }
   Collidable_v2 {
@@ -42,6 +42,344 @@ Objects {
     Value: "mc:ecollisionsetting:inheritfromparent"
   }
   Folder {
+  }
+}
+Objects {
+  Id: 8928294864641724833
+  Name: "CVS_MAIN_NOTIFY"
+  Transform {
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 4781671109827199097
+  WantsNetworking: true
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  TemplateInstance {
+    ParameterOverrideMap {
+      key: 11474132654469940491
+      value {
+        Overrides {
+          Name: "Name"
+          String: "CVS_MAIN_NOTIFY"
+        }
+        Overrides {
+          Name: "Position"
+          Vector {
+          }
+        }
+        Overrides {
+          Name: "Rotation"
+          Rotator {
+          }
+        }
+      }
+    }
+    TemplateAsset {
+      Id: 6625448334782390838
+    }
+  }
+}
+Objects {
+  Id: 6646895742120987852
+  Name: "CVS_Timer Notifier"
+  Transform {
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 4781671109827199097
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  TemplateInstance {
+    ParameterOverrideMap {
+      key: 4984900149003348314
+      value {
+        Overrides {
+          Name: "UIX"
+          Float: -322.182831
+        }
+        Overrides {
+          Name: "UIY"
+          Float: 198.758453
+        }
+      }
+    }
+    ParameterOverrideMap {
+      key: 10128567684910539411
+      value {
+        Overrides {
+          Name: "Name"
+          String: "CVS_Timer Notifier"
+        }
+        Overrides {
+          Name: "Position"
+          Vector {
+            Z: -50
+          }
+        }
+      }
+    }
+    TemplateAsset {
+      Id: 10952106473813097499
+    }
+  }
+}
+Objects {
+  Id: 17800946474055268877
+  Name: "CVS_Resource Notifier_2"
+  Transform {
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 4781671109827199097
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:forceoff"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  TemplateInstance {
+    ParameterOverrideMap {
+      key: 6350053372433218162
+      value {
+        Overrides {
+          Name: "Name"
+          String: "CVS_Resource Notifier_2"
+        }
+        Overrides {
+          Name: "Position"
+          Vector {
+          }
+        }
+        Overrides {
+          Name: "Rotation"
+          Rotator {
+          }
+        }
+        Overrides {
+          Name: "cs:stackBoxes_Qty_1"
+          Int: 10
+        }
+      }
+    }
+    ParameterOverrideMap {
+      key: 12889176958046357424
+      value {
+        Overrides {
+          Name: "UIX"
+          Float: -17.9216919
+        }
+        Overrides {
+          Name: "UIY"
+          Float: 200.187347
+        }
+      }
+    }
+    TemplateAsset {
+      Id: 2913118081729711871
+    }
+  }
+}
+Objects {
+  Id: 135322574837865159
+  Name: "CVS_Resource Notifier_1"
+  Transform {
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 4781671109827199097
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:forceoff"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  TemplateInstance {
+    ParameterOverrideMap {
+      key: 10628867355028092052
+      value {
+        Overrides {
+          Name: "Name"
+          String: "CVS_Resource Notifier_1"
+        }
+        Overrides {
+          Name: "Position"
+          Vector {
+          }
+        }
+        Overrides {
+          Name: "Rotation"
+          Rotator {
+          }
+        }
+      }
+    }
+    TemplateAsset {
+      Id: 14953656989554526189
+    }
+  }
+}
+Objects {
+  Id: 15504382397306224404
+  Name: "CVS_LockUnlock_Cursor"
+  Transform {
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 4781671109827199097
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  TemplateInstance {
+    ParameterOverrideMap {
+      key: 16398603414045827718
+      value {
+        Overrides {
+          Name: "Name"
+          String: "CVS_LockUnlock_Cursor"
+        }
+        Overrides {
+          Name: "Position"
+          Vector {
+          }
+        }
+        Overrides {
+          Name: "Rotation"
+          Rotator {
+          }
+        }
+      }
+    }
+    TemplateAsset {
+      Id: 5499862207320953173
+    }
+  }
+}
+Objects {
+  Id: 3589931671560262444
+  Name: "CVS Simple Player HUD"
+  Transform {
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 4781671109827199097
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:forceoff"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  TemplateInstance {
+    ParameterOverrideMap {
+      key: 374356892140795403
+      value {
+        Overrides {
+          Name: "Name"
+          String: "CVS Simple Player HUD"
+        }
+        Overrides {
+          Name: "Position"
+          Vector {
+          }
+        }
+        Overrides {
+          Name: "Rotation"
+          Rotator {
+          }
+        }
+        Overrides {
+          Name: "Visible"
+          Enum {
+            Value: "mc:evisibilitysetting:forceon"
+          }
+        }
+      }
+    }
+    ParameterOverrideMap {
+      key: 533223909792765785
+      value {
+        Overrides {
+          Name: "UIX"
+          Float: 360.955383
+        }
+      }
+    }
+    TemplateAsset {
+      Id: 14246678912454063032
+    }
+  }
+}
+Objects {
+  Id: 13378184350049172181
+  Name: "CVS TEST NOTIFICATIONS"
+  Transform {
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 4781671109827199097
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  TemplateInstance {
+    ParameterOverrideMap {
+      key: 788188135527978235
+      value {
+        Overrides {
+          Name: "Name"
+          String: "CVS TEST NOTIFICATIONS"
+        }
+        Overrides {
+          Name: "Position"
+          Vector {
+            X: -63.0500183
+            Y: -331.537964
+          }
+        }
+        Overrides {
+          Name: "Rotation"
+          Rotator {
+          }
+        }
+      }
+    }
+    TemplateAsset {
+      Id: 12174312670587540948
+    }
   }
 }
 Objects {
@@ -191,8 +529,6 @@ Objects {
   Control {
     Width: 100
     Height: 100
-    UIX: 1659.93579
-    UIY: 980.79834
     RenderTransformPivot {
       Anchor {
         Value: "mc:euianchor:middlecenter"
@@ -726,8 +1062,6 @@ Objects {
   Control {
     Width: 100
     Height: 100
-    UIX: 1616.50354
-    UIY: 28.2283936
     RenderTransformPivot {
       Anchor {
         Value: "mc:euianchor:middlecenter"
@@ -1263,8 +1597,6 @@ Objects {
   Control {
     Width: 100
     Height: 100
-    UIX: 178.072052
-    UIY: 193.255798
     RenderTransformPivot {
       Anchor {
         Value: "mc:euianchor:middlecenter"
@@ -1800,7 +2132,6 @@ Objects {
   Control {
     Width: 100
     Height: 100
-    UIY: 980.79834
     RenderTransformPivot {
       Anchor {
         Value: "mc:euianchor:middlecenter"
@@ -1853,8 +2184,6 @@ Objects {
   Control {
     Width: 200
     Height: 200
-    UIX: -5.54576111
-    UIY: -35.71875
     RenderTransformPivot {
       Anchor {
         Value: "mc:euianchor:middlecenter"
@@ -1880,12 +2209,12 @@ Objects {
     AnchorLayout {
       SelfAnchor {
         Anchor {
-          Value: "mc:euianchor:topleft"
+          Value: "mc:euianchor:middlecenter"
         }
       }
       TargetAnchor {
         Anchor {
-          Value: "mc:euianchor:topleft"
+          Value: "mc:euianchor:middlecenter"
         }
       }
     }
@@ -1921,8 +2250,6 @@ Objects {
   Control {
     Width: 200
     Height: 200
-    UIX: 93.5323639
-    UIY: -1.9206543
     RenderTransformPivot {
       Anchor {
         Value: "mc:euianchor:middlecenter"
@@ -1948,12 +2275,12 @@ Objects {
     AnchorLayout {
       SelfAnchor {
         Anchor {
-          Value: "mc:euianchor:topleft"
+          Value: "mc:euianchor:middlecenter"
         }
       }
       TargetAnchor {
         Anchor {
-          Value: "mc:euianchor:topleft"
+          Value: "mc:euianchor:middlecenter"
         }
       }
     }
@@ -1989,8 +2316,6 @@ Objects {
   Control {
     Width: 200
     Height: 200
-    UIX: 86.7770386
-    UIY: -96.555542
     RenderTransformPivot {
       Anchor {
         Value: "mc:euianchor:middlecenter"
@@ -2016,12 +2341,12 @@ Objects {
     AnchorLayout {
       SelfAnchor {
         Anchor {
-          Value: "mc:euianchor:topleft"
+          Value: "mc:euianchor:middlecenter"
         }
       }
       TargetAnchor {
         Anchor {
-          Value: "mc:euianchor:topleft"
+          Value: "mc:euianchor:middlecenter"
         }
       }
     }
@@ -2057,8 +2382,6 @@ Objects {
   Control {
     Width: 141
     Height: 139
-    UIX: 352.668335
-    UIY: -249.543518
     RenderTransformPivot {
       Anchor {
         Value: "mc:euianchor:middlecenter"
@@ -2084,12 +2407,12 @@ Objects {
     AnchorLayout {
       SelfAnchor {
         Anchor {
-          Value: "mc:euianchor:topleft"
+          Value: "mc:euianchor:middlecenter"
         }
       }
       TargetAnchor {
         Anchor {
-          Value: "mc:euianchor:topleft"
+          Value: "mc:euianchor:middlecenter"
         }
       }
     }
@@ -2125,8 +2448,6 @@ Objects {
   Control {
     Width: 313
     Height: 274
-    UIX: -66.3437042
-    UIY: -202.456268
     RenderTransformPivot {
       Anchor {
         Value: "mc:euianchor:middlecenter"
@@ -2152,12 +2473,12 @@ Objects {
     AnchorLayout {
       SelfAnchor {
         Anchor {
-          Value: "mc:euianchor:topleft"
+          Value: "mc:euianchor:middlecenter"
         }
       }
       TargetAnchor {
         Anchor {
-          Value: "mc:euianchor:topleft"
+          Value: "mc:euianchor:middlecenter"
         }
       }
     }
@@ -2193,8 +2514,6 @@ Objects {
   Control {
     Width: 137
     Height: 123
-    UIX: 332.220703
-    UIY: 16.1048584
     RenderTransformPivot {
       Anchor {
         Value: "mc:euianchor:middlecenter"
@@ -2220,12 +2539,12 @@ Objects {
     AnchorLayout {
       SelfAnchor {
         Anchor {
-          Value: "mc:euianchor:topleft"
+          Value: "mc:euianchor:middlecenter"
         }
       }
       TargetAnchor {
         Anchor {
-          Value: "mc:euianchor:topleft"
+          Value: "mc:euianchor:middlecenter"
         }
       }
     }
@@ -2261,8 +2580,6 @@ Objects {
   Control {
     Width: 137
     Height: 123
-    UIX: 147.086914
-    UIY: -123.832123
     RenderTransformPivot {
       Anchor {
         Value: "mc:euianchor:middlecenter"
@@ -2288,354 +2605,15 @@ Objects {
     AnchorLayout {
       SelfAnchor {
         Anchor {
-          Value: "mc:euianchor:topleft"
+          Value: "mc:euianchor:middlecenter"
         }
       }
       TargetAnchor {
         Anchor {
-          Value: "mc:euianchor:topleft"
+          Value: "mc:euianchor:middlecenter"
         }
       }
     }
-  }
-}
-Objects {
-  Id: 8928294864641724833
-  Name: "CVS_MAIN_NOTIFY"
-  Transform {
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 4781671109827199097
-  WantsNetworking: true
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  TemplateInstance {
-    ParameterOverrideMap {
-      key: 11474132654469940491
-      value {
-        Overrides {
-          Name: "Name"
-          String: "CVS_MAIN_NOTIFY"
-        }
-        Overrides {
-          Name: "cs:selfDestroy_time"
-          Float: 60
-        }
-      }
-    }
-    TemplateAsset {
-      Id: 6625448334782390838
-    }
-  }
-}
-Objects {
-  Id: 6646895742120987852
-  Name: "CVS_Timer Notifier"
-  Transform {
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 4781671109827199097
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  TemplateInstance {
-    ParameterOverrideMap {
-      key: 4984900149003348314
-      value {
-        Overrides {
-          Name: "UIX"
-          Float: -322.182831
-        }
-        Overrides {
-          Name: "UIY"
-          Float: 191.169342
-        }
-      }
-    }
-    ParameterOverrideMap {
-      key: 10128567684910539411
-      value {
-        Overrides {
-          Name: "Name"
-          String: "CVS_Timer Notifier"
-        }
-        Overrides {
-          Name: "Position"
-          Vector {
-            Z: -50
-          }
-        }
-      }
-    }
-    TemplateAsset {
-      Id: 10952106473813097499
-    }
-  }
-}
-Objects {
-  Id: 17800946474055268877
-  Name: "CVS_Resource Notifier_2"
-  Transform {
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 4781671109827199097
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:forceoff"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  TemplateInstance {
-    ParameterOverrideMap {
-      key: 6350053372433218162
-      value {
-        Overrides {
-          Name: "Name"
-          String: "CVS_Resource Notifier_2"
-        }
-        Overrides {
-          Name: "Position"
-          Vector {
-          }
-        }
-        Overrides {
-          Name: "Rotation"
-          Rotator {
-          }
-        }
-        Overrides {
-          Name: "cs:stackBoxes_Qty_1"
-          Int: 10
-        }
-      }
-    }
-    ParameterOverrideMap {
-      key: 12889176958046357424
-      value {
-        Overrides {
-          Name: "UIX"
-          Float: -17.9216919
-        }
-        Overrides {
-          Name: "UIY"
-          Float: 200.187347
-        }
-      }
-    }
-    TemplateAsset {
-      Id: 2913118081729711871
-    }
-  }
-}
-Objects {
-  Id: 135322574837865159
-  Name: "CVS_Resource Notifier_1"
-  Transform {
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 4781671109827199097
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:forceoff"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  TemplateInstance {
-    ParameterOverrideMap {
-      key: 9817942701836203108
-      value {
-        Overrides {
-          Name: "UIX"
-          Float: 292.897522
-        }
-        Overrides {
-          Name: "UIY"
-          Float: 200.216858
-        }
-      }
-    }
-    ParameterOverrideMap {
-      key: 10628867355028092052
-      value {
-        Overrides {
-          Name: "Name"
-          String: "CVS_Resource Notifier_1"
-        }
-        Overrides {
-          Name: "Position"
-          Vector {
-          }
-        }
-        Overrides {
-          Name: "Rotation"
-          Rotator {
-          }
-        }
-      }
-    }
-    ParameterOverrideMap {
-      key: 13681329661956558650
-      value {
-        Overrides {
-          Name: "UIX"
-          Float: 0
-        }
-        Overrides {
-          Name: "UIY"
-          Float: 0
-        }
-      }
-    }
-    TemplateAsset {
-      Id: 14953656989554526189
-    }
-  }
-}
-Objects {
-  Id: 15504382397306224404
-  Name: "CVS_LockUnlock_Cursor"
-  Transform {
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 4781671109827199097
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  TemplateInstance {
-    ParameterOverrideMap {
-      key: 16398603414045827718
-      value {
-        Overrides {
-          Name: "Name"
-          String: "CVS_LockUnlock_Cursor"
-        }
-        Overrides {
-          Name: "Position"
-          Vector {
-          }
-        }
-        Overrides {
-          Name: "Rotation"
-          Rotator {
-          }
-        }
-      }
-    }
-    TemplateAsset {
-      Id: 5499862207320953173
-    }
-  }
-}
-Objects {
-  Id: 3589931671560262444
-  Name: "CVS Simple Player HUD"
-  Transform {
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 4781671109827199097
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:forceoff"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  TemplateInstance {
-    ParameterOverrideMap {
-      key: 374356892140795403
-      value {
-        Overrides {
-          Name: "Name"
-          String: "CVS Simple Player HUD"
-        }
-        Overrides {
-          Name: "Position"
-          Vector {
-          }
-        }
-        Overrides {
-          Name: "Rotation"
-          Rotator {
-          }
-        }
-        Overrides {
-          Name: "Visible"
-          Enum {
-            Value: "mc:evisibilitysetting:forceoff"
-          }
-        }
-      }
-    }
-    TemplateAsset {
-      Id: 14246678912454063032
-    }
-  }
-}
-Objects {
-  Id: 2066971925543242940
-  Name: "TEST NOTIFICATIONS"
-  Transform {
-    Location {
-      X: -63.0500183
-      Y: -331.537964
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 4781671109827199097
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  EditorIndicatorVisibility {
-    Value: "mc:eindicatorvisibility:visiblewhenselected"
-  }
-  Folder {
-    IsFilePartition: true
-    FilePartitionName: "TEST NOTIFICATIONS"
   }
 }
 Objects {
@@ -2658,7 +2636,7 @@ Objects {
     Value: "mc:ecollisionsetting:inheritfromparent"
   }
   Visible_v2 {
-    Value: "mc:evisibilitysetting:forceoff"
+    Value: "mc:evisibilitysetting:forceon"
   }
   CameraCollidable {
     Value: "mc:ecollisionsetting:inheritfromparent"
@@ -2708,7 +2686,6 @@ Objects {
   }
   ParentId: 7692573330601457615
   ChildIds: 9476745262364266093
-  ChildIds: 1638256832902541135
   Collidable_v2 {
     Value: "mc:ecollisionsetting:forceoff"
   }
@@ -2722,48 +2699,6 @@ Objects {
     Value: "mc:eindicatorvisibility:visiblewhenselected"
   }
   NetworkContext {
-  }
-}
-Objects {
-  Id: 1638256832902541135
-  Name: "stackWindow_ref"
-  Transform {
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 5814485063127378047
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  TemplateInstance {
-    ParameterOverrideMap {
-      key: 15792527445594899278
-      value {
-        Overrides {
-          Name: "Name"
-          String: "stackWindow_ref"
-        }
-        Overrides {
-          Name: "Position"
-          Vector {
-          }
-        }
-        Overrides {
-          Name: "Rotation"
-          Rotator {
-          }
-        }
-      }
-    }
-    TemplateAsset {
-      Id: 862480760006374578
-    }
   }
 }
 Objects {
@@ -2800,10 +2735,6 @@ Objects {
           Name: "Rotation"
           Rotator {
           }
-        }
-        Overrides {
-          Name: "Opacity"
-          Float: 1
         }
       }
     }
@@ -3215,6 +3146,38 @@ Objects {
   }
 }
 Objects {
+  Id: 13508047187928589339
+  Name: "ChatGamesUnited_byCoVrA"
+  Transform {
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 4781671109827199097
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  TemplateInstance {
+    ParameterOverrideMap {
+      key: 17128609818188542397
+      value {
+        Overrides {
+          Name: "Name"
+          String: "ChatGamesUnited_byCoVrA"
+        }
+      }
+    }
+    TemplateAsset {
+      Id: 5461718899091085741
+    }
+  }
+}
+Objects {
   Id: 14713340454944924967
   Name: "Third Person Camera Settings"
   Transform {
@@ -3397,56 +3360,6 @@ Objects {
       CanMoveDown: true
       IsMountEnabled: true
       MaxHitpoints: 100
-    }
-  }
-}
-Objects {
-  Id: 14982843161775482339
-  Name: "Default Floor"
-  Transform {
-    Location {
-      X: -2736.86108
-      Z: -50
-    }
-    Rotation {
-    }
-    Scale {
-      X: 95.1164
-      Y: 105.814133
-      Z: 1
-    }
-  }
-  ParentId: 4781671109827199097
-  UnregisteredParameters {
-    Overrides {
-      Name: "ma:Shared_BaseMaterial:id"
-      AssetReference {
-        Id: 6730526870644506117
-      }
-    }
-  }
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:forceon"
-  }
-  CoreMesh {
-    MeshAsset {
-      Id: 12095835209017042614
-    }
-    Teams {
-      IsTeamCollisionEnabled: true
-      IsEnemyCollisionEnabled: true
-    }
-    InteractWithTriggers: true
-    StaticMesh {
-      Physics {
-      }
-      BoundsScale: 1
     }
   }
 }

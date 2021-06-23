@@ -16,6 +16,7 @@ Assets {
           }
         }
         ParentId: 4781671109827199097
+        ChildIds: 14047379548523703240
         ChildIds: 4355762145975937595
         ChildIds: 10371374027365986297
         UnregisteredParameters {
@@ -30,6 +31,14 @@ Assets {
           Overrides {
             Name: "cs:player_Died"
             Bool: true
+          }
+          Overrides {
+            Name: "cs:player_HP"
+            Bool: true
+          }
+          Overrides {
+            Name: "cs:player_customHP"
+            Int: 30
           }
           Overrides {
             Name: "cs:game_specialEquipment"
@@ -57,7 +66,7 @@ Assets {
           }
           Overrides {
             Name: "cs:selfDestroy_time"
-            Float: 10
+            Float: 60
           }
           Overrides {
             Name: "cs:debugPrint"
@@ -121,14 +130,6 @@ Assets {
             }
           }
           Overrides {
-            Name: "cs:player_HP"
-            Bool: true
-          }
-          Overrides {
-            Name: "cs:player_customHP"
-            Int: 30
-          }
-          Overrides {
             Name: "cs:stack_Width:tooltip"
             String: "Width of the notification area in percentage. Default:15%"
           }
@@ -172,6 +173,26 @@ Assets {
             Name: "cs:world_Custom:tooltip"
             String: "If enabled, the system will look for pre-defined events (should be included in table \'WORLD custom\' before). When the would be broadcasted to server, the system will notify.  ie     Events.Broadcast(\"poolParty\",\"WORLD\", player)"
           }
+          Overrides {
+            Name: "cs:player_HP:tooltip"
+            String: "If enabled,  the system will notify player hitPoints are under damage zone"
+          }
+          Overrides {
+            Name: "cs:player_customHP:tooltip"
+            String: "Under this value of player hit points, if  \'player_HP\' is enabled, the system will send a notification"
+          }
+          Overrides {
+            Name: "cs:animDestroyC:tooltip"
+            String: "Interna curve of animation"
+          }
+          Overrides {
+            Name: "cs:CVS_NOTIFY_API:tooltip"
+            String: "API. You can customize inside a lot of parammeters"
+          }
+          Overrides {
+            Name: "cs:stackTemplate:tooltip"
+            String: "This is the stack_window template of reference. You can customize it"
+          }
         }
         WantsNetworking: true
         Collidable_v2 {
@@ -189,6 +210,40 @@ Assets {
         Folder {
           IsFilePartition: true
           FilePartitionName: "CVS_MAIN_NOTIFY"
+        }
+      }
+      Objects {
+        Id: 14047379548523703240
+        Name: "README"
+        Transform {
+          Location {
+          }
+          Rotation {
+          }
+          Scale {
+            X: 1
+            Y: 1
+            Z: 1
+          }
+        }
+        ParentId: 11474132654469940491
+        WantsNetworking: true
+        Collidable_v2 {
+          Value: "mc:ecollisionsetting:inheritfromparent"
+        }
+        Visible_v2 {
+          Value: "mc:evisibilitysetting:inheritfromparent"
+        }
+        CameraCollidable {
+          Value: "mc:ecollisionsetting:inheritfromparent"
+        }
+        EditorIndicatorVisibility {
+          Value: "mc:eindicatorvisibility:visiblewhenselected"
+        }
+        Script {
+          ScriptAsset {
+            Id: 1332376685964187867
+          }
         }
       }
       Objects {
@@ -253,52 +308,8 @@ Assets {
         ChildIds: 7678615897134832717
         UnregisteredParameters {
           Overrides {
-            Name: "cs:player_hitPoints"
-            Bool: false
-          }
-          Overrides {
-            Name: "cs:player_Damage"
-            Bool: false
-          }
-          Overrides {
-            Name: "cs:player_friend"
-            Bool: false
-          }
-          Overrides {
-            Name: "cs:game_Purchase"
-            Bool: false
-          }
-          Overrides {
-            Name: "cs:game_specialAbility"
-            Bool: false
-          }
-          Overrides {
-            Name: "cs:game_Rounds"
-            Bool: false
-          }
-          Overrides {
-            Name: "cs:world_Trigger"
-            Bool: false
-          }
-          Overrides {
-            Name: "cs:world_Custom"
-            Bool: false
-          }
-          Overrides {
             Name: "cs:debugPrint"
             Bool: true
-          }
-          Overrides {
-            Name: "cs:fadeOut_isEnabled"
-            Bool: true
-          }
-          Overrides {
-            Name: "cs:fadeOut_Time"
-            Float: 10
-          }
-          Overrides {
-            Name: "cs:selfDestroy_time"
-            Float: 5
           }
           Overrides {
             Name: "cs:stackTemplate"
@@ -350,18 +361,6 @@ Assets {
               }
               DefaultValue: 3.40282347e+38
             }
-          }
-          Overrides {
-            Name: "cs:fadeOut_isEnabled:tooltip"
-            String: "If enabled, the stack side panel will be fade out after \'fadeOut_time\' seconds"
-          }
-          Overrides {
-            Name: "cs:fadeOut_Time:tooltip"
-            String: "Time en seconds to fadeOut if enabled. Default = 5"
-          }
-          Overrides {
-            Name: "cs:selfDestroy_time:tooltip"
-            String: "Time in seconds to auto-destroy the stack notifications. If BLANK = NO destroyed"
           }
         }
         WantsNetworking: true

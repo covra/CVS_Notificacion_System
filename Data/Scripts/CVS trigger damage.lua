@@ -4,6 +4,7 @@ local  BASE_DMG = 1
 function OnBeginOverlap(whichTrigger, other)
 	if other:IsA("Player") then
 		local player = other
+		player.maxWalkSpeed = player.maxWalkSpeed / 3
 		taskDamage = Task.Spawn(function()
 			local dmg = Damage.New(BASE_DMG)
 			while true do 
@@ -19,6 +20,7 @@ end
 function onEndOverlap (trigg, other)
 	if other:IsA("Player") then
 		local player = other
+		player.maxWalkSpeed = player.maxWalkSpeed * 3
 		taskDamage:Cancel()
 		BASE_DMG = 1
 	end 

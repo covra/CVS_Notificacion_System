@@ -46,7 +46,6 @@ Assets {
           }
           UseParentWidth: true
           Panel {
-            Opacity: 1
           }
           AnchorLayout {
             SelfAnchor {
@@ -1230,13 +1229,15 @@ Assets {
           Value: "mc:eindicatorvisibility:visiblewhenselected"
         }
         Control {
-          Width: 402
-          Height: 50
+          Width: 413
+          Height: -4
+          UIY: -50
           RenderTransformPivot {
             Anchor {
               Value: "mc:euianchor:middlecenter"
             }
           }
+          UseParentWidth: true
           Text {
             Label: "no data"
             Color {
@@ -1250,12 +1251,11 @@ Assets {
               Value: "mc:etextjustify:center"
             }
             AutoWrapText: true
-            ClipTextToSize: true
             Font {
               Id: 3709011913146589826
             }
             VerticalJustification {
-              Value: "mc:everticaljustification:center"
+              Value: "mc:everticaljustification:top"
             }
             ShadowColor {
               A: 1
@@ -1309,7 +1309,6 @@ Assets {
         Control {
           Width: 402
           Height: 50
-          UIY: 2.25263548
           RenderTransformPivot {
             Anchor {
               Value: "mc:euianchor:middlecenter"
@@ -1328,7 +1327,6 @@ Assets {
               Value: "mc:etextjustify:center"
             }
             AutoWrapText: true
-            ClipTextToSize: true
             Font {
               Id: 3709011913146589826
             }
