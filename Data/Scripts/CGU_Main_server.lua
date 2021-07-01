@@ -19,6 +19,9 @@ _G.CGU_RES = CGU_RES
 local QTY_JOIN = ROOT:GetCustomProperty("numResWhenJoin")
 local TITLES_ENABLED = ROOT:GetCustomProperty("useChatTitles")
 local VOTE_NEXT = ROOT:GetCustomProperty("isGameVoted")
+if not VOTE_NEXT then
+	_G.isAllowedVote = false
+end	
 local TIME_VOTE = ROOT:GetCustomProperty("timeToVote")
 _G.gamesLoaded = {}
 local LOAD_SAPIENS = ROOT:GetCustomProperty("loadSapiensPills")
@@ -75,6 +78,18 @@ local	resultVote = {
 		}
 script.serverUserData.winnerOpt = {code = "",votes = 0}
 ---------------------------------- FUNCTIONS ----------------------------------------------
+function autoStartGames ()
+	Task.Wait(1)
+	Chat.BroadcastMessage(">> New game starting in 5 seconds,,,",_G.playersNoBlock)
+	Task.Wait(5)
+	local randGame = math.random (1, #_G.gamesLoaded)
+	script.serverUserData.winnerOpt.votes = 1
+	script.serverUserData.winnerOpt.code =  API_CONTENT_CGU.getCodeGame (randGame)
+					print(randGame, script.serverUserData.winnerOpt.code)
+	startVotedGame()
+end
+
+
 
 function startVotedGame ()
 	_G.isGameActive = true
@@ -114,6 +129,7 @@ function onRemovedGame (coreObj, obj)
 	Task.Wait(0.2)	
 	Events.BroadcastToAllPlayers("setState", 0, "vote", false)
 	Task.Wait()	
+	autoStartGames()
 end
 
 function onClientCall (playerIn, data1, data2, data3) 
@@ -167,7 +183,7 @@ end
 
 --IF VOTE ENABLED, SPAWN TIMER TO PLAYERS TO VOTE
 function askForVote (playerIn, boolIn, optionVoted)
-	--if _G.isAllowedVote then
+	if _G.isAllowedVote then
 		if boolIn == false then readVotes (playerIn, boolIn, optionVoted) return end
 		if not VOTE_NEXT then
 			Chat.BroadcastMessage(API_CONTENT_CGU.vote (1),_G.playersNoBlock )
@@ -191,9 +207,9 @@ function askForVote (playerIn, boolIn, optionVoted)
 			script.serverUserData.winnerOpt = {code = "",votes = 0}
 			if debugPrint then print(script.name.." >> timer will be spawn. Value = ", _G.timeTo) end
 		end
-	--elseif not _G.isAllowedVote then 
-	--	Chat.BroadcastMessage("Right now is not allowed the vote",_G.playersNoBlock )
-	--end
+	elseif not _G.isAllowedVote then 
+		Chat.BroadcastMessage("Right now is not allowed the vote",_G.playersNoBlock )
+	end
 end
 
 
@@ -409,6 +425,9 @@ function checkInit()
 	Game.playerLeftEvent:Connect(OnPlayerLeft)
 	ROOT.childAddedEvent:Connect( onAddedGame )
 	ROOT.childRemovedEvent:Connect( onRemovedGame )
+	if not VOTE_NEXT then 
+		autoStartGames()
+	end
 end
 
 

@@ -18,7 +18,6 @@ Objects {
   ChildIds: 10021543463274389984
   ChildIds: 16813558807825262224
   ChildIds: 14713340454944924967
-  ChildIds: 13508047187928589339
   ChildIds: 4625255646412944076
   ChildIds: 10005074784157121906
   ChildIds: 7692573330601457615
@@ -30,6 +29,7 @@ Objects {
   ChildIds: 17800946474055268877
   ChildIds: 6646895742120987852
   ChildIds: 8928294864641724833
+  ChildIds: 3872493684607564685
   UnregisteredParameters {
   }
   Collidable_v2 {
@@ -42,6 +42,57 @@ Objects {
     Value: "mc:ecollisionsetting:inheritfromparent"
   }
   Folder {
+  }
+}
+Objects {
+  Id: 3872493684607564685
+  Name: "ChatGamesUnited_byCoVrA"
+  Transform {
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 4781671109827199097
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  TemplateInstance {
+    ParameterOverrideMap {
+      key: 17128609818188542397
+      value {
+        Overrides {
+          Name: "Name"
+          String: "ChatGamesUnited_byCoVrA"
+        }
+        Overrides {
+          Name: "Position"
+          Vector {
+            X: -2278.83301
+            Y: 437.091797
+          }
+        }
+        Overrides {
+          Name: "cs:onlyWhenRoundEnds"
+          Bool: false
+        }
+        Overrides {
+          Name: "cs:notDisturb"
+          Bool: false
+        }
+        Overrides {
+          Name: "cs:isGameVoted"
+          Bool: false
+        }
+      }
+    }
+    TemplateAsset {
+      Id: 5461718899091085741
+    }
   }
 }
 Objects {
@@ -3146,38 +3197,6 @@ Objects {
   }
 }
 Objects {
-  Id: 13508047187928589339
-  Name: "ChatGamesUnited_byCoVrA"
-  Transform {
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 4781671109827199097
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  TemplateInstance {
-    ParameterOverrideMap {
-      key: 17128609818188542397
-      value {
-        Overrides {
-          Name: "Name"
-          String: "ChatGamesUnited_byCoVrA"
-        }
-      }
-    }
-    TemplateAsset {
-      Id: 5461718899091085741
-    }
-  }
-}
-Objects {
   Id: 14713340454944924967
   Name: "Third Person Camera Settings"
   Transform {
@@ -3466,6 +3485,7 @@ Objects {
     IsDefault: true
     GameSettings {
       RagdollOnDeath: true
+      EnablePlayerStorage: true
       ChatMode {
         Value: "mc:echatmode:teamandall"
       }

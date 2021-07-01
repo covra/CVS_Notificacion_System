@@ -5,7 +5,7 @@ local CGU_GAME_PILLS
 local CLIENT_CONTEXT = script.parent
 local ROOT = CLIENT_CONTEXT.parent
 --user exposed
-local debugPrint = false
+local debugPrint = true
 local ONLY_END_ROUND = ROOT:GetCustomProperty("onlyWhenRoundEnds")
 local ACTIVATE_BY_EVENT = ROOT:GetCustomProperty("activateByEvent")
 local EVENT_NAME = ROOT:GetCustomProperty("eventName")
@@ -70,6 +70,7 @@ end
 function write (tableIn)
 	local lines = #tableIn
 	for _,lin in pairs (tableIn) do 
+													print(lin)
 		Chat.LocalMessage(lin)
 	end
 	return true
