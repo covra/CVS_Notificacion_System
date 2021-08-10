@@ -476,6 +476,6 @@ Assets {
   Marketplace {
     Description: "Updated!\r\n\r\nIt\'s a set of four famous games to enjoy in between your main games fully customizable\r\nYou will find inside:\r\n - The Hangman\r\n - BattleShip\r\n - The Wheel of Fortune\r\n - Trivia \r\nAlso, you will be able to add some pills of wisdom to enlight your players ;)\r\n\r\nAll inside the chat!\r\nPlease read the Readme file!\r\n\r\n\r\nLOG\r\n----\r\n-Added: More sys messages to customize\r\n-Improved: \'BattleShip\' win logics\r\n-Fixed: BattleShip\' Now if you dont set the board, you don\'t get points in the end and game will end to you\r\n-Fixed: \'BattleShip\' Now /auto command works properly\r\n-Fixed: \'BattleShip\' some more minor bugs\r\n-Fixed: \'WheelOf\' now starts properly\r\n-Modify: \'BattleShip\' times for broadcasting and votes\r\n-Fixed: Now the vote system works properly\r\n-Fixed: Now manual battleship setup works properly\r\n"
   }
-  SerializationVersion: 89
+  SerializationVersion: 94
   DirectlyPublished: true
 }

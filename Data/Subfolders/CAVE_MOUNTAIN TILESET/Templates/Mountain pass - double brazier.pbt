@@ -80,7 +80,7 @@ Assets {
         Name: "Rock Block 01"
         Transform {
           Location {
-            X: 1.04101563
+            X: 1.04101562
             Y: -22.5598145
           }
           Rotation {
@@ -123,7 +123,7 @@ Assets {
         Name: "Rock Block 01"
         Transform {
           Location {
-            X: 1.04101563
+            X: 1.04101562
             Y: -22.5598145
             Z: 123.242218
           }
@@ -215,7 +215,7 @@ Assets {
         Name: "Rock Block 01"
         Transform {
           Location {
-            X: 1.04101563
+            X: 1.04101562
             Y: -22.5598145
             Z: 312.663025
           }
@@ -446,7 +446,7 @@ Assets {
         Name: "Rock Block 01"
         Transform {
           Location {
-            X: 1.04101563
+            X: 1.04101562
             Y: -22.5598145
             Z: 416.543274
           }
@@ -724,7 +724,7 @@ Assets {
         Name: "Rock Block 01"
         Transform {
           Location {
-            X: 1.04101563
+            X: 1.04101562
             Y: -22.5598145
             Z: 312.663025
           }
@@ -955,7 +955,7 @@ Assets {
         Name: "Rock Block 01"
         Transform {
           Location {
-            X: 1.04101563
+            X: 1.04101562
             Y: -22.5598145
             Z: 416.543274
           }
@@ -12910,6 +12910,6 @@ Assets {
   Marketplace {
     Description: "Hello everyone!\r\n\r\nThis tileset includes all sorts of assets that are essential to creating a realistic cave/mountain biome.\r\n\r\nIf you encounter any bugs please contact me on discord! Staypunny#4062"
   }
-  SerializationVersion: 89
+  SerializationVersion: 94
   DirectlyPublished: true
 }

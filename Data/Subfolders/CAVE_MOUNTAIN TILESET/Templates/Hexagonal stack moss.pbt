@@ -93,7 +93,7 @@ Assets {
         Transform {
           Location {
             X: 37.7043457
-            Y: -1.70507813
+            Y: -1.70507812
             Z: 75.8397827
           }
           Rotation {
@@ -464,6 +464,6 @@ Assets {
   Marketplace {
     Description: "Hello everyone!\r\n\r\nThis tileset includes all sorts of assets that are essential to creating a realistic cave/mountain biome.\r\n\r\nIf you encounter any bugs please contact me on discord! Staypunny#4062"
   }
-  SerializationVersion: 89
+  SerializationVersion: 94
   DirectlyPublished: true
 }

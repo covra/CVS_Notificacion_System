@@ -1,13 +1,5 @@
 Entries {
   Key {
-    StringVar: "hasJoinedBefore"
-  }
-  SimpleValue {
-    IntVar: 15
-  }
-}
-Entries {
-  Key {
     StringVar: "hoursCGU"
   }
   SimpleValue {
@@ -19,7 +11,7 @@ Entries {
     StringVar: "wordies"
   }
   SimpleValue {
-    IntVar: 75
+    IntVar: 85
   }
 }
 Entries {
@@ -27,6 +19,14 @@ Entries {
     StringVar: "minCGU"
   }
   SimpleValue {
-    IntVar: 1
+    IntVar: 0
+  }
+}
+Entries {
+  Key {
+    StringVar: "hasJoinedBefore"
+  }
+  SimpleValue {
+    IntVar: 17
   }
 }

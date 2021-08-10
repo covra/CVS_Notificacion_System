@@ -4773,6 +4773,6 @@ Assets {
   Marketplace {
     Description: "Coins\r\n=====\r\n\r\n- Collect Coins\r\n- Saves Balance on Player Leave / Return\r\n- UI Shows Coin Balance (Top Right)\r\n\r\nCollectable Coins, with server resources (saves for each player on exit). Displays the coin balance on the top right of the screen."
   }
-  SerializationVersion: 89
+  SerializationVersion: 94
   DirectlyPublished: true
 }

@@ -1088,6 +1088,6 @@ Assets {
   Marketplace {
     Description: "This contains a world model and a small UI element for each of the following social media icons:\r\n\342\200\242Discord *updated to new logo\r\n\342\200\242Twitch\r\n\342\200\242Twitter\r\n\342\200\242Instagram\r\n\342\200\242TikTok\r\n\342\200\242YouTube\r\n\r\nPair with Team META\'s UI Auto-Scaler CC to easily rescale the UI! Enjoy! <3"
   }
-  SerializationVersion: 89
+  SerializationVersion: 94
   DirectlyPublished: true
 }

@@ -40,5 +40,5 @@ Assets {
     Version: "1.0.0"
     Description: "Your solution to all your ui design problems!\r\n\r\nOne Size fits all design power pack includes:\r\n\r\n- everything to build a standard high quality ui system\r\n- Code not included \r\n\r\nMany more to be made if requested in future"
   }
-  SerializationVersion: 89
+  SerializationVersion: 94
 }

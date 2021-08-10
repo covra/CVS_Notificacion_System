@@ -2,7 +2,7 @@ Assets {
   Id: 571036618020258411
   Name: "rock green gradient"
   PlatformAssetType: 13
-  SerializationVersion: 89
+  SerializationVersion: 94
   CustomMaterialAsset {
     BaseMaterialId: 4647033500953364697
     ParameterOverrides {

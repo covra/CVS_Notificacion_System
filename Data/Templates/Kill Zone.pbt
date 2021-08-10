@@ -74,7 +74,7 @@ Assets {
         Name: "KillZoneServer"
         Transform {
           Location {
-            Z: -6.10351563e-05
+            Z: -6.10351562e-05
           }
           Rotation {
           }
@@ -114,5 +114,5 @@ Assets {
       AssetId: "Kill_Zone"
     }
   }
-  SerializationVersion: 89
+  SerializationVersion: 94
 }

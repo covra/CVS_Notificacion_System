@@ -355,7 +355,7 @@ Assets {
         Name: "Rock Hexagonal"
         Transform {
           Location {
-            X: 27.8789063
+            X: 27.8789062
             Y: 22.3422852
             Z: 66.6925049
           }
@@ -1477,6 +1477,6 @@ Assets {
   Marketplace {
     Description: "Hello everyone!\r\n\r\nThis tileset includes all sorts of assets that are essential to creating a realistic cave/mountain biome.\r\n\r\nIf you encounter any bugs please contact me on discord! Staypunny#4062"
   }
-  SerializationVersion: 89
+  SerializationVersion: 94
   DirectlyPublished: true
 }

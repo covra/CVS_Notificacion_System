@@ -4382,7 +4382,7 @@ Assets {
         Transform {
           Location {
             X: -47.1020508
-            Y: -59.7851563
+            Y: -59.7851562
           }
           Rotation {
             Pitch: 14.605423
@@ -5758,7 +5758,7 @@ Assets {
         Transform {
           Location {
             X: -47.1020508
-            Y: -59.7851563
+            Y: -59.7851562
           }
           Rotation {
             Pitch: 14.605423
@@ -6009,7 +6009,7 @@ Assets {
         Name: "Bush Leafy Low 01"
         Transform {
           Location {
-            X: -331.101563
+            X: -331.101562
             Y: 219.398926
             Z: 130.637939
           }
@@ -6658,6 +6658,6 @@ Assets {
   Marketplace {
     Description: "Hello everyone!\r\n\r\nThis tileset includes all sorts of assets that are essential to creating a realistic cave/mountain biome.\r\n\r\nIf you encounter any bugs please contact me on discord! Staypunny#4062"
   }
-  SerializationVersion: 89
+  SerializationVersion: 94
   DirectlyPublished: true
 }

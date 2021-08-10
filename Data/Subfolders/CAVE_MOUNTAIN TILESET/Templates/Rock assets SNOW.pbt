@@ -423,7 +423,7 @@ Assets {
         Name: "Rock asset 3 snow"
         Transform {
           Location {
-            X: -42.3164063
+            X: -42.3164062
             Y: -1611.2627
             Z: 49.192627
           }
@@ -626,6 +626,6 @@ Assets {
   Marketplace {
     Description: "Hello everyone!\r\n\r\nThis tileset includes all sorts of assets that are essential to creating a realistic cave/mountain biome.\r\n\r\nIf you encounter any bugs please contact me on discord! Staypunny#4062"
   }
-  SerializationVersion: 89
+  SerializationVersion: 94
   DirectlyPublished: true
 }

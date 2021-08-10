@@ -15,10 +15,10 @@ local propGame_specialAbility = CLIENT_ROOT:GetCustomProperty("game_specialAbili
 local propGame_Rounds = CLIENT_ROOT:GetCustomProperty("game_Rounds")
 
 --local propWorld_Custom = CLIENT_ROOT:GetCustomProperty("world_Custom")
-_G.FADEOUT_TIME = CLIENT_ROOT:GetCustomProperty("fadeOut_Time")
-local FADEOUT_ISENABLED = CLIENT_ROOT:GetCustomProperty("fadeOut_isEnabled")
-_G.SELFDESTROY_TIME = CLIENT_ROOT:GetCustomProperty("selfDestroy_time")
-local debugPrint = CLIENT_ROOT:GetCustomProperty("debugPrint")
+_G.FADEOUT_TIME = CLIENT_ROOT.parent:GetCustomProperty("fadeOut_Time")
+local FADEOUT_ISENABLED = CLIENT_ROOT.parent:GetCustomProperty("fadeOut_isEnabled")
+_G.SELFDESTROY_TIME = CLIENT_ROOT.parent:GetCustomProperty("selfDestroy_time")
+local debugPrint = CLIENT_ROOT.parent:GetCustomProperty("debugPrint")
 
 local localPlayer = Game.GetLocalPlayer()
 

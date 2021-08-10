@@ -43,5 +43,5 @@ Assets {
     Version: "1.0.0"
     Description: "Announces when a player joins the game!"
   }
-  SerializationVersion: 89
+  SerializationVersion: 94
 }

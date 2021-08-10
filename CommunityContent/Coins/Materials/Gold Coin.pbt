@@ -2,7 +2,7 @@ Assets {
   Id: 11757793108794548334
   Name: "Gold Coin"
   PlatformAssetType: 13
-  SerializationVersion: 89
+  SerializationVersion: 94
   CustomMaterialAsset {
     BaseMaterialId: 13422317357052140195
     ParameterOverrides {

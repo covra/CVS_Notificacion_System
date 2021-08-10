@@ -31,7 +31,7 @@ Assets {
           }
           AutoPlay: true
           Transient: true
-          Pitch: -678.914063
+          Pitch: -678.914062
           Volume: 2.78379631
           Falloff: -1
           Radius: -1
@@ -55,5 +55,5 @@ Assets {
       AssetId: "None"
     }
   }
-  SerializationVersion: 89
+  SerializationVersion: 94
 }

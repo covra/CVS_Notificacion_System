@@ -554,6 +554,6 @@ Assets {
   Marketplace {
     Description: "A client context disco ball for all your disco needs"
   }
-  SerializationVersion: 89
+  SerializationVersion: 94
   DirectlyPublished: true
 }

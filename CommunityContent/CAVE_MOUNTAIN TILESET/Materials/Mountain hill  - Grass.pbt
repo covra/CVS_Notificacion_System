@@ -2,7 +2,7 @@ Assets {
   Id: 4364980501504132992
   Name: "Mountain hill  - Grass"
   PlatformAssetType: 13
-  SerializationVersion: 89
+  SerializationVersion: 94
   CustomMaterialAsset {
     BaseMaterialId: 8668038492999326315
     ParameterOverrides {

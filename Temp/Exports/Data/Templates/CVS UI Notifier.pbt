@@ -3340,6 +3340,10 @@ Assets {
                 Bool: true
               }
               Overrides {
+                Name: "cs:fadeOut_Time"
+                Float: 5
+              }
+              Overrides {
                 Name: "cs:selfDestroy_time"
                 Float: 60
               }
@@ -4014,7 +4018,7 @@ Assets {
       Name: "CVS_common"
       PlatformAssetType: 3
       TextAsset {
-        Text: "--require\r\nlocal CVS_NOTIFY_API = require( script:GetCustomProperty(\"CVS_NOTIFY_API\") ) \r\n--custom\r\nlocal CLIENT_ROOT = script.parent\r\n_G.stacks = 0\r\n--user exposed\r\n--local PLAYER_JOIN = CLIENT_ROOT:GetCustomProperty(\"player_Join\")\r\nlocal propPlayer_hitPoints = CLIENT_ROOT:GetCustomProperty(\"player_hitPoints\")\r\n--local PLAYER_LEAVE = CLIENT_ROOT:GetCustomProperty(\"player_Leave\")\r\n--local PLAYER_DIED = CLIENT_ROOT:GetCustomProperty(\"player_Died\")\r\nlocal propPlayer_Damage = CLIENT_ROOT:GetCustomProperty(\"player_Damage\")\r\nlocal propGame_Purchase = CLIENT_ROOT:GetCustomProperty(\"game_Purchase\")\r\nlocal propGame_specialAbility = CLIENT_ROOT:GetCustomProperty(\"game_specialAbility\")\r\n--local GAME_SP_EQ = CLIENT_ROOT:GetCustomProperty(\"game_specialEquipment\")\r\nlocal propGame_Rounds = CLIENT_ROOT:GetCustomProperty(\"game_Rounds\")\r\n\r\n--local propWorld_Custom = CLIENT_ROOT:GetCustomProperty(\"world_Custom\")\r\n_G.FADEOUT_TIME = CLIENT_ROOT:GetCustomProperty(\"fadeOut_Time\")\r\nlocal FADEOUT_ISENABLED = CLIENT_ROOT:GetCustomProperty(\"fadeOut_isEnabled\")\r\n_G.SELFDESTROY_TIME = CLIENT_ROOT:GetCustomProperty(\"selfDestroy_time\")\r\nlocal debugPrint = CLIENT_ROOT:GetCustomProperty(\"debugPrint\")\r\n\r\nlocal localPlayer = Game.GetLocalPlayer()\r\n\r\n\r\n----------------------------------FUNCTIONS------------------------------\r\n\r\n--@params string \'code of the notification\'\r\n--@params integer \'aditional data to boxes\'\r\n--SEND STACK NOTIFICATION TO ITS AREA\r\nfunction sendNotification(typeCode, data_1, data_2, data_3)\r\n\tif debugPrint then print(script.name ..\"recibiendo datos de server: \",typeCode, data_1, data_2, data_3) end\r\n\tif debugPrint then print(script.name..\" Sending to API>>\"..typeCode..\" // \", data_1, data_2, data_3) end \r\n\tCVS_NOTIFY_API.sendNotification (typeCode, data_1, data_2, data_3)\r\nend \r\n\r\n----------------------------------------VALIDATION-------------------------------\r\n\r\n\r\nif FADEOUT_ISENABLED then \r\n\tif _G.FADEOUT_TIME <= 0 or _G.FADEOUT_TIME == nil then \r\n\t\twarn(\" If FadeOut is enabled, FadeOut time has to be > 0. Set to default = 5\")\r\n\tend \r\nend\r\n\r\n\r\nEvents.Connect(\"notifY\", sendNotification)\r\n\r\n"
+        Text: "--require\r\nlocal CVS_NOTIFY_API = require( script:GetCustomProperty(\"CVS_NOTIFY_API\") ) \r\n--custom\r\nlocal CLIENT_ROOT = script.parent\r\n_G.stacks = 0\r\n--user exposed\r\n--local PLAYER_JOIN = CLIENT_ROOT:GetCustomProperty(\"player_Join\")\r\nlocal propPlayer_hitPoints = CLIENT_ROOT:GetCustomProperty(\"player_hitPoints\")\r\n--local PLAYER_LEAVE = CLIENT_ROOT:GetCustomProperty(\"player_Leave\")\r\n--local PLAYER_DIED = CLIENT_ROOT:GetCustomProperty(\"player_Died\")\r\nlocal propPlayer_Damage = CLIENT_ROOT:GetCustomProperty(\"player_Damage\")\r\nlocal propGame_Purchase = CLIENT_ROOT:GetCustomProperty(\"game_Purchase\")\r\nlocal propGame_specialAbility = CLIENT_ROOT:GetCustomProperty(\"game_specialAbility\")\r\n--local GAME_SP_EQ = CLIENT_ROOT:GetCustomProperty(\"game_specialEquipment\")\r\nlocal propGame_Rounds = CLIENT_ROOT:GetCustomProperty(\"game_Rounds\")\r\n\r\n--local propWorld_Custom = CLIENT_ROOT:GetCustomProperty(\"world_Custom\")\r\n_G.FADEOUT_TIME = CLIENT_ROOT.parent:GetCustomProperty(\"fadeOut_Time\")\r\nlocal FADEOUT_ISENABLED = CLIENT_ROOT.parent:GetCustomProperty(\"fadeOut_isEnabled\")\r\n_G.SELFDESTROY_TIME = CLIENT_ROOT.parent:GetCustomProperty(\"selfDestroy_time\")\r\nlocal debugPrint = CLIENT_ROOT.parent:GetCustomProperty(\"debugPrint\")\r\n\r\nlocal localPlayer = Game.GetLocalPlayer()\r\n\r\n\r\n----------------------------------FUNCTIONS------------------------------\r\n\r\n--@params string \'code of the notification\'\r\n--@params integer \'aditional data to boxes\'\r\n--SEND STACK NOTIFICATION TO ITS AREA\r\nfunction sendNotification(typeCode, data_1, data_2, data_3)\r\n\tif debugPrint then print(script.name ..\"recibiendo datos de server: \",typeCode, data_1, data_2, data_3) end\r\n\tif debugPrint then print(script.name..\" Sending to API>>\"..typeCode..\" // \", data_1, data_2, data_3) end \r\n\tCVS_NOTIFY_API.sendNotification (typeCode, data_1, data_2, data_3)\r\nend \r\n\r\n----------------------------------------VALIDATION-------------------------------\r\n\r\n\r\nif FADEOUT_ISENABLED then \r\n\tif _G.FADEOUT_TIME <= 0 or _G.FADEOUT_TIME == nil then \r\n\t\twarn(\" If FadeOut is enabled, FadeOut time has to be > 0. Set to default = 5\")\r\n\tend \r\nend\r\n\r\n\r\nEvents.Connect(\"notifY\", sendNotification)\r\n\r\n"
       }
     }
     Assets {
@@ -15988,7 +15992,7 @@ Assets {
             Transform {
               Location {
                 X: 115.662781
-                Y: 0.743164063
+                Y: 0.743164062
               }
               Rotation {
               }
@@ -20934,7 +20938,7 @@ Assets {
             Transform {
               Location {
                 X: 491.756592
-                Y: -242.070313
+                Y: -242.070312
                 Z: 29.5687866
               }
               Rotation {
@@ -55476,7 +55480,7 @@ Assets {
                 Z: 721.451111
               }
               Rotation {
-                Yaw: -6.10351563e-05
+                Yaw: -6.10351562e-05
               }
               Scale {
                 X: 10.7499876
@@ -60485,7 +60489,7 @@ Assets {
             Transform {
               Location {
                 X: 37.7043457
-                Y: -1.70507813
+                Y: -1.70507812
                 Z: 75.8397827
               }
               Rotation {
@@ -60972,7 +60976,7 @@ Assets {
             Transform {
               Location {
                 X: 37.7043457
-                Y: -1.70507813
+                Y: -1.70507812
                 Z: 75.8397827
               }
               Rotation {
@@ -61556,7 +61560,7 @@ Assets {
             Transform {
               Location {
                 X: -133.68692
-                Y: -535.132813
+                Y: -535.132812
                 Z: 3.05175781e-05
               }
               Rotation {
@@ -62001,7 +62005,7 @@ Assets {
       Name: "DoubleDoorControllerClient"
       PlatformAssetType: 3
       TextAsset {
-        Text: "--[[\nCopyright 2019 Manticore Games, Inc. \n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated\ndocumentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the\nrights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit\npersons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the\nSoftware.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE\nWARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR\nCOPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR\nOTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n--]]\n\n-- Internal custom properties\nlocal ROTATION_ROOT = script:GetCustomProperty(\"RotationRoot\"):WaitForObject()\nlocal OPEN_SOUND1 = script:GetCustomProperty(\"OpenSound1\"):WaitForObject()\nlocal CLOSE_SOUND1 = script:GetCustomProperty(\"CloseSound1\"):WaitForObject()\nlocal OPEN_SOUND2 = script:GetCustomProperty(\"OpenSound2\"):WaitForObject()\nlocal CLOSE_SOUND2 = script:GetCustomProperty(\"CloseSound2\"):WaitForObject()\n\n-- Variable\nlocal previousRotation = 0.0\n\n-- float GetDoorRotation()\n-- Gives you the current rotation of the door\nfunction GetDoorRotation()\n\treturn ROTATION_ROOT:GetRotation().z / 90.0\nend\n\nfunction Tick(deltaTime)\n\tlocal doorRotation = GetDoorRotation()\n\n\tif doorRotation ~= 0.0 and previousRotation == 0.0 then\n\t\tif OPEN_SOUND1 then\n\t\t\tOPEN_SOUND1:Play()\n\t\tend\n\n\t\tif OPEN_SOUND2 then\n\t\t\tOPEN_SOUND2:Play()\n\t\tend\n\tend\n\n\tif doorRotation == 0.0 and previousRotation ~= 0.0 then\n\t\tif CLOSE_SOUND1 then\n\t\t\tCLOSE_SOUND1:Play()\n\t\tend\n\n\t\tif CLOSE_SOUND2 then\n\t\t\tCLOSE_SOUND2:Play()\n\t\tend\n\tend\n\n\tpreviousRotation = doorRotation\nend\n"
+        Text: "--[[\r\nCopyright 2019 Manticore Games, Inc. \r\n\r\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated\r\ndocumentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the\r\nrights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit\r\npersons to whom the Software is furnished to do so, subject to the following conditions:\r\n\r\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the\r\nSoftware.\r\n\r\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE\r\nWARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR\r\nCOPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR\r\nOTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\r\n--]]\r\n\r\n-- Internal custom properties\r\nlocal ROTATION_ROOT = script:GetCustomProperty(\"RotationRoot\"):WaitForObject()\r\nlocal OPEN_SOUND1 = script:GetCustomProperty(\"OpenSound1\"):WaitForObject()\r\nlocal CLOSE_SOUND1 = script:GetCustomProperty(\"CloseSound1\"):WaitForObject()\r\nlocal OPEN_SOUND2 = script:GetCustomProperty(\"OpenSound2\"):WaitForObject()\r\nlocal CLOSE_SOUND2 = script:GetCustomProperty(\"CloseSound2\"):WaitForObject()\r\n\r\n-- Variable\r\nlocal previousRotation = 0.0\r\n\r\n-- float GetDoorRotation()\r\n-- Gives you the current rotation of the door\r\nfunction GetDoorRotation()\r\n\treturn ROTATION_ROOT:GetRotation().z / 90.0\r\nend\r\n\r\nfunction Tick(deltaTime)\r\n\tlocal doorRotation = GetDoorRotation()\r\n\r\n\tif doorRotation ~= 0.0 and previousRotation == 0.0 then\r\n\t\tif OPEN_SOUND1 then\r\n\t\t\tOPEN_SOUND1:Play()\r\n\t\tend\r\n\r\n\t\tif OPEN_SOUND2 then\r\n\t\t\tOPEN_SOUND2:Play()\r\n\t\tend\r\n\tend\r\n\r\n\tif doorRotation == 0.0 and previousRotation ~= 0.0 then\r\n\t\tif CLOSE_SOUND1 then\r\n\t\t\tCLOSE_SOUND1:Play()\r\n\t\tend\r\n\r\n\t\tif CLOSE_SOUND2 then\r\n\t\t\tCLOSE_SOUND2:Play()\r\n\t\tend\r\n\tend\r\n\r\n\tpreviousRotation = doorRotation\r\nend\r\n"
       }
     }
     Assets {
@@ -63735,7 +63739,7 @@ Assets {
     }
     Assets {
       Id: 11669935166927009921
-      Name: "Animated Neon Sign- Sun"
+      Name: "Animated Neon Sign - Sun"
       PlatformAssetType: 1
       PrimaryAsset {
         AssetType: "StaticMeshAssetRef"
@@ -65861,6 +65865,6 @@ Assets {
     OwnerName: "covra"
     Description: "CVS UI Notifier\r\n---------------\r\n\r\nA system for stack notifications  fully customizable.  The template has a main folder and a group of UI and HUD and a chrono (normal and reverse) with animations working with the system. Also I included a mini-game and a group of triggers which work too with the notification system. Also include a README file with tips and examples.\r\nIf you click in the window,  it will expand and show extra information. Also will change its state and color  to \'readen\'\r\n I have tried to be as flexible as possible to system would fit in any game. You can customize which notifications want to see, when, colors, ...\r\n\r\nAny doubt or advice or proposal, it will be well received, plz DM me\r\n\r\n\r\nby CoVrA\r\n"
   }
-  SerializationVersion: 89
+  SerializationVersion: 94
 }
 IncludesAllDependencies: true

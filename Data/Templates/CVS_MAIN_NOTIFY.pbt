@@ -65,6 +65,10 @@ Assets {
             Bool: true
           }
           Overrides {
+            Name: "cs:fadeOut_Time"
+            Float: 5
+          }
+          Overrides {
             Name: "cs:selfDestroy_time"
             Float: 60
           }
@@ -724,6 +728,6 @@ Assets {
       AssetId: "None"
     }
   }
-  SerializationVersion: 89
+  SerializationVersion: 94
   DirectlyPublished: true
 }

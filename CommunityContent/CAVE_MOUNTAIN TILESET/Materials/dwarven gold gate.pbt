@@ -2,7 +2,7 @@ Assets {
   Id: 7267619067651552985
   Name: "dwarven gold gate"
   PlatformAssetType: 13
-  SerializationVersion: 89
+  SerializationVersion: 94
   CustomMaterialAsset {
     BaseMaterialId: 12179696715755637200
     ParameterOverrides {

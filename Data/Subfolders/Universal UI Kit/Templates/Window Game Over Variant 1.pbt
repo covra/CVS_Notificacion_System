@@ -2984,7 +2984,7 @@ Assets {
           Width: 64
           Height: 64
           UIX: 221.671387
-          UIY: 0.000122070313
+          UIY: 0.000122070312
           RenderTransformPivot {
             Anchor {
               Value: "mc:euianchor:middlecenter"
@@ -3686,7 +3686,7 @@ Assets {
           Width: 64
           Height: 64
           UIX: 221.671387
-          UIY: 0.000122070313
+          UIY: 0.000122070312
           RenderTransformPivot {
             Anchor {
               Value: "mc:euianchor:middlecenter"
@@ -4388,7 +4388,7 @@ Assets {
           Width: 64
           Height: 64
           UIX: 221.671387
-          UIY: 0.000122070313
+          UIY: 0.000122070312
           RenderTransformPivot {
             Anchor {
               Value: "mc:euianchor:middlecenter"
@@ -5090,7 +5090,7 @@ Assets {
           Width: 64
           Height: 64
           UIX: 221.671387
-          UIY: 0.000122070313
+          UIY: 0.000122070312
           RenderTransformPivot {
             Anchor {
               Value: "mc:euianchor:middlecenter"
@@ -5927,6 +5927,6 @@ Assets {
   Marketplace {
     Description: "This pack contains various elements that allows to build UI for your game. Some of elements have a few variations.\r\nIt\'s only visual part, you still need scripts to make this UI ALIVE!\r\n\r\nContains: \r\n\342\200\242 HUD Examples: for RPG and Battle Royale\r\n\342\200\242 HUD Parts: Ability buttons, navigation buttons, player info, resources info, quests info\r\n\342\200\242 Windows: Inventory, Journal, Victory, Shop, Welcome \r\n\342\200\242 Other UI elements: buttons, various panels and other parts"
   }
-  SerializationVersion: 89
+  SerializationVersion: 94
   DirectlyPublished: true
 }
